@@ -21,7 +21,6 @@ import de.micromata.opengis.kml.v_2_2_0.Style;
 
 public class ReadAndWriteWithFilter {
 
-	
 	public List<CSVRecord> readCsv(String fileName, IFilter filter) throws Exception{
 		try {
 			File file = new File(fileName);

@@ -13,7 +13,7 @@ public class FilterByTime implements IFilter {
 
 	
 	public FilterByTime(String minTime,String maxTime) throws Exception {
-		SimpleDateFormat minMaxDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		SimpleDateFormat minMaxDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			m_minTime = minMaxDateFormat.parse(minTime);
 			m_maxTime = minMaxDateFormat.parse(maxTime);
@@ -30,8 +30,8 @@ public class FilterByTime implements IFilter {
 		Date currentTime;
 		for(CSVRecord record : records){
 			try {
-				currentTime = currentDateFormat.parse("Time");
-				if(m_minTime.before(currentTime) && m_maxTime.after(currentTime)){
+				currentTime = currentDateFormat.parse(record.get("Time"));
+				if((m_minTime.before(currentTime) && m_maxTime.after(currentTime) )|| m_minTime.equals(currentTime) || m_maxTime.equals(currentTime)){
 					result.add(record);
 				}
 			} catch (ParseException e) {

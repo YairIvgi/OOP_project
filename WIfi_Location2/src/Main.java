@@ -1,15 +1,17 @@
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.commons.csv.CSVRecord;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception{
-		String folderPath="C:/Users/יאיר/Desktop/new/try";
-//		System.out.println("please enter path");
-//		Scanner scanInput = new Scanner(System.in);
-//		folderPath= scanInput.nextLine();
-//		scanInput.close();    
+		String folderPath;
+		//="C:/Users/יאיר/Desktop/new/try";
+		System.out.println("please enter folder path");
+		Scanner scanInput = new Scanner(System.in);
+		folderPath= scanInput.nextLine();
+		scanInput.close();    
 		CsvReader folder=new CsvReader();
 		try {
 			folder.readFolder(folderPath);
@@ -18,8 +20,11 @@ public class Main {
 		}
 		ReadAndWriteWithFilter rw = new ReadAndWriteWithFilter();
 		IFilter filterId = new FilterById("SHIELD Tablet");
+		IFilter filterTime = new FilterByTime("2017-10-27  16:16:45", "2017-10-27  16:19:14");
 		List<CSVRecord> records = rw.readCsv(folder.getOutputFile(), filterId);
-		rw.write(records);
+		List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);
+		int k=0;
+		//rw.write(records);
 		
 	}
 
