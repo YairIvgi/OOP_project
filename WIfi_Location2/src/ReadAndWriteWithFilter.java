@@ -8,16 +8,10 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import de.micromata.opengis.kml.v_2_2_0.AltitudeMode;
-import de.micromata.opengis.kml.v_2_2_0.Coordinate;
-import de.micromata.opengis.kml.v_2_2_0.Document;
-import de.micromata.opengis.kml.v_2_2_0.Folder;
-import de.micromata.opengis.kml.v_2_2_0.Icon;
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-import de.micromata.opengis.kml.v_2_2_0.KmlFactory;
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import de.micromata.opengis.kml.v_2_2_0.Point;
-import de.micromata.opengis.kml.v_2_2_0.Style;
+import org.boehn.kmlframework.kml.Document;
+import org.boehn.kmlframework.kml.Kml;
+import org.boehn.kmlframework.kml.KmlException;
+import org.boehn.kmlframework.kml.Placemark;
 
 public class ReadAndWriteWithFilter {
 
@@ -33,31 +27,33 @@ public class ReadAndWriteWithFilter {
 		}
 	}
 	
-	public void write(List<CSVRecord> records){
-		final Kml kml = new Kml();
-		Document doc = kml.createAndSetDocument().withName("JAK Example1").withOpen(true);
+	public void write(List<CSVRecord> records) throws KmlException, IOException {
 
-		// create a Folder
-		Folder folder = doc.createAndAddFolder();
-		folder.withName("Continents with Earth's surface").withOpen(true);
+		// We create a new KML Document
+		Kml kml = new Kml();
+		// We add a document to the kml
+					Document document = new Document();
+					kml.setFeature(document);
+		for(CSVRecord record : records) {
+			// We create a Placemark for the Department of Informatics at the university of Oslo
+			int BSignal=highestSignalIndex(record);
+			Placemark ifi = new Placemark(record.get("SSID"+BSignal));
+			ifi.setDescription("MAC: "+record.get("MAC"+BSignal)+"\n"+" Frequncy: "+record.get("Frequncy"+BSignal)+"\n"+" Signal: "+record.get("Signal"+BSignal)+"\n");
+			ifi.setLocation(Double.parseDouble(record.get("Lon")), Double.parseDouble(record.get("Lat")));
 
-		// create Placemark elements
-		createPlacemarkWithChart(doc, folder, 93.24607775062842, 47.49808862281773, "Asia", 30);
-		createPlacemarkWithChart(doc, folder, 19.44601806124206, 10.13133611111111, "Africa", 20);
-		createPlacemarkWithChart(doc, folder, -103.5286299241638, 41.26035225962401, "North America", 17);
-		createPlacemarkWithChart(doc, folder, -59.96161780270248, -13.27347674076888, "South America", 12);
-		createPlacemarkWithChart(doc, folder, 14.45531426360271, 47.26208181151567, "Europe", 7);
-		createPlacemarkWithChart(doc, folder, 135.0555272486322, -26.23824399654937, "Australia", 6);
+			
 
-		// print and save
-		try {
-			kml.marshal(new File("advancedexample1.kml"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// We add the placemark to the Document
+			document.addFeature(ifi);
 		}
-		
+
+		// We generate the kml file
+		kml.createKml("C:\\Users\\user\\Documents\\write\\Ifi.kml");
+
+		// We are done
+		System.out.println("The kml file was generated.");
 	}
+
 	
 	private static void createPlacemarkWithChart(Document document, Folder folder, double longitude, double latitude, 
 		    String continentName, int coveredLandmass) {
