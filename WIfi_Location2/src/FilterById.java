@@ -4,7 +4,10 @@ import java.util.List;
 import org.apache.commons.csv.CSVRecord;
 
 public class FilterById implements IFilter {
-
+	/**
+	 * @author Yair Ivgi 
+	 * This class filters the data by the name of the WiFi sample. 
+	 */
 	private String m_id;
 	
 	public FilterById(String id) {

@@ -12,7 +12,13 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 public class CsvReader {
-
+	/**
+	 * @author Yair Ivgi 
+	 * This class reads all the .csv files using commons-csv-1.5.jar .
+	 * the method readFolder reads all the file in the specific folder and writs all the file names into array.
+	 * the method readCsv reads each file and organize all the data by time. 
+	 * 
+	 */
 	private String outputFile;
 	
 	public  void readFolder(String folderPath) throws Exception{

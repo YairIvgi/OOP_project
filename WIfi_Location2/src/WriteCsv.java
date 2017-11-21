@@ -3,6 +3,12 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class WriteCsv {
+	/**
+	 * @author Yair Ivgi 
+	 * This class writes the data of all the WifiSpot into a .csv format file.
+	 * The  builder WriteCsv sets the first line of headers.
+	 * The method write all the points.
+	 */
 	private FileWriter fw;
 	private PrintWriter outs;
 

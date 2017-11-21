@@ -1,6 +1,10 @@
 
 public class WifiSpot {
-
+	/**
+	 * @author Yair Ivgi 
+	 * this class represent one sample of a WiFi point and all of its information.
+	 */
+	
 	private String mac;
 	private String ssid;
 	private String firstSeen;

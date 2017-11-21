@@ -7,7 +7,11 @@ import java.util.List;
 import org.apache.commons.csv.CSVRecord;
 
 public class FilterByTime implements IFilter {
-
+	/**
+	 * @author Yair Ivgi 
+	 * This class filters the data by time.
+	 * The filreByTime builder gets the time frame specified by the user. 
+	 */
 	private Date m_minTime;
 	private Date m_maxTime;
 

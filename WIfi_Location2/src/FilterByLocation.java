@@ -4,6 +4,11 @@ import java.util.List;
 import org.apache.commons.csv.CSVRecord;
 
 public class FilterByLocation implements IFilter {
+	/**
+	 * @author Yair Ivgi 
+	 * This class filters the data by location.
+	 * The FilterByLocation builder gets the coordinates specified by the user. 
+	 */
 	private double	m_lonMin;
 	private double	m_lonMax;
 	private double	m_latMin;

@@ -5,6 +5,13 @@ import org.apache.commons.csv.CSVRecord;
 
 public class Main {
 
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * This is a project in OOP curse. 
+	 * the purpose of this program is to receive .csv files that samples WiFi points and then to modify the files 
+	 * in to one .kml file.
+	 */
+	
 	public static void main(String[] args) throws Exception{
 		String folderPath;
 		//="C:/Users/יאיר/Desktop/new/try";

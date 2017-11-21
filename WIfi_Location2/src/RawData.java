@@ -4,6 +4,11 @@ import java.util.Comparator;
 import java.util.List;
 
 public class RawData {
+	/**
+	 * @author Yair Ivgi 
+	 * this class represent a list of WiFi points.
+	 * The  method organizeData sorts the information and  takes the 10 largest signals
+	 */
 	private List<WifiSpot> samples;
 	
 	public RawData(){
