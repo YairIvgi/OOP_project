@@ -64,7 +64,7 @@ public class ReadAndWriteWithFilter {
 		}
 
 		// We generate the kml file
-		kml.createKml("C:\\Users\\user\\Documents\\write\\Ifi.kml");
+		kml.createKml("C:\\temp\\Ifi.kml");
 
 		// We are done
 		System.out.println("The kml file was generated.");
