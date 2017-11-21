@@ -13,7 +13,12 @@ import org.boehn.kmlframework.kml.Kml;
 import org.boehn.kmlframework.kml.KmlException;
 import org.boehn.kmlframework.kml.Placemark;
 public class ReadAndWriteWithFilter {
-
+	/**
+	 * @author Yair Ivgi 
+	 * This class reads form .csv and writes to .kml .
+	 * The method readCsv reads the modified .csv file and sends the data to the filters.
+	 * The method write writes the data to .kml file using javaApiforKml-2.2.1 .
+	 */
 	public List<CSVRecord> readCsv(String fileName, IFilter filter) throws Exception{
 		try {
 			File file = new File(fileName);
@@ -25,6 +30,7 @@ public class ReadAndWriteWithFilter {
 			throw new Exception("Error reading file\n" + e);		
 		}
 	}
+
 	public int highestSignalIndex(CSVRecord record) {
 		int maxS=Integer.MIN_VALUE;
 		int maxIndex=1;
