@@ -12,7 +12,6 @@ import org.boehn.kmlframework.kml.Document;
 import org.boehn.kmlframework.kml.Kml;
 import org.boehn.kmlframework.kml.KmlException;
 import org.boehn.kmlframework.kml.Placemark;
-
 public class ReadAndWriteWithFilter {
 
 	public List<CSVRecord> readCsv(String fileName, IFilter filter) throws Exception{
@@ -25,6 +24,17 @@ public class ReadAndWriteWithFilter {
 		} catch (Exception e) {
 			throw new Exception("Error reading file\n" + e);		
 		}
+	}
+	public int highestSignalIndex(CSVRecord record) {
+		int maxS=Integer.MIN_VALUE;
+		int maxIndex=1;
+		for(int i=1;i<=Integer.parseInt(record.get("WiFi networks"));i++) {
+			if(Integer.parseInt(record.get("Signal"+i))>maxS) {
+				maxS=Integer.parseInt(record.get("Signal"+i));
+				maxIndex=i;
+			}
+		}
+		return maxIndex;
 	}
 	
 	public void write(List<CSVRecord> records) throws KmlException, IOException {
@@ -54,30 +64,6 @@ public class ReadAndWriteWithFilter {
 		System.out.println("The kml file was generated.");
 	}
 
-	
-	private static void createPlacemarkWithChart(Document document, Folder folder, double longitude, double latitude, 
-		    String continentName, int coveredLandmass) {
-
-			int remainingLand = 100 - coveredLandmass;
-			Icon icon = new Icon()
-			    .withHref("http://chart.apis.google.com/chart?chs=380x200&chd=t:" + coveredLandmass + "," + remainingLand + "&cht=p&chf=bg,s,ffffff00");
-			Style style = document.createAndAddStyle();
-			style.withId("style_" + continentName) // set the stylename to use this style from the placemark
-			    .createAndSetIconStyle().withScale(5.0).withIcon(icon); // set size and icon
-			style.createAndSetLabelStyle().withColor("ff43b3ff").withScale(5.0); // set color and size of the continent name
-
-			Placemark placemark = folder.createAndAddPlacemark();
-			// use the style for each continent
-			placemark.withName(continentName)
-			    .withStyleUrl("#style_" + continentName)
-			    // 3D chart imgae
-			    .withDescription(
-			        "<![CDATA[<img src=\"http://chart.apis.google.com/chart?chs=430x200&chd=t:" + coveredLandmass + "," + remainingLand + "&cht=p3&chl=" + continentName + "|remaining&chtt=Earth's surface\" />")
-			    // coordinates and distance (zoom level) of the viewer
-			    .createAndSetLookAt().withLongitude(longitude).withLatitude(latitude).withAltitude(0).withRange(12000000);
-			
-			placemark.createAndSetPoint().addToCoordinates(longitude, latitude); // set coordinates
-		}
 
 	public static void main(String[] args) throws IOException {
 //	    // Style
