@@ -13,7 +13,7 @@ public class Main {
 	 */
 	
 	public static void main(String[] args) throws Exception{
-		String folderPath = "C:/Users/יאיר/Desktop/new/try";
+		String folderPath = "data";
 		// Question 2- write the csv file
 		CsvReader folder=new CsvReader();
 		try {

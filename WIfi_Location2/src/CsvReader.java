@@ -45,7 +45,7 @@ public class CsvReader {
 		writer.close();
 	}
 
-	private List<RawData> readCsv(File filePath,List<RawData> data) throws Exception{
+	public List<RawData> readCsv(File filePath,List<RawData> data) throws Exception{
 		FileReader in;
 		try {			
 			in = new FileReader(filePath);
