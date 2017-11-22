@@ -9,7 +9,10 @@ import org.junit.Test;
 
 
 class RawDataTest {
-
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * test the organizeData method  
+	 */
 	@Test
 	void testOrganizeData() throws Exception {
 		CsvReader cr = new CsvReader();

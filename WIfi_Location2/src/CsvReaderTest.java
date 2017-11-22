@@ -7,7 +7,10 @@ import java.util.List;
 import org.junit.Test;
 
 public class CsvReaderTest {
-
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * test the readCsv method 
+	 */
 	@Test
 	public void test() {
 		CsvReader cr = new CsvReader();

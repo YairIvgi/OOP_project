@@ -16,8 +16,11 @@ public class ReadAndWriteWithFilter {
 	/**
 	 * @author Yair Ivgi and Idan Holander
 	 * This class reads form .csv and writes to .kml .
-	 * The method readCsv reads the modified .csv file and sends the data to the filters.
-	 * The method write writes the data to .kml file using javaApiforKml-2.2.1 .
+	 */
+	
+	/**
+	 * @author Yair Ivgi 
+	 *  The method readCsv reads the modified .csv file and sends the data to the filters.
 	 */
 	public List<CSVRecord> readCsv(String fileName, IFilter filter) throws Exception{
 		try {
@@ -31,7 +34,8 @@ public class ReadAndWriteWithFilter {
 		}
 	}
 	/**
-	*Check if the name is recognized in kml format
+	 * @author Yair Ivgi
+	 *Check if the name is recognized in kml format
 	 */
 	private String chackSsid(String name){
 		StringBuffer validSsid = new StringBuffer();
@@ -46,8 +50,10 @@ public class ReadAndWriteWithFilter {
 		}
 		return validSsid.toString();
 	}
-	
-	//Takes the strongest signal in each time place
+	/**
+	 * @author Idan Holander
+	 *Takes the strongest signal in each time timeStamp
+	 */
 	public int highestSignalIndex(CSVRecord record) {
 		int maxS=Integer.MIN_VALUE;
 		int maxIndex=1;
@@ -59,33 +65,28 @@ public class ReadAndWriteWithFilter {
 		}
 		return maxIndex;
 	}
-	
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * The method write writes the data to .kml file using kmlframework.
+	 */
 	public void write(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
 
-			//create a new KML Document
-		Kml kml = new Kml();
-			//add a document to the kml
-					Document document = new Document();
-					kml.setFeature(document);
+		Kml kml = new Kml();							//create a new KML Document
+		Document document = new Document();				//add a document to the kml
+		kml.setFeature(document);
 		for(CSVRecord record : records) {
-			//create a Place mark for each WiFi point.
-			int BSignal=highestSignalIndex(record);
+			int BSignal=highestSignalIndex(record);		//create a Place mark for each WiFi point.
 			String ssid = chackSsid(record.get("SSID"+BSignal));
 			Placemark ifi = new Placemark(ssid);
 			ifi.setDescription("MAC: "+record.get("MAC"+BSignal)+"\n"+" Frequncy: "+record.get("Frequncy"+BSignal)+"\n"+" Signal: "+record.get("Signal"+BSignal)+"\n");
 			ifi.setLocation(Double.parseDouble(record.get("Lon")), Double.parseDouble(record.get("Lat")));
-			//ifi.setId(record.get("Time"));
-			String time = record.get("Time");
+			String time = record.get("Time");			//ifi.setId(record.get("Time"));
 			time = time.substring(0, 10)+"T"+time.substring(11, 19)+"-01:00";
 			TimePrimitive timeAtPoint = new TimeStamp(time);
 			ifi.setTimePrimitive(timeAtPoint);
-			//add the place mark to the Document
-			document.addFeature(ifi);
+			document.addFeature(ifi);					//add the place mark to the Document
 		}
-
-		//generate the kml file
-		outputPath += "\\NewData\\DATA.kml";
+		outputPath += "\\NewData\\DATA.kml";			//generate the kml file
 		kml.createKml(outputPath);
-		System.out.println("The kml file was generated.");
 	}
 }

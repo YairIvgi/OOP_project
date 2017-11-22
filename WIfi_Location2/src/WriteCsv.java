@@ -6,12 +6,13 @@ public class WriteCsv {
 	/**
 	 * @author Yair Ivgi 
 	 * This class writes the data of all the WifiSpot into a .csv format file.
-	 * The  builder WriteCsv sets the first line of headers.
-	 * The method write all the points.
 	 */
 	private FileWriter fw;
 	private PrintWriter outs;
-
+	/**
+	 * @author Yair Ivgi 
+	 * The  builder WriteCsv sets the first line of headers.
+	 */
 	public  WriteCsv(String outputPath) throws Exception{
 		try {
 			fw = new FileWriter(outputPath);
@@ -28,7 +29,10 @@ public class WriteCsv {
 			throw new Exception("Writing to file has failde: "+e);
 		}
 	}
-
+	/**
+	 * @author Yair Ivgi 
+	 * The method write all the points in .csv format
+	 */
 	public void write(List<RawData> data){
 		for(int i=0; i< data.size(); i++){
 			RawData raw = data.get(i);
@@ -57,7 +61,10 @@ public class WriteCsv {
 			writeLine(line);
 		}
 	}
-
+	/**
+	 * @author Yair Ivgi 
+	 * close the file 
+	 */
 	public void close() throws Exception{
 		try {
 			outs.close();
@@ -66,7 +73,10 @@ public class WriteCsv {
 			throw new Exception("Closing has failde: "+e);
 		}
 	}
-
+	/**
+	 * @author Yair Ivgi 
+	 * prints the line 
+	 */
 	private void writeLine(String line){
 		outs.println(line);
 	}
