@@ -23,7 +23,7 @@ public class FilterByLocation implements IFilter {
 
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
-		if(m_lonMin <= m_lonMax || m_latMin <= m_latMax){
+		if(m_lonMin > m_lonMax || m_latMin > m_latMax){
 			throw new Exception("minimom cannot be bigger the maximum");
 		}
 		List<CSVRecord> result = new ArrayList<CSVRecord>();

@@ -14,22 +14,22 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception{
 		String folderPath = "C:/Users/יאיר/Desktop/new/try";
-		//System.out.println("please enter folder path");
-	//	Scanner scanInput = new Scanner(System.in);
-	//	folderPath= scanInput.nextLine();
-	//	scanInput.close();    
+		// Question 2- write the csv file
 		CsvReader folder=new CsvReader();
 		try {
 			folder.readFolder(folderPath);
 		} catch (Exception e) {
 			System.err.println("faild: "+e.toString());
 		}
+		// Question 3 - filter and write the kml file
 		ReadAndWriteWithFilter rw = new ReadAndWriteWithFilter();
 		IFilter filterId = new FilterById("SHIELD Tablet");
-		IFilter filterTime = new FilterByTime("2017-10-27  16:16:45", "2017-10-27  16:19:14");
-		List<CSVRecord> records = rw.readCsv(folder.getOutputFile(), filterId);
+		IFilter filterTime = new FilterByTime("2015-10-27  16:16:45", "2020-10-27  16:19:14");
+		IFilter filterLocation = new FilterByLocation(34.400, 35.400, 32.100, 32.400);
+		List<CSVRecord> records1 = rw.readCsv(folder.getOutputFile(), filterId);
 		List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);	
-		rw.write(records2);
+		List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);
+		rw.write(folderPath,records2);
 	}
 
 }

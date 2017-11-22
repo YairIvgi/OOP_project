@@ -15,7 +15,7 @@ public class FilterByTime implements IFilter {
 	private Date m_minTime;
 	private Date m_maxTime;
 
-	
+	//Constructor
 	public FilterByTime(String minTime,String maxTime) throws Exception {
 		SimpleDateFormat minMaxDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -29,12 +29,18 @@ public class FilterByTime implements IFilter {
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
-		SimpleDateFormat currentDateFormat;
-		currentDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat currentDateFormat;		
 		Date currentTime;
 		for(CSVRecord record : records){
 			try {
+				//check if the time format is legal 
+				if(record.get("Time").charAt(2)=='/'){		
+					continue;
+				}else{
+					currentDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				}				
 				currentTime = currentDateFormat.parse(record.get("Time"));
+				//check if the current time is in range
 				if((m_minTime.before(currentTime) && m_maxTime.after(currentTime) )|| m_minTime.equals(currentTime) || m_maxTime.equals(currentTime)){
 					result.add(record);
 				}
