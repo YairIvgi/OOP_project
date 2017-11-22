@@ -29,7 +29,7 @@ public class Main {
 		List<CSVRecord> records1 = rw.readCsv(folder.getOutputFile(), filterId);
 		List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);	
 		List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);
-		rw.write(folderPath,records2);
+		rw.write(folderPath,records2);//write
 	}
 
 }
