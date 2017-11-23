@@ -1,0 +1,54 @@
+import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.junit.Test;
+
+public class FilterByTimeTest {
+
+	@Test
+	public void test() {
+		CsvReader cr=new CsvReader();
+		try {
+			cr.readFolder("C:\\Users\\user\\Documents\\read");
+			File file = new File(cr.getOutputFile());
+			Reader in;
+			in = new FileReader(file);
+
+			FilterByTime time=new FilterByTime("2017-10-31 07:00:00", "2020-10-27  16:19:14");
+			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+			List<CSVRecord> filteredRecords = time.getFiltered(records);
+			SimpleDateFormat currentDateFormat;
+			Date currentTime;
+			for(CSVRecord record:records) {
+
+				if(record.get("Time").charAt(2)=='/'){		
+					continue;
+				}else{
+					currentDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				}				
+				currentTime = currentDateFormat.parse(record.get("Time"));
+				if((time.getMinTime().before(currentTime) && time.getMaxTime().after(currentTime) )|| time.getMinTime().equals(currentTime) || time.getMaxTime().equals(currentTime)) {
+					assertTrue(filteredRecords.contains(record));
+				}
+				else
+					assertFalse(filteredRecords.contains(record));
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

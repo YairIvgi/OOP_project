@@ -55,5 +55,10 @@ public class FilterByTime implements IFilter {
 		}
 		return result;
 	}
-
+	public Date getMinTime() {
+		return this.m_minTime;
+	}
+	public Date getMaxTime() {
+		return this.m_maxTime;
+	}
 }
