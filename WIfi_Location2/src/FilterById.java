@@ -24,5 +24,8 @@ public class FilterById implements IFilter {
 		}
 		return result;
 	}
+	public String getID() {
+		return this.m_id;
+	}
 
 }

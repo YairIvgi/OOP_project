@@ -40,4 +40,16 @@ public class FilterByLocation implements IFilter {
 		}
 		return result;
 	}
+	public double getLonMin() {
+		return this.m_lonMin;
+	}
+	public double getLonMax() {
+		return this.m_lonMax;
+	}
+	public double getLatMin() {
+		return this.m_latMin;
+	}
+	public double getLatMax() {
+		return this.m_latMax;
+	}
 }
