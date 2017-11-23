@@ -8,13 +8,13 @@ import java.util.List;
 import org.junit.Test;
 
 
-class RawDataTest {
+public class RawDataTest {
 	/**
 	 * @author Yair Ivgi and Idan Holander
 	 * test the organizeData method  
 	 */
 	@Test
-	void testOrganizeData() throws Exception {
+	public void testOrganizeData() throws Exception {
 		CsvReader cr = new CsvReader();
 		String folderPath="data";
 		List<RawData> data;

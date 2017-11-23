@@ -13,12 +13,15 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
 public class FilterByTimeTest {
-
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * test the getFiltered method 
+	 */
 	@Test
 	public void test() {
 		CsvReader cr=new CsvReader();
 		try {
-			cr.readFolder("C:\\Users\\user\\Documents\\read");
+			cr.readFolder("data");
 			File file = new File(cr.getOutputFile());
 			Reader in;
 			in = new FileReader(file);
@@ -29,13 +32,14 @@ public class FilterByTimeTest {
 			SimpleDateFormat currentDateFormat;
 			Date currentTime;
 			for(CSVRecord record:records) {
-
+				//check if the time format is legal 
 				if(record.get("Time").charAt(2)=='/'){		
 					continue;
 				}else{
 					currentDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				}				
 				currentTime = currentDateFormat.parse(record.get("Time"));
+				//check if the current time is in range
 				if((time.getMinTime().before(currentTime) && time.getMaxTime().after(currentTime) )|| time.getMinTime().equals(currentTime) || time.getMaxTime().equals(currentTime)) {
 					assertTrue(filteredRecords.contains(record));
 				}
