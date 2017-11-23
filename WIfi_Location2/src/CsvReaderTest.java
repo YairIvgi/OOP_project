@@ -9,7 +9,7 @@ import org.junit.Test;
 public class CsvReaderTest {
 	/**
 	 * @author Yair Ivgi and Idan Holander
-	 * test the readCsv method 
+	 * test the readCsv method on a csv format file
 	 */
 	@Test
 	public void test() {
