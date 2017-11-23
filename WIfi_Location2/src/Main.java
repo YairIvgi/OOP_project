@@ -12,7 +12,7 @@ public class Main {
 	 */
 	
 	public static void main(String[] args) throws Exception{
-		String folderPath = "C://Users//יאיר//desktop//new//try";					//in my computer:  C://Users//יאיר//desktop//new//try
+		String folderPath = "data";					//in my computer:  C://Users//יאיר//desktop//new//try
 		// Question 2- write the csv file
 		CsvReader folder=new CsvReader();
 		try {
@@ -23,7 +23,7 @@ public class Main {
 		// Question 3 - filter and write the kml file
 		ReadAndWriteWithFilter rw = new ReadAndWriteWithFilter();
 		IFilter filterId = new FilterById("SHIELD Tablet");
-		IFilter filterTime = new FilterByTime("2017-11-9  14:54:00", "2017-11-9  15:00:00");
+		IFilter filterTime = new FilterByTime("2017-10-9  14:54:00", "2017-11-23  15:00:00");
 		IFilter filterLocation = new FilterByLocation(34.400, 35.400, 32.100, 32.400);
 		List<CSVRecord> records1 = rw.readCsv(folder.getOutputFile(), filterId);			//filter by id
 		List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);			//filter by time frame
