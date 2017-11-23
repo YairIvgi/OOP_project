@@ -12,7 +12,7 @@ public class Main {
 	 */
 	
 	public static void main(String[] args) throws Exception{
-		String folderPath = "data";
+		String folderPath = "data";					//in my computer:  C://Users//יאיר//desktop//new//try
 		// Question 2- write the csv file
 		CsvReader folder=new CsvReader();
 		try {

@@ -86,7 +86,7 @@ public class ReadAndWriteWithFilter {
 			ifi.setTimePrimitive(timeAtPoint);
 			document.addFeature(ifi);					//add the place mark to the Document
 		}
-		outputPath += "\\NewData\\DATA.kml";			//generate the kml file
+		outputPath += "\\newData\\DATA.kml";			//generate the kml file
 		kml.createKml(outputPath);
 	}
 }

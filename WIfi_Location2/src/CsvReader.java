@@ -23,7 +23,7 @@ public class CsvReader {
 	 * reads all the files in the specific folder and writs all the file names into an array.
 	 */
 	public  void readFolder(String folderPath) throws Exception{
-		File dir = new File(folderPath+"\\NewData");
+		File dir = new File(folderPath+"\\newData");
 		dir.mkdir();
 		outputFile= dir.getPath()+"\\DATA.csv";
 		List<RawData> data;
