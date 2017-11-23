@@ -9,6 +9,10 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
 public class WriteCsvTest {
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * test the WriteCsv method  
+	 */
 	@Test
 	public void test() throws Exception {
 		CsvReader cr = new CsvReader();
