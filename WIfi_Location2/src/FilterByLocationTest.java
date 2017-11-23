@@ -39,13 +39,8 @@ public class FilterByLocationTest {
 				 else
 					 assertFalse(filteredRecords.contains(record));
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			fail("file canot be read: "+e.getMessage());
 		}
 	}
-
 }

@@ -12,7 +12,7 @@ public class WriteCsvTest {
 	@Test
 	public void test() throws Exception {
 		CsvReader cr = new CsvReader();
-		cr.readFolder("C:\\Users\\user\\Documents\\read");// reading and writing in csv
+		cr.readFolder("data");			// reading and writing in csv
 		try {
 			File file = new File(cr.getOutputFile());
 			Reader in = new FileReader(file);
@@ -23,8 +23,7 @@ public class WriteCsvTest {
 			}
 			assertTrue(countRecord>1);
 		} catch (Exception e) {
-			throw new Exception("Error reading file\n" + e);		
+			fail("file canot be read: "+e.getMessage());		
 		}
 	}
-
 }
