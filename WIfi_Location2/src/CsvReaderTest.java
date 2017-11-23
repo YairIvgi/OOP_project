@@ -9,17 +9,17 @@ import org.junit.Test;
 public class CsvReaderTest {
 	/**
 	 * @author Yair Ivgi and Idan Holander
-	 * test the readCsv method on a csv format file
+	 * test the readCsv and the readFolder methods 
 	 */
 	@Test
-	public void test() {
+	public void testReadCsv() {
 		CsvReader cr = new CsvReader();
-		File f= new File("data\\WigleWifi_20171109150913.csv");
+		File f= new File("data\\WigleWifi_1.csv");
 		List<RawData>data = new ArrayList<RawData>();
 		try {
 			data=cr.readCsv(f,data);
 		} catch (Exception e) {
-			assertFalse("failed: "+e.toString(),true);
+			fail("failed: "+e.toString());
 		}
 		assertTrue(data.size()>0);
 		String lastTime=null;
@@ -30,5 +30,15 @@ public class CsvReaderTest {
 			assertFalse(lastTime!=null&&lastTime.equals(currentTime));
 		}
 	}
-
+	@Test
+	public void testReadFolder() {
+		CsvReader cr = new CsvReader();
+		String folderPath="data";
+		try {
+			cr.readFolder(folderPath);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			fail("Folder "+ folderPath +" does not exist");
+		}
+	}
 }

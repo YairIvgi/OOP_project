@@ -11,12 +11,15 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
 public class FilterByLocationTest {
-
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * test the getFiltered method 
+	 */
 	@Test
 	public void test() {
 		CsvReader cr=new CsvReader();
 		try {
-			cr.readFolder("C:\\Users\\user\\Documents\\read");
+			cr.readFolder("data");
 			File file = new File(cr.getOutputFile());
 			Reader in;
 			in = new FileReader(file);
