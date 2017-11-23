@@ -10,15 +10,24 @@ public class RawData {
 	 * The  method organizeData sorts the information and  takes the 10 largest signals
 	 */
 	private List<WifiSpot> samples;
-	
+	/**
+	 * @author Yair Ivgi 
+	 * the constructor initialize the ArrayList.
+	 */
 	public RawData(){
 		samples=new ArrayList<WifiSpot>();
 	}
-	
+	/**
+	 * @author Yair Ivgi 
+	 * add a sample to the list.
+	 */
 	public void add(WifiSpot spot){
 		getSamples().add(spot);
 	}
-	 
+	/**
+	 * @author Yair Ivgi 
+	 * The  method sorts the information and  takes the 10 largest signals
+	 */
 	public static List<RawData> organizeData(List<RawData> data){
 		for (int i = 0; i < data.size(); i++) {
 			RawData raw = data.get(i);

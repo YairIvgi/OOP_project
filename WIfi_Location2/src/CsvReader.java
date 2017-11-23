@@ -15,12 +15,13 @@ public class CsvReader {
 	/**
 	 * @author Yair Ivgi 
 	 * This class reads all the .csv files using commons-csv-1.5.jar .
-	 * the method readFolder reads all the file in the specific folder and writs all the file names into array.
 	 * the method readCsv reads each file and organize all the data by time. 
-	 * 
 	 */
 	private String outputFile;
-	
+	/**
+	 * @author Yair Ivgi 
+	 * reads all the files in the specific folder and writs all the file names into an array.
+	 */
 	public  void readFolder(String folderPath) throws Exception{
 		File dir = new File(folderPath+"\\NewData");
 		dir.mkdir();
@@ -44,7 +45,10 @@ public class CsvReader {
 		}
 		writer.close();
 	}
-
+	/**
+	 * @author Yair Ivgi 
+	 * reads each file and organize all the data by time order. 
+	 */
 	public List<RawData> readCsv(File filePath,List<RawData> data) throws Exception{
 		FileReader in;
 		try {			
@@ -83,7 +87,10 @@ public class CsvReader {
 		}
 		return data;
 	}
-
+	/**
+	 * @author Yair Ivgi 
+	 * returns the output file name.
+	 */
 	public String getOutputFile() {
 		return outputFile;
 	}

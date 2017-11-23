@@ -7,13 +7,15 @@ import java.util.List;
 import org.junit.Test;
 
 public class CsvReaderTest {
-
+	/**
+	 * @author Yair Ivgi and Idan Holander
+	 * test the readCsv method 
+	 */
 	@Test
 	public void test() {
 		CsvReader cr = new CsvReader();
-		File f= new File("data\\WigleWifi_20171031190803.csv");
+		File f= new File("data\\WigleWifi_20171109150913.csv");
 		List<RawData>data = new ArrayList<RawData>();
-		f = null;
 		try {
 			data=cr.readCsv(f,data);
 		} catch (Exception e) {
