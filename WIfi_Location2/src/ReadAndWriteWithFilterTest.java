@@ -18,8 +18,7 @@ public class ReadAndWriteWithFilterTest {
 		CsvReader cr=new CsvReader();
 		try {
 		cr.readFolder("data");
-		IFilter filterId = new FilterById("GT-N7100");
-		
+		IFilter filterId = new FilterById("GT-N7100");		
 		List<CSVRecord> records=rw.readCsv(cr.getOutputFile(), filterId);
 		for(CSVRecord record:records) {
 			int BSignal=rw.highestSignalIndex(record);
@@ -28,7 +27,6 @@ public class ReadAndWriteWithFilterTest {
 			}
 		}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			fail("file cannot be read: "+e.getMessage());
 		}
 	}

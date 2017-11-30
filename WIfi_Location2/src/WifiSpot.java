@@ -15,7 +15,10 @@ public class WifiSpot {
 	private String altitudeMeters;
 	private String type;
 	private String id;
-
+	/**
+	 * @author Yair Ivgi 
+	 * the constructor of WiFi point 
+	 */
 	public WifiSpot(String id,String mac,String ssid,String firstSeen,String channel,String rssi,String currentLatitude,String currentLongitude,String altitudeMeters){
 		this.id=id;
 		this.mac=mac;
