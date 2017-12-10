@@ -21,7 +21,7 @@ public class FilterByLocation implements IFilter {
  		m_radius=radius;
 	}
 	/**
-	 * @author Yair Ivgi 
+	 * @author Yair Ivgi and Idan Hollander 
 	 * checks if the coordinates are valid.
 	 */
 	@Override
