@@ -8,19 +8,17 @@ public class FilterByLocation implements IFilter {
 	 * @author Yair Ivgi 
 	 * This class filters the data by location.
 	 */
-	private double	m_lonMin;
-	private double	m_lonMax;
-	private double	m_latMin;
-	private double	m_latMax;
+	private double	m_lon;
+	private double	m_lat;
+	private double	m_radius;
 	/**
 	 * @author Yair Ivgi 
 	 * the builder gets the coordinates specified by the user. 
 	 */
-	public FilterByLocation(double lonMin,double lonMax,double latMin,double latMax) {
-		m_lonMin=lonMin;
-		m_lonMax=lonMax;
-		m_latMin=latMin;
-		m_latMax=latMax;
+	public FilterByLocation(double lon,double lat,double radius) {
+		m_lon=lon;
+		m_lat=lat;
+		m_radius=radius;
 	}
 	/**
 	 * @author Yair Ivgi 
@@ -28,33 +26,30 @@ public class FilterByLocation implements IFilter {
 	 */
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
-		if(m_lonMin > m_lonMax || m_latMin > m_latMax){
-			throw new Exception("minimom cannot be bigger the maximum");
+		if(m_radius<0){
+			throw new Exception("radius must be positive");
 		}
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
 		double currentLon;
 		double currentLat;
+		double dist;
 		for (CSVRecord record : records) {
 			 currentLat = Double.parseDouble(record.get("Lat"));
 			 currentLon = Double.parseDouble(record.get("Lon"));
-					if(m_latMin<=currentLat && currentLat <=m_latMax){
-						if(m_lonMin<=currentLon && currentLon <=m_lonMax){
+			 dist=Math.sqrt(Math.pow(currentLon-m_lon, 2)+Math.pow(currentLat-m_lat, 2));
+					if(dist<=m_radius){
 							result.add(record);
-						}
 					}
 		}
 		return result;
 	}
-	public double getLonMin() {
-		return this.m_lonMin;
+	public double getLon() {
+		return this.m_lon;
 	}
-	public double getLonMax() {
-		return this.m_lonMax;
+	public double getLat() {
+		return this.m_lat;
 	}
-	public double getLatMin() {
-		return this.m_latMin;
-	}
-	public double getLatMax() {
-		return this.m_latMax;
+	public double getRadius() {
+		return this.m_radius;
 	}
 }
