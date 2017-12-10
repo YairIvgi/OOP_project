@@ -32,7 +32,23 @@ public class ReadAndWriteWithFilter {
 		} catch (Exception e) {
 			throw new Exception("Error reading file\n" + e);		
 		}
-	}
+	}	
+ 	/**
+ 	 * @author Yair Ivgi and Idan Hollander
+ 	 *  TODO add description
+ 	 */
+ 	public List<CSVRecord> andFilter(String fileName, IFilter filter1,IFilter filter2) throws Exception{
+ 		try {
+ 			File file = new File(fileName);
+ 			Reader in = new FileReader(file);
+ 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+ 			List<CSVRecord> filteredRecords1 = filter1.getFiltered(records);
+ 			List<CSVRecord> filteredRecords2 = filter2.getFiltered(filteredRecords1);
+ 			return filteredRecords2;
+ 		} catch (Exception e) {
+ 			throw new Exception("Error reading file\n" + e);		
+ 		}
+ 	}
 	/**
 	 * @author Yair Ivgi
 	 *Check if the name is recognized in kml format
@@ -78,7 +94,7 @@ public class ReadAndWriteWithFilter {
 			int BSignal=highestSignalIndex(record);		//create a Place mark for each WiFi point.
 			String ssid = chackSsid(record.get("SSID"+BSignal));
 			Placemark ifi = new Placemark(ssid);
-			ifi.setDescription("MAC: "+record.get("MAC"+BSignal)+"\n"+" Frequncy: "+record.get("Frequncy"+BSignal)+"\n"+" Signal: "+record.get("Signal"+BSignal)+"\n");
+			ifi.setDescription("Name of device: "+record.get("ID")+"\n"+"MAC: "+record.get("MAC"+BSignal)+"\n"+" Frequncy: "+record.get("Frequncy"+BSignal)+"\n"+" Signal: "+record.get("Signal"+BSignal)+"\n");
 			ifi.setLocation(Double.parseDouble(record.get("Lon")), Double.parseDouble(record.get("Lat")));
 			String time = record.get("Time");			//ifi.setId(record.get("Time"));
 			if(time.length()<19){						//check if the time string is in format
