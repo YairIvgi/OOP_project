@@ -24,23 +24,21 @@ public class FilterByLocationTest {
 			Reader in;
 			in = new FileReader(file);
 
-			FilterByLocation location=new FilterByLocation(34.400, 35.400, 32.100, 32.400);
+			FilterByLocation location=new FilterByLocation(34.806, 32.165, 0.022);
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 			List<CSVRecord> filteredRecords = location.getFiltered(records);
 			double currentLon;
 			double currentLat;
+			double dist;
 			for(CSVRecord record:records) {
 				currentLat = Double.parseDouble(record.get("Lat"));
-				 currentLon = Double.parseDouble(record.get("Lon"));
-				 if(location.getLatMin()<=currentLat && currentLat <=location.getLatMax()){
-						if(location.getLonMin()<=currentLon && currentLon <=location.getLonMax()){
-							assertTrue(filteredRecords.contains(record));
-						}
-						else
-							assertFalse(filteredRecords.contains(record));
-					}
-				 else
-					 assertFalse(filteredRecords.contains(record));
+				currentLon = Double.parseDouble(record.get("Lon"));
+ +				dist=Math.sqrt(Math.pow(currentLon-location.getLon(), 2)+Math.pow(currentLat-location.getLat(), 2));
+ +				if(dist<=location.getRadius()){
+ +					assertTrue(filteredRecords.contains(record));
+ +				}
+ +				else
+ +					assertFalse(filteredRecords.contains(record));
 			}
 		} catch (Exception e) {
 			fail("file canot be read: "+e.getMessage());
