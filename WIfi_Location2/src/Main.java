@@ -25,10 +25,11 @@ public class Main {
 		IFilter filterId = new FilterById("ONEPLUS A3003");
 		IFilter filterTime = new FilterByTime("2017-10-27  16:15:45", "2020-11-04  16:19:14");
  		IFilter filterLocation = new FilterByLocation(34.806, 32.165, 0.022);
-		List<CSVRecord> records1 = rw.readCsv(folder.getOutputFile(), filterId);			//filter by id
-		List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);			//filter by time frame
-		List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);		//filter by coordinates
-		rw.write(folderPath,records3);
+		//List<CSVRecord> records1 = rw.readCsv(folder.getOutputFile(), filterId);			//filter by id
+ 		//List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);			//filter by time frame
+ 		//List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);		//filter by coordinates
+ 		List<CSVRecord> records4 = rw.andFilter(folder.getOutputFile(), filterId, filterTime);
+ 		rw.write(folderPath,records4);
 		System.out.println("success The kml file was generated");
 	}
 }
