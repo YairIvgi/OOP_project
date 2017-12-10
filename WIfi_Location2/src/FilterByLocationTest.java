@@ -33,12 +33,12 @@ public class FilterByLocationTest {
 			for(CSVRecord record:records) {
 				currentLat = Double.parseDouble(record.get("Lat"));
 				currentLon = Double.parseDouble(record.get("Lon"));
- +				dist=Math.sqrt(Math.pow(currentLon-location.getLon(), 2)+Math.pow(currentLat-location.getLat(), 2));
- +				if(dist<=location.getRadius()){
- +					assertTrue(filteredRecords.contains(record));
- +				}
- +				else
- +					assertFalse(filteredRecords.contains(record));
+ 				dist=Math.sqrt(Math.pow(currentLon-location.getLon(), 2)+Math.pow(currentLat-location.getLat(), 2));
+ 				if(dist<=location.getRadius()){
+ 					assertTrue(filteredRecords.contains(record));
+ 				}
+ 				else
+ 					assertFalse(filteredRecords.contains(record));
 			}
 		} catch (Exception e) {
 			fail("file canot be read: "+e.getMessage());
