@@ -33,7 +33,6 @@ public class ReadAndWriteWithFilter {
 			throw new Exception("Error reading file\n" + e);		
 		}
 	}
-	
 	/**
 	 * @author Yair Ivgi and Idan Hollander
 	 *  TODO add description
@@ -98,6 +97,9 @@ public class ReadAndWriteWithFilter {
 			ifi.setDescription("Name of device: "+record.get("ID")+"\n"+"MAC: "+record.get("MAC"+BSignal)+"\n"+" Frequncy: "+record.get("Frequncy"+BSignal)+"\n"+" Signal: "+record.get("Signal"+BSignal)+"\n");
 			ifi.setLocation(Double.parseDouble(record.get("Lon")), Double.parseDouble(record.get("Lat")));
 			String time = record.get("Time");			//ifi.setId(record.get("Time"));
+			if(time.length()<19){						//check if the time string is in format
+				continue;
+			}
 			time = time.substring(0, 10)+"T"+time.substring(11, 19)+"-00:01";
 			TimePrimitive timeAtPoint = new TimeStamp(time);
 			ifi.setTimePrimitive(timeAtPoint);
