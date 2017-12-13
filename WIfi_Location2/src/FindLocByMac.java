@@ -33,7 +33,7 @@ public class FindLocByMac {
 	}
 
 	public WifiSpot locate3(String mac1,String mac2,String mac3) throws Exception{
-		///ΰμβεψιϊν 2
+		///ΧΧΧ’Χ•Χ¨Χ™ΧªΧ 2
 		return null;
 	}
 
