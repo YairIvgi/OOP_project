@@ -97,7 +97,7 @@ public class ReadAndWriteWithFilter {
 				line+=","+record.get("WiFi networks");
 				int j;
 				for(j=1;j<=10&&record!=null;j++) {
-					if(record.size()<46)
+					if(record.size()<46)//Ilegal record
 						continue;
 					line+=","+record.get("SSID"+j);
 					line+=","+record.get("MAC"+j);
