@@ -85,8 +85,7 @@ public class ReadAndWriteWithFilter {
 	 * @author Yair Ivgi and Idan Holander
 	 * The method write writes the data to .kml file using kmlframework.
 	 */
-	public void write(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
-
+	public void writeKML(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
 		Kml kml = new Kml();							//create a new KML Document
 		Document document = new Document();				//add a document to the kml
 		kml.setFeature(document);

@@ -98,7 +98,7 @@ public class WriteCsv {
 	 * @author Yair Ivgi 
 	 * prints the line 
 	 */
-	private void writeLine(String line){
+	void writeLine(String line){
 		outs.println(line);
 	}
 
