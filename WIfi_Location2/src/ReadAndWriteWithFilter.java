@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import org.boehn.kmlframework.kml.KmlException;
 import org.boehn.kmlframework.kml.Placemark;
 import org.boehn.kmlframework.kml.TimePrimitive;
 import org.boehn.kmlframework.kml.TimeStamp;
+
 public class ReadAndWriteWithFilter {
 	/**
 	 * @author Yair Ivgi and Idan Holander
@@ -81,11 +84,39 @@ public class ReadAndWriteWithFilter {
 		}
 		return maxIndex;
 	}
+	
+	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
+			WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATAWF.csv");
+			for(CSVRecord record : records) {
+				String line = null;
+				line=record.get("Time");
+				line+=","+record.get("ID");
+				line+=","+record.get("Lat");
+				line+=","+record.get("Lon");
+				line+=","+record.get("Alt");
+				line+=","+record.get("WiFi networks");
+				int j;
+				for(j=1;j<=10&&record!=null;j++) {
+					if(record.size()<46)
+						continue;
+					line+=","+record.get("SSID"+j);
+					line+=","+record.get("MAC"+j);
+					line+=","+record.get("Frequncy"+j);
+					line+=","+record.get("Signal"+j);
+				}
+				while(j<=10) {
+					line+=",,,";
+					j++;
+				}
+				wc.writeLine(line);
+			}
+			wc.close();
+	}
 	/**
 	 * @author Yair Ivgi and Idan Holander
 	 * The method write writes the data to .kml file using kmlframework.
 	 */
-	public void write(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
+	public void writeKML(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
 
 		Kml kml = new Kml();							//create a new KML Document
 		Document document = new Document();				//add a document to the kml
