@@ -16,9 +16,10 @@ public class FilterByTimeTest {
 	/**
 	 * @author Yair Ivgi and Idan Holander
 	 * test the getFiltered method 
+	 * @throws Exception 
 	 */
 	@Test
-	public void test() {
+	public void test() throws Exception {
 		CsvReader cr=new CsvReader();
 		try {
 			cr.readFolder("data");
@@ -47,7 +48,7 @@ public class FilterByTimeTest {
 					assertFalse(filteredRecords.contains(record));
 			}
 		} catch (Exception e) {
-			fail("file canot be read: "+e.getMessage());
+			throw new Exception("fail : "+e.toString());
 		}
 	}
 }

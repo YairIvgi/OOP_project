@@ -12,7 +12,7 @@ public class Main {
 	 */
 	
 	public static void main(String[] args) throws Exception{
-		String folderPath = "C://Users//√©√†√©√∏//desktop//new//try";					//in my computer:  C://Users//√©√†√©√∏//desktop//new//try
+		String folderPath = "C://Users//È‡È¯//desktop//new//try";					//in my computer: return result;
 		// Question 2- write the csv file
 		CsvReader folder=new CsvReader();
 		try {
@@ -29,7 +29,13 @@ public class Main {
  		//List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);			//filter by time frame
  		//List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);		//filter by coordinates
  		List<CSVRecord> records4 = rw.andFilter(folder.getOutputFile(), filterId, filterTime);
- 		rw.write(folderPath,records4);
-		System.out.println("success The kml file was generated");
+ 		//rw.write(folderPath,records4);
+// 		WriteCsv rc =new WriteCsv(records4);
+// 		rc.close();
+ 		String filePath = "C://Users//È‡È¯//desktop//new//try//newData//DATA.csv";
+ 		FindLocByMac f1 = new FindLocByMac(filePath);
+ 		WifiSpot point = f1.locate("aa:6b:ad:04:c6:a8");
+ 		int k =0;
+		//System.out.println("success The kml file was generated");
 	}
 }

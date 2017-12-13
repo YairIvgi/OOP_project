@@ -22,6 +22,7 @@ public class CsvReader {
 	 * @author Yair Ivgi 
 	 * reads all the files in the specific folder and writs all the file names into an array.
 	 */
+	
 	public  void readFolder(String folderPath) throws Exception{
 		File dir = new File(folderPath+"\\newData");
 		dir.mkdir();
@@ -30,25 +31,28 @@ public class CsvReader {
 		File folder = new File(folderPath);
 
 		File[] listOfFiles = folder.listFiles(new FilenameFilter(){
-			public boolean accept(File dir, String filename)
-			{ return filename.endsWith(".csv"); }
+			public boolean accept(File dir, String filename){
+				return filename.endsWith(".csv"); 
+			}
 		} );		
-		if(listOfFiles==null){
+		if( listOfFiles == null ){
 			throw new Exception("The folder "+folderPath+" does not exist");
 		}
 		WriteCsv writer = new WriteCsv(outputFile);
 		for (int i = 0; i < listOfFiles.length; i++) {
 			data = new ArrayList<RawData>();
 			readCsv(listOfFiles[i],data);
-			data=RawData.organizeData(data);
-			writer.write(data);
+			data = RawData.organizeData(data);
+			writer.writeFormat(data);
 		}
 		writer.close();
 	}
+	
 	/**
 	 * @author Yair Ivgi 
 	 * reads each file and organize all the data by time order. 
 	 */
+	
 	public List<RawData> readCsv(File filePath,List<RawData> data) throws Exception{
 		FileReader in;
 		try {			
@@ -87,12 +91,14 @@ public class CsvReader {
 		}
 		return data;
 	}
+	
 	/**
 	 * @author Yair Ivgi 
 	 * returns the output file name.
 	 */
+	
 	public String getOutputFile() {
 		return outputFile;
 	}
-	
+
 }

@@ -2,6 +2,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.List;
 
+import org.apache.commons.csv.CSVRecord;
+
 public class WriteCsv {
 	/**
 	 * @author Yair Ivgi 
@@ -9,13 +11,15 @@ public class WriteCsv {
 	 */
 	private FileWriter fw;
 	private PrintWriter outs;
+	static private String outputPath;
 	/**
 	 * @author Yair Ivgi 
 	 * The  builder WriteCsv sets the first line of headers.
 	 */
 	public  WriteCsv(String outputPath) throws Exception{
 		try {
-			fw = new FileWriter(outputPath);
+			WriteCsv.outputPath=outputPath;
+			fw = new FileWriter(WriteCsv.outputPath);
 			outs = new PrintWriter(fw);
 			String line= "Time,ID,Lat,Lon,Alt,WiFi networks";
 			for (int i = 1; i <= 10; i++){
@@ -29,11 +33,27 @@ public class WriteCsv {
 			throw new Exception("Writing to file has failde: "+e);
 		}
 	}
+	///////TODO add explanations 
+//	public   WriteCsv(List<CSVRecord> records) throws Exception{
+//		try {
+//			outputPath=outputPath.replace(".csv", "afterSort.csv");
+//			fw = new FileWriter(outputPath);
+//			WriteCsv wc =new WriteCsv(outputPath);
+//			outs = new PrintWriter(fw);
+//			for(CSVRecord record : records){
+//				writeLine(record.toString());
+//			}
+//			
+//		} catch (Exception e) {
+//			throw new Exception("Writing to file has failde: "+e);
+//		}
+//	}
+	
 	/**
 	 * @author Yair Ivgi 
 	 * The method write all the points in .csv format
 	 */
-	public void write(List<RawData> data){
+	public void writeFormat(List<RawData> data){
 		for(int i=0; i< data.size(); i++){
 			RawData raw = data.get(i);
 			WifiSpot spot = raw.getSamples().get(0);
@@ -61,6 +81,7 @@ public class WriteCsv {
 			writeLine(line);
 		}
 	}
+	
 	/**
 	 * @author Yair Ivgi 
 	 * close the file 

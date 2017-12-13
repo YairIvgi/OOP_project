@@ -108,4 +108,33 @@ public class ReadAndWriteWithFilter {
 		outputPath += "\\newData\\DATA.kml";			//generate the kml file
 		kml.createKml(outputPath);
 	}
+	
+	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
+		WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATAWF.csv");
+		for(CSVRecord record : records) {
+			String line = null;
+			line=record.get("Time");
+			line+=","+record.get("ID");
+			line+=","+record.get("Lat");
+			line+=","+record.get("Lon");
+			line+=","+record.get("Alt");
+			line+=","+record.get("WiFi networks");
+			int j;
+			for(j=1;j<=10&&record!=null;j++) {
+				if(record.size()<46)//Ilegal record
+					continue;
+				line+=","+record.get("SSID"+j);
+				line+=","+record.get("MAC"+j);
+				line+=","+record.get("Frequncy"+j);
+				line+=","+record.get("Signal"+j);
+			}
+			while(j<=10) {
+				line+=",,,";
+				j++;
+			}
+			wc.writeLine(line);
+		}
+		wc.close();
+}
+	
 }
