@@ -41,7 +41,7 @@ public class ReadAndWriteWithFilterTest {
 		IFilter filterId = new FilterByTime("2017-10-27  16:16:45","2017-11-01  16:16:45");
 		List<CSVRecord> records=rw.readCsv(cr.getOutputFile(), filterId);
 		
-			rw.write("data", records);
+			rw.writeKML("data", records);
 		} catch (KmlException | IOException e) {
 			// TODO Auto-generated catch block
 			fail("no kml file in folder "+e.getMessage());

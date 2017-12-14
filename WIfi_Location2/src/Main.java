@@ -12,7 +12,7 @@ public class Main {
 	 */
 	
 	public static void main(String[] args) throws Exception{
-		String folderPath = "C://temp";					//in my computer:  C://Users//יאיר//desktop//new//try
+		String folderPath = "C://Users//יאיר//desktop//new//try";					//in my computer: return result;
 		// Question 2- write the csv file
 		CsvReader folder=new CsvReader();
 		try {
@@ -22,14 +22,19 @@ public class Main {
 		}
 		// Question 3 - filter and write the kml file
 		ReadAndWriteWithFilter rw = new ReadAndWriteWithFilter();
-		IFilter filterId = new FilterById("SHIELD Tablet");
-		IFilter filterTime = new FilterByTime("2017-10-27  16:16:45", "2017-10-27  16:25:14");
-		IFilter filterLocation = new FilterByLocation(34.806, 32.165, 0.022);
+		IFilter filterId = new FilterById("ONEPLUS A3003");
+		IFilter filterTime = new FilterByTime("2017-10-27  16:15:45", "2020-11-04  16:19:14");
+ 		IFilter filterLocation = new FilterByLocation(34.806, 32.165, 0.022);
 		//List<CSVRecord> records1 = rw.readCsv(folder.getOutputFile(), filterId);			//filter by id
-		//List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);			//filter by time frame
-		//List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);		//filter by coordinates
-		List<CSVRecord> records4 = rw.andFilter(folder.getOutputFile(), filterId, filterTime);
-		rw.write(folderPath,records4);
-		System.out.println("success The kml file was generated");
+ 		//List<CSVRecord> records2 = rw.readCsv(folder.getOutputFile(), filterTime);			//filter by time frame
+ 		//List<CSVRecord> records3 = rw.readCsv(folder.getOutputFile(), filterLocation);		//filter by coordinates
+ 		List<CSVRecord> records4 = rw.andFilter(folder.getOutputFile(), filterId, filterTime);
+ 		//rw.writeKML(folderPath,records4);
+// 		WriteCsv rc =new WriteCsv(records4);
+// 		rc.close();
+ 		String filePath = "C://Users//יאיר//desktop//new//try//newData//DATA.csv";
+ 		FindLocByMac f1 = new FindLocByMac(filePath);
+ 		f1.locate("aa:6b:ad:04:c6:a8");
+		//System.out.println("success The kml file was generated");
 	}
 }

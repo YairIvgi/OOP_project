@@ -15,7 +15,12 @@ public class WifiSpot {
 	private String altitudeMeters;
 	private String type;
 	private String id;
-
+	
+	/**
+	 * @author Yair Ivgi 
+	 * constructor of WiFi point 
+	 */
+	
 	public WifiSpot(String id,String mac,String ssid,String firstSeen,String channel,String rssi,String currentLatitude,String currentLongitude,String altitudeMeters){
 		this.id=id;
 		this.mac=mac;
@@ -26,6 +31,23 @@ public class WifiSpot {
 		this.currentLatitude=currentLatitude;
 		this.currentLongitude=currentLongitude;
 		this.altitudeMeters=altitudeMeters;
+	}
+	
+	/**
+	 * @author Yair Ivgi 
+	 * constructor of WiFi point rssi,Lat,Lon,Alt
+	 */
+	
+	public WifiSpot(String rssi,String currentLatitude,String currentLongitude,String altitudeMeters){
+		this.rssi=rssi;
+		this.currentLatitude=currentLatitude;
+		this.currentLongitude=currentLongitude;
+		this.altitudeMeters=altitudeMeters;
+		this.ssid=null;
+		this.firstSeen=null;
+		this.mac=null;
+		this.channel=null;
+		this.id=null;
 	}
 
 	public String getId() {
