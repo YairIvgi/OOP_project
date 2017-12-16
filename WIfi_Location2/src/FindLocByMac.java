@@ -34,7 +34,7 @@ public class FindLocByMac {
 	}
 
 	public WifiSpot locate3(String mac1,String mac2,String mac3) throws Exception{
-		///אלגוריתם 2
+		///׳׳׳’׳•׳¨׳™׳×׳ 2
 		return null;
 	}
 //להתייחס למקרה בו התקיות זהות
