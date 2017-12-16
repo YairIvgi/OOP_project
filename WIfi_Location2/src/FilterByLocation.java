@@ -3,27 +3,33 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
+/** 
+ * This class filters the data by location.
+ * @author Yair Ivgi
+ */
+
 public class FilterByLocation implements IFilter {
-	/**
-	 * @author Yair Ivgi 
-	 * This class filters the data by location.
-	 */
 	private double	m_lon;
 	private double	m_lat;
 	private double	m_radius;
-	/**
+
+	/** 
+	 * The builder gets the coordinates specified by the user.
 	 * @author Yair Ivgi 
-	 * the builder gets the coordinates specified by the user. 
 	 */
+
 	public FilterByLocation(double lon,double lat,double radius) {
 		m_lon=lon;
 		m_lat=lat;
 		m_radius=radius;
 	}
-	/**
-	 * @author Yair Ivgi and Idan Hollander 
-	 * checks if the coordinates are valid.
+
+	/** 
+	 * Checks if the coordinates are valid.
+	 * @throws Exception
+	 * @author Yair Ivgi and Idan Hollander
 	 */
+
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
 		if(m_radius<0){

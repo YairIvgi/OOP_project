@@ -14,17 +14,18 @@ import org.apache.commons.csv.CSVRecord;
 public class FindLocByMac {
 
 	private  String m_filePath;
-
-	public FindLocByMac(String filePath){
-		m_filePath=filePath;
+	private	 String m_DBfilePath;
+	public FindLocByMac(String folderPath,String filePath){
+		m_filePath = filePath;
+		m_DBfilePath = folderPath;
 	}
 
 	public WifiSpot locate(String mac) throws Exception{
 		WifiSpot point = null;
 		try {
-			List <WifiSpot> points = findMacs(m_filePath,mac);
+			List <WifiSpot> points = findMacs(mac);
 			if (points.size() > 0){
-			point = centerOfPoints(points);
+				point = centerOfPoints(points);
 			}
 		} catch (IOException e) {
 			throw new Exception("fail : "+e.toString());
@@ -36,9 +37,9 @@ public class FindLocByMac {
 		///אלגוריתם 2
 		return null;
 	}
-
-	private List <WifiSpot> findMacs(String filePath,String mac) throws IOException{
-		File file = new File(filePath);
+//להתייחס למקרה בו התקיות זהות
+	private List <WifiSpot> findMacs(String mac) throws IOException{
+		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		List <WifiSpot> points =new ArrayList<WifiSpot>();
@@ -47,7 +48,7 @@ public class FindLocByMac {
 			for (int i = 1; i <= numOfSamples ; i++) {
 				String index = String.valueOf(i);
 				if(record.get("MAC"+index).equals(mac)){
-					WifiSpot p = new WifiSpot(record.get("Signal"+index),record.get("Lat"),record.get("Lon"),record.get("Alt"));
+					WifiSpot p = new WifiSpot(record.get("ID"),record.get("MAC"+index),record.get("SSID"+index),record.get("Time"),record.get("Frequncy"+index),record.get("Signal"+index),record.get("Lat"),record.get("Lon"),record.get("Alt"));
 					points.add(p);
 				}
 			}
@@ -71,6 +72,12 @@ public class FindLocByMac {
 
 	private  WifiSpot centerOfPoints(List <WifiSpot> points){
 		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
+		String id = points.get(0).getId();
+		String ssid = points.get(0).getSsid();
+		String time = points.get(0).getTime();
+		String channel = points.get(0).getChannel();
+		String mac = points.get(0).getMac();
+		String rssi = points.get(0).getRssi();
 		for(int i=0; i<points.size(); i++){
 			double tempWeigth = Double.parseDouble(points.get(i).getRssi());
 			if(tempWeigth == 0){
@@ -80,7 +87,7 @@ public class FindLocByMac {
 			double wLat = sigWeight * Double.parseDouble(points.get(i).getCurrentLatitude());
 			double wLon = sigWeight * Double.parseDouble(points.get(i).getCurrentLongitude());
 			double wAlt = sigWeight * Double.parseDouble(points.get(i).getAltitudeMeters());
-			WifiSpot p = new WifiSpot(String.valueOf(sigWeight),String.valueOf(wLat),String.valueOf(wLon),String.valueOf(wAlt));
+			WifiSpot p = new WifiSpot(id,mac,ssid,time,channel,String.valueOf(sigWeight),String.valueOf(wLat),String.valueOf(wLon),String.valueOf(wAlt));
 			wpoints.add(p);
 		}
 		double sigSWeight = 0, swLat = 0, swLon = 0, swAlt = 0;
@@ -95,7 +102,7 @@ public class FindLocByMac {
 			swLon = swLon / sigSWeight;
 			swAlt = swAlt / sigSWeight;
 		} 
-		WifiSpot result = new WifiSpot(null, String.valueOf(swLat),  String.valueOf(swLon),  String.valueOf(swAlt));
+		WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi, String.valueOf(swLat), String.valueOf(swLon),  String.valueOf(swAlt));
 		return result;
 	}
 

@@ -7,15 +7,15 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * Test the organizeData method.
+ * @author Yair Ivgi and Idan Holander  
+ */
 
 public class RawDataTest {
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * test the organizeData method  
-	 */
 	@Test
 	public void testOrganizeData() throws Exception {
-		CsvReader cr = new CsvReader();
+		RawCsvReader cr = new RawCsvReader();
 		String folderPath="data";
 		List<RawData> data;
 		File folder = new File(folderPath);

@@ -6,18 +6,21 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * This class filters the data by time. 
+ * @author Yair Ivgi 
+ */
+
 public class FilterByTime implements IFilter {
-	/**
-	 * @author Yair Ivgi 
-	 * This class filters the data by time. 
-	 */
 	private Date m_minTime;
 	private Date m_maxTime;
 
 	/**
+	 * The builder gets the time frame specified by the user and initializing it.
+	 * @throws Exception
 	 * @author Yair Ivgi 
-	 * the builder gets the time frame specified by the user and initializing it.
 	 */
+
 	public FilterByTime(String minTime,String maxTime) throws Exception {
 		SimpleDateFormat minMaxDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -27,10 +30,13 @@ public class FilterByTime implements IFilter {
 			throw new Exception("fail : "+e.toString());
 		}
 	}
+
 	/**
+	 * Filter the samples by time.
+	 * @throws Exception
 	 * @author Yair Ivgi 
-	 * filter the samples by time 
 	 */
+
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();

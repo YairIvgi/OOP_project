@@ -4,25 +4,27 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-public class CsvReader {
-	/**
-	 * @author Yair Ivgi 
-	 * This class reads all the .csv files using commons-csv-1.5.jar .
-	 * the method readCsv reads each file and organize all the data by time. 
-	 */
+/** 
+ * @information This class reads all the .csv files using commons-csv-1.5.jar .
+ * the method readCsv reads each file and organize all the data by time. 
+ * @author Yair Ivgi
+ */
+
+public class RawCsvReader {
+
 	private String outputFile;
-	/**
-	 * @author Yair Ivgi 
-	 * reads all the files in the specific folder and writs all the file names into an array.
+	/** 
+	 * Reads all the files in the specific folder and writs all the file names into an array.
+	 * @throws Exception
+	 * @author Yair Ivgi
 	 */
-	
+
 	public  void readFolder(String folderPath) throws Exception{
 		File dir = new File(folderPath+"\\newData");
 		dir.mkdir();
@@ -47,12 +49,13 @@ public class CsvReader {
 		}
 		writer.close();
 	}
-	
-	/**
-	 * @author Yair Ivgi 
-	 * reads each file and organize all the data by time order. 
+
+	/** 
+	 * Reads each file and organize all the data by time order.
+	 * @throws Exception 
+	 * @author Yair Ivgi
 	 */
-	
+
 	public List<RawData> readCsv(File filePath,List<RawData> data) throws Exception{
 		FileReader in;
 		try {			
@@ -91,14 +94,13 @@ public class CsvReader {
 		}
 		return data;
 	}
-	
-	/**
-	 * @author Yair Ivgi 
-	 * returns the output file name.
+
+	/** 
+	 * Returns the output file name.
+	 * @author Yair Ivgi
 	 */
-	
+
 	public String getOutputFile() {
 		return outputFile;
 	}
-
 }
