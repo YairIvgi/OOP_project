@@ -13,32 +13,69 @@ import org.apache.commons.csv.CSVRecord;
 
 public class FindLocByMac {
 
-	private  String m_filePath;
-	private	 String m_DBfilePath;
-	public FindLocByMac(String folderPath,String filePath){
-		m_filePath = filePath;
-		m_DBfilePath = folderPath;
+	private  String m_filePath = null;
+	private	 String m_folderPath = null;
+
+	public void locateMac_FromFile(String filePath) throws Exception{
+		m_filePath = filePath; 
+		m_folderPath = filePath.replace(".csv","");
+		locate();
 	}
 
-	public WifiSpot locate(String mac) throws Exception{
-		WifiSpot point = null;
+	public void locateMac_FromFolder(String folderPath) throws Exception{
+		m_folderPath = folderPath;
+		RawCsvReader folder=new RawCsvReader();
 		try {
-			List <WifiSpot> points = findMacs(mac);
-			if (points.size() > 0){
-				point = centerOfPoints(points);
-			}
-		} catch (IOException e) {
-			throw new Exception("fail : "+e.toString());
-		} 
-		return point;
+			folder.readFolder(folderPath);
+		} catch (Exception e) {
+			System.err.println("faild: "+e.toString());
+		}
+		m_filePath = folder.getOutputFile();
+		m_folderPath+="//newData//";
+		locate();
 	}
 
-	public WifiSpot locate3(String mac1,String mac2,String mac3) throws Exception{
-		///׳׳׳’׳•׳¨׳™׳×׳ 2
-		return null;
+	private void locate() throws Exception{
+		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();		
+		File file = new File(m_filePath);
+		Reader in = new FileReader(file);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		//scan every line in the input
+		for(CSVRecord record : records){	
+			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
+			//check all mac's in line
+			for (int i = 1; i <= numOfSamples ; i++) {
+				List <WifiSpot> points = null;
+				String mac = record.get("MAC"+String.valueOf(i));
+				WifiSpot point = null;
+				//check if we already have that mac.
+				if(allPoints.size() == 0){
+					points = findMacsInDB(mac);
+					point = centerOfPoints(points);
+					allPoints.add(point);
+				}
+				boolean flage=false;
+				for (int j=0; j < allPoints.size();j++) {
+					if(allPoints.get(j).getMac().equals(mac)){
+						flage=true;
+					}
+				}
+				if(!flage){
+					points = findMacsInDB(mac);
+					if (points.size() >= 0){
+						point = centerOfPoints(points);
+						allPoints.add(point);			
+					}
+				}
+			}
+		}
+		WriteCsv W = new WriteCsv(m_folderPath+"Mac_estimated_Loc.csv", allPoints);
+		W.ListOfpointsFormat();
+		W.close();
 	}
-//להתייחס למקרה בו התקיות זהות
-	private List <WifiSpot> findMacs(String mac) throws IOException{
+	
+//return the 3 strongest appearances of the mac in the DB
+	private List <WifiSpot> findMacsInDB(String mac) throws IOException{
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
@@ -69,7 +106,8 @@ public class FindLocByMac {
 		}
 		return result;
 	}
-
+	
+//return the center point of the 3 appearances of the mac
 	private  WifiSpot centerOfPoints(List <WifiSpot> points){
 		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
 		String id = points.get(0).getId();
@@ -105,5 +143,4 @@ public class FindLocByMac {
 		WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi, String.valueOf(swLat), String.valueOf(swLon),  String.valueOf(swAlt));
 		return result;
 	}
-
 }
