@@ -15,7 +15,9 @@ public class FindLocByMac {
 
 	private  String m_filePath = null;
 	private	 String m_folderPath = null;
+	private  String m_DBPath = null;
 
+	//Algo 1
 	public void locateMac_FromFile(String filePath,int x) throws Exception{
 		m_filePath = filePath; 
 		m_folderPath = filePath.replace(".csv","");
@@ -34,10 +36,29 @@ public class FindLocByMac {
 		m_folderPath+="//newData//";
 		locate(x);
 	}
-
-	public WifiSpot locate3(String mac1,String mac2,String mac3,int x) throws Exception{
-		///׳�׳�׳’׳•׳¨׳™׳×׳� 2
-		return null;
+	//Algo 2
+	public void locateMac3(String filePath,String DBPath, int x) throws Exception {
+		m_filePath = filePath; 
+		m_DBPath = DBPath;
+		m_folderPath = filePath.replace(".csv","");
+		locate3(x);
+	}
+	private void locate3(int x) throws Exception{
+		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();
+		File file = new File(m_filePath);//file without locations
+		Reader in = new FileReader(file);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		//scan every line in the file without GPS
+		for(CSVRecord record : records) {
+			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
+			if(numOfSamples<3)//cannot calculate with less than 3 macs
+				continue;
+			List <List<WifiSpot>> points = null;
+			String mac1 = record.get("MAC1");
+			String mac2 = record.get("MAC2");
+			String mac3 = record.get("MAC3");
+			points = findMacs3InDB(mac1, mac2, mac3, x);
+		}
 	}
 	private void locate(int x) throws Exception{
 		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();		
@@ -112,7 +133,7 @@ public class FindLocByMac {
 	}
 
 //להתייחס למקרה בו התקיות זהות
-	private List <List <WifiSpot>> findMacs3(String mac1,String mac2,String mac3,int x) throws IOException{
+	private List <List <WifiSpot>> findMacs3InDB(String mac1,String mac2,String mac3,int x) throws IOException{
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
