@@ -20,10 +20,10 @@ public class FindLocByMac {
 		m_DBfilePath = folderPath;
 	}
 
-	public WifiSpot locate(String mac) throws Exception{
+	public WifiSpot locate(String mac,int x) throws Exception{
 		WifiSpot point = null;
 		try {
-			List <WifiSpot> points = findMacs(mac);
+			List <WifiSpot> points = findMacs(mac,x);
 			if (points.size() > 0){
 				point = centerOfPoints(points);
 			}
@@ -33,12 +33,12 @@ public class FindLocByMac {
 		return point;
 	}
 
-	public WifiSpot locate3(String mac1,String mac2,String mac3) throws Exception{
+	public WifiSpot locate3(String mac1,String mac2,String mac3,int x) throws Exception{
 		///׳�׳�׳’׳•׳¨׳™׳×׳� 2
 		return null;
 	}
 //להתייחס למקרה בו התקיות זהות
-	private List <WifiSpot> findMacs(String mac) throws IOException{
+	private List <WifiSpot> findMacs(String mac,int x) throws IOException{
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
@@ -61,8 +61,8 @@ public class FindLocByMac {
 		});
 		List <WifiSpot> result =new ArrayList<WifiSpot>(); 
 		int total=points.size();
-		if(total>3){
-			total=3;
+		if(total>x){
+			total=x;
 		}
 		for (int i = 0; i < total; i++) {
 			result.add(points.get(i));
@@ -70,6 +70,69 @@ public class FindLocByMac {
 		return result;
 	}
 
+//להתייחס למקרה בו התקיות זהות
+	private List <List <WifiSpot>> findMacs3(String mac1,String mac2,String mac3,int x) throws IOException{
+		File file = new File(m_filePath);
+		Reader in = new FileReader(file);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		List <List<WifiSpot>> points =new ArrayList<List<WifiSpot>>();
+		for(CSVRecord record : records){
+			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
+			List<WifiSpot> macs=new ArrayList<WifiSpot>();
+			for (int i = 1; i <= numOfSamples ; i++) {
+				String index = String.valueOf(i);
+				if(record.get("MAC"+index).equals(mac1)||record.get("MAC"+index).equals(mac2)||record.get("MAC"+index).equals(mac3)){
+					WifiSpot p = new WifiSpot(record.get("ID"),record.get("MAC"+index),record.get("SSID"+index),record.get("Time"),record.get("Frequncy"+index),record.get("Signal"+index),record.get("Lat"),record.get("Lon"),record.get("Alt"));
+					macs.add(p);
+				}
+			}
+			if(!macs.isEmpty()) {
+				points.add(macs);
+			}
+		}
+		Collections.sort(points, new Comparator<List<WifiSpot>>() {
+			@Override
+			public int compare(List<WifiSpot> o1, List<WifiSpot> o2) {
+				double sum1=0;
+				double sum2=0;
+				for(int i=0;i<o1.size();i++) {
+					sum1+=Double.parseDouble(o1.get(i).getRssi());
+				}
+				if(o1.size()==2) {
+					sum1+=-120;
+				}
+				if(o1.size()==1) {
+					sum1+=-240;
+				}
+				for(int i=0;i<o2.size();i++) {
+					sum2+=Double.parseDouble(o2.get(i).getRssi());
+				}
+				if(o1.size()==2) {
+					sum2+=-120;
+				}
+				if(o1.size()==1) {
+					sum2+=-240;
+				}
+				if(sum1<sum2) {
+					return -1;
+				}
+				else if(sum1>sum2) {
+					return 1;
+				}
+				return 0;
+			}
+		});
+		List <List<WifiSpot>> result =new ArrayList<List<WifiSpot>>(); 
+		int total=points.size();
+		if(total>x){
+			total=x;
+		}
+		for (int i = 0; i < total; i++) {
+			result.add(points.get(i));
+		}
+		return result;
+	}
+	
 	private  WifiSpot centerOfPoints(List <WifiSpot> points){
 		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
 		String id = points.get(0).getId();
