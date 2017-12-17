@@ -15,16 +15,21 @@ import org.boehn.kmlframework.kml.Placemark;
 import org.boehn.kmlframework.kml.TimePrimitive;
 import org.boehn.kmlframework.kml.TimeStamp;
 
+
+/**
+ * @information This class reads form .csv and writes to .kml .
+ * @author Yair Ivgi and Idan Holander
+ */
+
+
 public class ReadAndWriteWithFilter {
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * This class reads form .csv and writes to .kml .
+
+	/** 
+	 * The method readCsv reads the modified .csv file and sends the data to the filters.
+	 * @throws Exception
+	 * @author Yair Ivgi
 	 */
-	
-	/**
-	 * @author Yair Ivgi 
-	 *  The method readCsv reads the modified .csv file and sends the data to the filters.
-	 */
+
 	public List<CSVRecord> readCsv(String fileName, IFilter filter) throws Exception{
 		try {
 			File file = new File(fileName);
@@ -35,11 +40,14 @@ public class ReadAndWriteWithFilter {
 		} catch (Exception e) {
 			throw new Exception("Error reading file\n" + e);		
 		}
-	}
+	}	
+
 	/**
+	 * This method combines two filters.
+	 * @throws Exception
 	 * @author Yair Ivgi and Idan Hollander
-	 *  TODO add description
 	 */
+
 	public List<CSVRecord> andFilter(String fileName, IFilter filter1,IFilter filter2) throws Exception{
 		try {
 			File file = new File(fileName);
@@ -52,10 +60,12 @@ public class ReadAndWriteWithFilter {
 			throw new Exception("Error reading file\n" + e);		
 		}
 	}
+
 	/**
+	 * Check if the name is recognized in kml format.
 	 * @author Yair Ivgi
-	 *Check if the name is recognized in kml format
 	 */
+
 	private String chackSsid(String name){
 		StringBuffer validSsid = new StringBuffer();
 		char c;
@@ -69,11 +79,13 @@ public class ReadAndWriteWithFilter {
 		}
 		return validSsid.toString();
 	}
+
 	/**
+	 * Takes the strongest signal in each time timeStamp.
 	 * @author Idan Holander
-	 *Takes the strongest signal in each time timeStamp
 	 */
-	public int highestSignalIndex(CSVRecord record) {
+
+	int highestSignalIndex(CSVRecord record) {
 		int maxS=Integer.MIN_VALUE;
 		int maxIndex=1;
 		for(int i=1;i<=Integer.parseInt(record.get("WiFi networks"));i++) {
@@ -82,42 +94,17 @@ public class ReadAndWriteWithFilter {
 				maxIndex=i;
 			}
 		}
+
 		return maxIndex;
 	}
-	
-	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
-			WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATAWF.csv");
-			for(CSVRecord record : records) {
-				String line = null;
-				line=record.get("Time");
-				line+=","+record.get("ID");
-				line+=","+record.get("Lat");
-				line+=","+record.get("Lon");
-				line+=","+record.get("Alt");
-				line+=","+record.get("WiFi networks");
-				int j;
-				for(j=1;j<=10&&record!=null;j++) {
-					if(record.size()<46)//Ilegal record
-						continue;
-					line+=","+record.get("SSID"+j);
-					line+=","+record.get("MAC"+j);
-					line+=","+record.get("Frequncy"+j);
-					line+=","+record.get("Signal"+j);
-				}
-				while(j<=10) {
-					line+=",,,";
-					j++;
-				}
-				wc.writeLine(line);
-			}
-			wc.close();
-	}
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * The method write writes the data to .kml file using kmlframework.
-	 */
-	public void writeKML(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
 
+	/**
+	 * The method write writes the data to .kml file using kmlframework.
+	 * @throws KmlException IOException
+	 * @author Yair Ivgi and Idan Holander
+	 */
+
+	public void writeKML(String outputPath,List<CSVRecord> records) throws KmlException, IOException {
 		Kml kml = new Kml();							//create a new KML Document
 		Document document = new Document();				//add a document to the kml
 		kml.setFeature(document);
@@ -136,7 +123,41 @@ public class ReadAndWriteWithFilter {
 			ifi.setTimePrimitive(timeAtPoint);
 			document.addFeature(ifi);					//add the place mark to the Document
 		}
-		outputPath += "\\newData\\DATA.kml";			//generate the kml file
+		outputPath += "\\newData\\DATA1.kml";			//generate the kml file
 		kml.createKml(outputPath);
+	}
+
+	/**
+	 * The method write writes the data to .csv file in data format.
+	 * @throws Exception
+	 * @author Idan Holander
+	 */
+
+	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
+		WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATA.csv");
+		for(CSVRecord record : records) {
+			String line = null;
+			line=record.get("Time");
+			line+=","+record.get("ID");
+			line+=","+record.get("Lat");
+			line+=","+record.get("Lon");
+			line+=","+record.get("Alt");
+			line+=","+record.get("WiFi networks");
+			int j;
+			for(j=1;j<=10&&record!=null;j++) {
+				if(record.size()<46)//Ilegal record
+					continue;
+				line+=","+record.get("SSID"+j);
+				line+=","+record.get("MAC"+j);
+				line+=","+record.get("Frequncy"+j);
+				line+=","+record.get("Signal"+j);
+			}
+			while(j<=10) {
+				line+=",,,";
+				j++;
+			}
+			wc.writeLine(line);
+		}
+		wc.close();
 	}
 }

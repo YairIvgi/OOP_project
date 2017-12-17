@@ -1,7 +1,8 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.List;
@@ -10,14 +11,15 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
+/**
+ * Test the getFiltered method.
+ * @author Yair Ivgi and Idan Holander
+ */
+
 public class FilterByLocationTest {
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * test the getFiltered method 
-	 */
 	@Test
 	public void test() {
-		CsvReader cr=new CsvReader();
+		RawCsvReader cr=new RawCsvReader();
 		try {
 			cr.readFolder("data");
 			File file = new File(cr.getOutputFile());

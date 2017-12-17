@@ -16,13 +16,6 @@ public class WifiSpot {
 	private String type;
 	private String id;
 
-	
-	/**
-	 * @author Yair Ivgi 
-	 * constructor of WiFi point 
-	 */
-	
-
 	/**
 	 * @author Yair Ivgi 
 	 * the constructor of WiFi point 
@@ -73,7 +66,7 @@ public class WifiSpot {
 		return ssid;
 	}
 
-	public String getFirstSeen() {
+	public String getTime() {
 		return firstSeen;
 	}
 

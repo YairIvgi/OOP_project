@@ -1,7 +1,7 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.text.SimpleDateFormat;
@@ -12,14 +12,17 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
+/**
+ * Test the getFiltered method.
+ * @throws Exception
+ * @author Yair Ivgi and Idan Holander  
+ */
+
 public class FilterByTimeTest {
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * test the getFiltered method 
-	 */
+
 	@Test
-	public void test() {
-		CsvReader cr=new CsvReader();
+	public void test() throws Exception {
+		RawCsvReader cr=new RawCsvReader();
 		try {
 			cr.readFolder("data");
 			File file = new File(cr.getOutputFile());
@@ -47,7 +50,7 @@ public class FilterByTimeTest {
 					assertFalse(filteredRecords.contains(record));
 			}
 		} catch (Exception e) {
-			fail("file canot be read: "+e.getMessage());
+			throw new Exception("fail : "+e.toString());
 		}
 	}
 }

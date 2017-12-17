@@ -3,17 +3,18 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
+/** 
+ * This class filters the data by the name of the WiFi sample.
+ * @author Yair Ivgi 
+ */
+
 public class FilterById implements IFilter {
-	/**
-	 * @author Yair Ivgi 
-	 * This class filters the data by the name of the WiFi sample. 
-	 */
 	private String m_id;
-	
+
 	public FilterById(String id) {
 		m_id=id;
 	}
-	
+
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();

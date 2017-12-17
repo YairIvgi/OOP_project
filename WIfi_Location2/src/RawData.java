@@ -3,31 +3,37 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * This class represent a list of WiFi points and organize it.
+ * @author Yair Ivgi 
+ */
+
 public class RawData {
-	/**
-	 * @author Yair Ivgi 
-	 * this class represent a list of WiFi points.
-	 * The  method organizeData sorts the information and  takes the 10 largest signals
-	 */
 	private List<WifiSpot> samples;
-	/**
-	 * @author Yair Ivgi 
-	 * the constructor initialize the ArrayList.
+
+	/** 
+	 * The constructor initialize the ArrayList.
+	 * @author Yair Ivgi
 	 */
+
 	public RawData(){
 		samples=new ArrayList<WifiSpot>();
 	}
-	/**
-	 * @author Yair Ivgi 
-	 * add a sample to the list.
+
+	/** 
+	 * Add a sample to the list.
+	 * @author Yair Ivgi
 	 */
+
 	public void add(WifiSpot spot){
 		getSamples().add(spot);
 	}
-	/**
-	 * @author Yair Ivgi 
-	 * The  method sorts the information and  takes the 10 largest signals
+
+	/** 
+	 * The  method sorts the information and  takes the 10 largest signals.
+	 * @author Yair Ivgi
 	 */
+
 	public static List<RawData> organizeData(List<RawData> data){
 		for (int i = 0; i < data.size(); i++) {
 			RawData raw = data.get(i);
@@ -54,7 +60,7 @@ public class RawData {
 	public List<WifiSpot> getSamples() {
 		return samples;
 	}
-	
+
 	private void setFirst10(){
 		if(samples.size()<=10){
 			return ;

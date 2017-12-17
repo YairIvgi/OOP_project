@@ -8,21 +8,23 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
+/**
+ * Test the WriteCsv method.
+ * @author Yair Ivgi and Idan Holander  
+ */
+
 public class WriteCsvTest {
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * test the WriteCsv method  
-	 */
+
 	@Test
 	public void test() throws Exception {
-		CsvReader cr = new CsvReader();
+		RawCsvReader cr = new RawCsvReader();
 		cr.readFolder("data");			// reading and writing in csv
 		try {
 			File file = new File(cr.getOutputFile());
 			Reader in = new FileReader(file);
 			Iterable<CSVRecord>records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 			int countRecord=0;
-			for(CSVRecord record: records) {
+			for(@SuppressWarnings("unused") CSVRecord record: records) {
 				countRecord++;
 			}
 			assertTrue(countRecord>1);

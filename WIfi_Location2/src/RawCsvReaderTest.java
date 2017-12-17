@@ -6,14 +6,15 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class CsvReaderTest {
-	/**
-	 * @author Yair Ivgi and Idan Holander
-	 * test the readCsv and the readFolder methods 
-	 */
+/**
+ * Test the readCsv and the readFolder methods.
+ * @information Yair Ivgi and Idan Holander
+ */
+
+public class RawCsvReaderTest {
 	@Test
 	public void testReadCsv() {
-		CsvReader cr = new CsvReader();
+		RawCsvReader cr = new RawCsvReader();
 		File f= new File("data\\WigleWifi_1.csv");
 		List<RawData>data = new ArrayList<RawData>();
 		try {
@@ -26,18 +27,17 @@ public class CsvReaderTest {
 
 		for(int i=0;i<data.size();i++) {
 			String currentTime = null;
-			currentTime=data.get(i).getSamples().get(0).getFirstSeen();
+			currentTime=data.get(i).getSamples().get(0).getTime();
 			assertFalse(lastTime!=null&&lastTime.equals(currentTime));
 		}
 	}
 	@Test
 	public void testReadFolder() {
-		CsvReader cr = new CsvReader();
+		RawCsvReader cr = new RawCsvReader();
 		String folderPath="data";
 		try {
 			cr.readFolder(folderPath);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			fail("Folder "+ folderPath +" does not exist");
 		}
 	}
