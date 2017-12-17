@@ -144,7 +144,7 @@ public class ReadAndWriteWithFilter {
 				line+=","+record.get("SSID"+i);				//"SSID"
 				line+=","+record.get("MAC"+i);				//"MAC"
 				line+=","+record.get("Frequncy"+i);			//"Frequency/channel"
-				line+=","+record.get("Frequncy"+i);			//"Signal/RSSI"			
+				line+=","+record.get("Signal"+i);			//"Signal/RSSI"			
 			}
 			if(namberOfWifi<10){
 				for (int q = namberOfWifi; q < 10; q++) {
