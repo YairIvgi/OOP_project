@@ -45,7 +45,7 @@ public class RawCsvReader {
 			data = new ArrayList<RawData>();
 			readCsv(listOfFiles[i],data);
 			data = RawData.organizeData(data);
-			writer.writeFormat(data);
+			writer.dataBaseFormat(data);
 		}
 		writer.close();
 	}
