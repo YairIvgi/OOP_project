@@ -81,7 +81,7 @@ public class ReadAndWriteWithFilter {
 	 * @author Idan Holander
 	 */
 
-	int highestSignalIndex(CSVRecord record) {
+	public int highestSignalIndex(CSVRecord record) {
 		int maxS=Integer.MIN_VALUE;
 		int maxIndex=1;
 		for(int i=1;i<=Integer.parseInt(record.get("WiFi networks"));i++) {
@@ -118,38 +118,38 @@ public class ReadAndWriteWithFilter {
 			ifi.setTimePrimitive(timeAtPoint);
 			document.addFeature(ifi);					//add the place mark to the Document
 		}
-		outputPath += "\\newData\\DATA1.kml";			//generate the kml file
+		outputPath += "\\newData\\DATA.kml";			//generate the kml file
 		kml.createKml(outputPath);
 	}
 
 	/**
 	 * The method write writes the data to .csv file in data format.
 	 * @throws Exception
-	 * @author Idan Holander
+	 * @author Yair Ivgi Idan Holander
 	 */
 
 	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
 		WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATA.csv");
 		for(CSVRecord record : records) {
+			int namberOfWifi=Integer.parseInt(record.get("WiFi networks"));
 			String line = null;
-			line=record.get("Time");
-			line+=","+record.get("ID");
-			line+=","+record.get("Lat");
-			line+=","+record.get("Lon");
-			line+=","+record.get("Alt");
-			line+=","+record.get("WiFi networks");
-			int j;
-			for(j=1;j<=10&&record!=null;j++) {
-				if(record.size()<46)//Ilegal record
-					continue;
-				line+=","+record.get("SSID"+j);
-				line+=","+record.get("MAC"+j);
-				line+=","+record.get("Frequncy"+j);
-				line+=","+record.get("Signal"+j);
+			line=record.get("Time");						//"Time"
+			line+=","+record.get("ID");						//"ID"
+			line+=","+record.get("Lat");					//"Lat"
+			line+=","+record.get("Lon");					//"Lon"
+			line+=","+record.get("Alt");					//"Alt"
+			line+=","+String.valueOf(namberOfWifi);			//"WiFi networks"
+
+			for (int i = 1; i <= namberOfWifi; i++) {
+				line+=","+record.get("SSID"+i);				//"SSID"
+				line+=","+record.get("MAC"+i);				//"MAC"
+				line+=","+record.get("Frequncy"+i);			//"Frequency/channel"
+				line+=","+record.get("Frequncy"+i);			//"Signal/RSSI"			
 			}
-			while(j<=10) {
-				line+=",,,";
-				j++;
+			if(namberOfWifi<10){
+				for (int q = namberOfWifi; q < 10; q++) {
+					line+=",,,";
+				}
 			}
 			wc.writeLine(line);
 		}
