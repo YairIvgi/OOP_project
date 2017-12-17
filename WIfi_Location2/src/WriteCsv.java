@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 /** 
@@ -11,10 +12,11 @@ public class WriteCsv {
 
 	private FileWriter fw;
 	private PrintWriter outs;
+	private List <WifiSpot> m_Points;
 	static private String outputPath;
 
 	/** 
-	 * The builder WriteCsv sets the first line of headers.
+	 * The contractor sets the first line of headers.
 	 * @throws Exception
 	 * @author Yair Ivgi
 	 */
@@ -35,14 +37,60 @@ public class WriteCsv {
 		} catch (Exception e) {
 			throw new Exception("Writing to file has failde: "+e);
 		}
+	} 
+	
+	/** 
+	 * The contractor sets the first line of headers in List Of points Format.
+	 * @throws Exception
+	 * @author Yair Ivgi
+	 */
+	
+	public  WriteCsv(String outputPath,List <WifiSpot> Points) throws Exception{
+		try {
+			m_Points= new ArrayList<WifiSpot>();
+			m_Points.addAll(Points);
+			WriteCsv.outputPath=outputPath;
+			fw = new FileWriter(WriteCsv.outputPath);
+			outs = new PrintWriter(fw);
+			String line= ",ID,Mac,SSID,Time,Frequncy,Signal,Lat,Lon,Alt";
+			writeLine(line);
+		} catch (Exception e) {
+			throw new Exception("Writing to file has failde: "+e);
+		}
 	}
-
+	
 	/**
 	 * The method write all the points in .csv format.
 	 * @author Yair Ivgi
 	 */
+	
+	public void ListOfpointsFormat() throws Exception{
+		if(m_Points == null){
+			throw new Exception("The list of is empty.");
+		}
+		for (int i = 0; i < m_Points.size(); i++){
+			String line;
+			line=String.valueOf(i);
+			line+=","+m_Points.get(i).getId();
+			line+=","+m_Points.get(i).getMac();
+			line+=","+m_Points.get(i).getSsid();
+			line+=","+m_Points.get(i).getTime();
+			line+=","+m_Points.get(i).getChannel();
+			line+=","+m_Points.get(i).getRssi();
+			line+=","+m_Points.get(i).getCurrentLatitude();
+			line+=","+m_Points.get(i).getCurrentLongitude();
+			line+=","+m_Points.get(i).getAltitudeMeters();
+			writeLine(line);
+		}
+	}
+	
 
-	public void writeFormat(List<RawData> data){
+	/**
+	 * The method write all the points in .csv format of 46 columns.
+	 * @author Yair Ivgi
+	 */
+
+	public void dataBaseFormat(List<RawData> data){
 		for(int i=0; i< data.size(); i++){
 			RawData raw = data.get(i);
 			WifiSpot spot = raw.getSamples().get(0);
@@ -55,7 +103,7 @@ public class WriteCsv {
 			line+=","+spot.getAltitudeMeters();			//"Alt"
 			line+=","+String.valueOf(namberOfWifi);		//"WiFi networks"
 
-			for (int j = 0; j < raw.getSamples().size(); j++) {
+			for (int j = 0; j < namberOfWifi; j++) {
 				WifiSpot wS = raw.getSamples().get(j);
 				line+=","+wS.getSsid();				//"SSID"
 				line+=","+wS.getMac();				//"MAC"

@@ -14,7 +14,7 @@ public class FilterByLocation implements IFilter {
 	private double	m_radius;
 
 	/** 
-	 * The builder gets the coordinates specified by the user.
+	 * The constructor gets the coordinates specified by the user.
 	 * @author Yair Ivgi 
 	 */
 
