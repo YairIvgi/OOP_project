@@ -1,7 +1,3 @@
-import java.util.List;
-
-import org.apache.commons.csv.CSVRecord;
-
 public class Main {
 
 	/**
@@ -36,12 +32,10 @@ public class Main {
 
 		//// part 2 - Algo1 and Algo2////
 
-	//	String filePath = "C://Users//יאיר//desktop//new//try//newData//DATA.csv";
-		String filePath2 = "c://temp//_comb_all_.csv";
-		FindLocByMac fl1 = new FindLocByMac();
-		FindLocByMac fl2 = new FindLocByMac();
-		fl1.locateMac_FromFile(filePath2);
-		fl2.locateMac_FromFolder("c://temp//scanes");
-		//fl2.locateMac_FromFolder("C://Users//יאיר//desktop//new//try");
+		FindMacLoc fM2 = new FindMacLoc();
+		fM2.locateMac_FromFolder("c://temp//scanes");
+		
+		FindLocByMac fL =new FindLocByMac("c://temp//DATA.csv", 5); 
+		fL.estimatedLoc_FromFile("c://temp//no_gps.csv");
 	}
 }

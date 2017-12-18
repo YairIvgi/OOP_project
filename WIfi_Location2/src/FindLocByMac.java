@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,84 +10,47 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * @Description The class returns estimated location if you don't have GPS reception, from your previous data.
+ * This is the second algorithm 
+ * @author Yair Ivgi
+ */
+
+
 public class FindLocByMac {
 
-	private  String m_filePath = null;
-	private	 String m_folderPath = null;
+	private	String m_filePath;
+	private String m_DataBaseFilePath;
+	private int m_Accuracy;
 
-	public void locateMac_FromFile(String filePath) throws Exception{
-		m_filePath = filePath; 
-		m_folderPath = filePath.replace(".csv","");
-		locate();
+	public FindLocByMac(String DataBaseFilePath,int accuracy){
+		m_DataBaseFilePath = DataBaseFilePath;
+		m_Accuracy = accuracy;
 	}
 
-	public void locateMac_FromFolder(String folderPath) throws Exception{
-		m_folderPath = folderPath;
-		RawCsvReader folder=new RawCsvReader();
-		try {
-			folder.readFolder(folderPath);
-		} catch (Exception e) {
-			System.err.println("faild: "+e.toString());
-		}
-		m_filePath = folder.getOutputFile();
-		m_folderPath+="//newData//";
-		locate();
-	}
-
-	private void locate() throws Exception{
-		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();		
+	public void estimatedLoc_FromFile(String filePath) throws Exception{
+		m_filePath = filePath;
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-		//scan every line in the input
-		for(CSVRecord record : records){	
-			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
-			//check all mac's in line
-			for (int i = 1; i <= numOfSamples ; i++) {
-				List <WifiSpot> points = null;
-				String mac = record.get("MAC"+String.valueOf(i));
-				WifiSpot point = null;
-				//check if we already have that mac.
-				if(allPoints.size() == 0){
-					points = findMacsInDB(mac);
-					point = centerOfPoints(points);
-					allPoints.add(point);
-				}
-				boolean flage=false;
-				for (int j=0; j < allPoints.size();j++) {
-					if(allPoints.get(j).getMac().equals(mac)){
-						flage=true;
-					}
-				}
-				if(!flage){
-					points = findMacsInDB(mac);
-					if (points.size() >= 0){
-						point = centerOfPoints(points);
-						allPoints.add(point);			
-					}
-				}
-			}
-		}
-		WriteCsv W = new WriteCsv(m_folderPath+"Mac_estimated_Loc.csv", allPoints);
-		W.ListOfpointsFormat();
-		W.close();
-	}
-	
-//return the 3 strongest appearances of the mac in the DB
-	private List <WifiSpot> findMacsInDB(String mac) throws IOException{
-		File file = new File(m_filePath);
-		Reader in = new FileReader(file);
-		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-		List <WifiSpot> points =new ArrayList<WifiSpot>();
+		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
 		for(CSVRecord record : records){
-			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
-			for (int i = 1; i <= numOfSamples ; i++) {
-				String index = String.valueOf(i);
-				if(record.get("MAC"+index).equals(mac)){
-					WifiSpot p = new WifiSpot(record.get("ID"),record.get("MAC"+index),record.get("SSID"+index),record.get("Time"),record.get("Frequncy"+index),record.get("Signal"+index),record.get("Lat"),record.get("Lon"),record.get("Alt"));
-					points.add(p);
-				}
-			}
+			WifiSpot point = findInDataBase(record);
+			CsvRecordPoint crp = new CsvRecordPoint(record, point);
+			dataList.add(crp);		
+		}
+		printCsv(dataList);
+	}
+
+	private WifiSpot findInDataBase(CSVRecord record) throws IOException{
+		File file = new File(m_DataBaseFilePath);
+		Reader in = new FileReader(file);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		List <WifiSpot> points = new ArrayList<WifiSpot>();
+		for(CSVRecord DBrecord : records){
+			double PI=lineResemblance(DBrecord,record);
+			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
+			points.add(point);
 		}
 		Collections.sort(points, new Comparator<WifiSpot>() {
 			@Override
@@ -97,50 +59,56 @@ public class FindLocByMac {
 			}
 		});
 		List <WifiSpot> result =new ArrayList<WifiSpot>(); 
-		int total=points.size();
-		if(total>3){
-			total=3;
-		}
-		for (int i = 0; i < total; i++) {
+		for (int i = 0; i < m_Accuracy; i++) {
 			result.add(points.get(i));
 		}
-		return result;
+		AveragingElaborateCoordinate AV = new AveragingElaborateCoordinate();
+		return AV.centerOfPoints(result);
+	}
+
+	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
+		int rNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
+		int dbNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
+		double arr[] =new double[rNumOfSamples];
+		boolean existsSuchMac;
+		for (int i = 1; i <= rNumOfSamples; i++){
+			existsSuchMac= false;
+			for (int j = 1; j <= dbNumOfSamples; j++){
+				if(record.get("MAC"+String.valueOf(i)).equals(DBrecord.get("MAC"+String.valueOf(j)))){
+					arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),DBrecord.get("Signal"+String.valueOf(j)));
+					existsSuchMac= true;
+				}
+			}
+			if(!existsSuchMac){
+				arr[i-1] = 0.1;
+			}
+		}
+		double resemblance=0;
+		for (int i = 0; i < arr.length; i++) {
+			resemblance*=arr[i];
+		}
+		return resemblance;
+	}
+
+	private void printCsv(List<CsvRecordPoint> dataList) throws Exception{
+		String outputPath = m_filePath.replace(".csv", "Estimated_Location.csv");
+		WriteCsv wc = new WriteCsv(outputPath);
+		wc.estimatedLocationFormat(dataList);
+		wc.close();
 	}
 	
-//return the center point of the 3 appearances of the mac
-	private  WifiSpot centerOfPoints(List <WifiSpot> points){
-		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
-		String id = points.get(0).getId();
-		String ssid = points.get(0).getSsid();
-		String time = points.get(0).getTime();
-		String channel = points.get(0).getChannel();
-		String mac = points.get(0).getMac();
-		String rssi = points.get(0).getRssi();
-		for(int i=0; i<points.size(); i++){
-			double tempWeigth = Double.parseDouble(points.get(i).getRssi());
-			if(tempWeigth == 0){
-				tempWeigth =-120;
-			}
-			double sigWeight = 1/Math.pow(tempWeigth, 2);
-			double wLat = sigWeight * Double.parseDouble(points.get(i).getCurrentLatitude());
-			double wLon = sigWeight * Double.parseDouble(points.get(i).getCurrentLongitude());
-			double wAlt = sigWeight * Double.parseDouble(points.get(i).getAltitudeMeters());
-			WifiSpot p = new WifiSpot(id,mac,ssid,time,channel,String.valueOf(sigWeight),String.valueOf(wLat),String.valueOf(wLon),String.valueOf(wAlt));
-			wpoints.add(p);
+	private static double clacPercentage(String strA,String strB){
+		double x = Double.parseDouble(strA);
+		double y;
+		if(!strB.equals("") ){
+			y = Double.parseDouble(strB);
+		}else{
+			y=-120;
 		}
-		double sigSWeight = 0, swLat = 0, swLon = 0, swAlt = 0;
-		for (int i = 0; i < wpoints.size(); i++) {
-			sigSWeight +=Double.parseDouble(wpoints.get(i).getRssi());
-			swLat += Double.parseDouble(wpoints.get(i).getCurrentLatitude());
-			swLon += Double.parseDouble(wpoints.get(i).getCurrentLongitude());
-			swAlt += Double.parseDouble(wpoints.get(i).getAltitudeMeters());
+		double result = Math.abs(Math.abs(x)-Math.abs(y));
+		if(result==0){
+			result=3;
 		}
-		if(sigSWeight != 0){
-			swLat = swLat / sigSWeight;
-			swLon = swLon / sigSWeight;
-			swAlt = swAlt / sigSWeight;
-		} 
-		WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi, String.valueOf(swLat), String.valueOf(swLon),  String.valueOf(swAlt));
-		return result;
+		return result/Math.max(x, y);
 	}
 }
