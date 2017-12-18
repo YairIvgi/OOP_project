@@ -18,13 +18,13 @@ public class FindLocByMac {
 	private  String m_DBPath = null;
 
 	//Algo 1
-	public void locateMac_FromFile(String filePath,int x) throws Exception{
+	public void locateMac_FromFile(String filePath,int numSpots) throws Exception{
 		m_filePath = filePath; 
 		m_folderPath = filePath.replace(".csv","");
-		locate(x);
+		locate(numSpots);
 	}
 
-	public void locateMac_FromFolder(String folderPath,int x) throws Exception{
+	public void locateMac_FromFolder(String folderPath,int numSpots) throws Exception{
 		m_folderPath = folderPath;
 		RawCsvReader folder=new RawCsvReader();
 		try {
@@ -34,33 +34,10 @@ public class FindLocByMac {
 		}
 		m_filePath = folder.getOutputFile();
 		m_folderPath+="//newData//";
-		locate(x);
+		locate(numSpots);
 	}
-	//Algo 2
-	public void locateMac3(String filePath,String DBPath, int x) throws Exception {
-		m_filePath = filePath; 
-		m_DBPath = DBPath;
-		m_folderPath = filePath.replace(".csv","");
-		locate3(x);
-	}
-	private void locate3(int x) throws Exception{
-		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();
-		File file = new File(m_filePath);//file without locations
-		Reader in = new FileReader(file);
-		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-		//scan every line in the file without GPS
-		for(CSVRecord record : records) {
-			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
-			if(numOfSamples<3)//cannot calculate with less than 3 macs
-				continue;
-			List <List<WifiSpot>> points = null;
-			String mac1 = record.get("MAC1");
-			String mac2 = record.get("MAC2");
-			String mac3 = record.get("MAC3");
-			points = findMacs3InDB(mac1, mac2, mac3, x);
-		}
-	}
-	private void locate(int x) throws Exception{
+	
+	private void locate(int numSpots) throws Exception{
 		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();		
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
@@ -75,7 +52,7 @@ public class FindLocByMac {
 				WifiSpot point = null;
 				//check if we already have that mac.
 				if(allPoints.size() == 0){
-					points = findMacsInDB(mac,x);
+					points = findMacsInDB(mac,numSpots);
 					point = centerOfPoints(points);
 					allPoints.add(point);
 				}
@@ -86,7 +63,7 @@ public class FindLocByMac {
 					}
 				}
 				if(!flage){
-					points = findMacsInDB(mac,x);
+					points = findMacsInDB(mac,numSpots);
 					if (points.size() >= 0){
 						point = centerOfPoints(points);
 						allPoints.add(point);			
@@ -98,7 +75,30 @@ public class FindLocByMac {
 		W.ListOfpointsFormat();
 		W.close();
 	}
-	
+	//Algo2
+	public void locateMac3(String filePath,String DBPath, int numSpots) throws Exception {
+		m_filePath = filePath; 
+		m_DBPath = DBPath;
+		m_folderPath = filePath.replace(".csv","");
+		locate3(numSpots);
+	}
+	private void locate3(int numSpots) throws Exception{
+		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();
+		File file = new File(m_filePath);//file without locations
+		Reader in = new FileReader(file);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		//scan every line in the file without GPS
+		for(CSVRecord record : records) {
+			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
+			if(numOfSamples<3)//cannot calculate with less than 3 macs
+				continue;
+			List <List<WifiSpot>> points = null;
+			String mac1 = record.get("MAC1");
+			String mac2 = record.get("MAC2");
+			String mac3 = record.get("MAC3");
+			points = findMacs3InDB(mac1, mac2, mac3, numSpots);
+		}
+	}
 //return the X strongest appearances of the mac in the DB
 	private List <WifiSpot> findMacsInDB(String mac,int x) throws IOException{
 		File file = new File(m_filePath);
@@ -132,7 +132,6 @@ public class FindLocByMac {
 		return result;
 	}
 
-//להתייחס למקרה בו התקיות זהות
 	private List <List <WifiSpot>> findMacs3InDB(String mac1,String mac2,String mac3,int x) throws IOException{
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
