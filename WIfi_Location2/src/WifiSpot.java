@@ -32,6 +32,13 @@ public class WifiSpot {
 		this.currentLongitude=currentLongitude;
 		this.altitudeMeters=altitudeMeters;
 	}
+	
+	public WifiSpot(String rssi,String currentLatitude,String currentLongitude,String altitudeMeters){
+		this.rssi=rssi;
+		this.currentLatitude=currentLatitude;
+		this.currentLongitude=currentLongitude;
+		this.altitudeMeters=altitudeMeters;
+	}
 
 	public String getId() {
 		return id;
