@@ -68,7 +68,7 @@ public class FindLocByMac {
 
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
 		int rNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
-		int dbNumOfSamples = Integer.parseInt(DBrecord.get("WiFi networks"));
+		int dbNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
 		double arr[] =new double[rNumOfSamples];
 		boolean existsSuchMac;
 		for (int i = 1; i <= rNumOfSamples; i++){
