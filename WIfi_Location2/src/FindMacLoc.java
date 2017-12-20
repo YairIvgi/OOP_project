@@ -21,15 +21,17 @@ public class FindMacLoc {
 
 	private  String m_filePath = null;
 	private	 String m_folderPath = null;
+	private int m_Accuracy;
 
 	/**
 	 * Receive organized data from file 
 	 * @author Yair Ivgi
 	 */
 	
-	public void locateMac_FromFile(String filePath) throws Exception{
+	public void locateMac_FromFile(String filePath,int accuracy) throws Exception{
 		m_filePath = filePath; 
 		m_folderPath = filePath.replace(".csv","");
+		m_Accuracy=accuracy;
 		locate();
 	}
 
@@ -38,8 +40,9 @@ public class FindMacLoc {
 	 * @author Yair Ivgi
 	 */
 	
-	public void locateMac_FromFolder(String folderPath) throws Exception{
+	public void locateMac_FromFolder(String folderPath,int accuracy) throws Exception{
 		m_folderPath = folderPath;
+		m_Accuracy=accuracy;
 		RawCsvReader folder=new RawCsvReader();
 		try {
 			folder.readFolder(folderPath);
@@ -115,8 +118,8 @@ public class FindMacLoc {
 		});
 		List <WifiSpot> result =new ArrayList<WifiSpot>(); 
 		int total=points.size();
-		if(total>3){
-			total=3;
+		if(total>m_Accuracy){
+			total=m_Accuracy;
 		}
 		for (int i = 0; i < total; i++) {
 			result.add(points.get(i));
