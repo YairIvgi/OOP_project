@@ -68,7 +68,7 @@ public class FindLocByMac {
 
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
 		int rNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
-		int dbNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
+		int dbNumOfSamples = Integer.parseInt(DBrecord.get("WiFi networks"));
 		double arr[] =new double[rNumOfSamples];
 		boolean existsSuchMac;
 		for (int i = 1; i <= rNumOfSamples; i++){
@@ -80,10 +80,10 @@ public class FindLocByMac {
 				}
 			}
 			if(!existsSuchMac){
-				arr[i-1] = 0.1;
+				arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),"-120");
 			}
 		}
-		double resemblance=0;
+		double resemblance=1;
 		for (int i = 0; i < arr.length; i++) {
 			resemblance*=arr[i];
 		}
@@ -100,14 +100,14 @@ public class FindLocByMac {
 	
 	private static double clacPercentage(String strA,String strB){
 		double x = Double.parseDouble(strA);
-		double y;
-		if(!strB.equals("") ){
-			y = Double.parseDouble(strB);
+		double y = Double.parseDouble(strB);
+		double result;
+		if(y!=-120 ){
+			result = Math.abs(Math.abs(x)-Math.abs(y));
 		}else{
-			y=-120;
+			result=100;
 		}
-		double result = Math.abs(Math.abs(x)-Math.abs(y));
-		if(result==0){
+		if(result<3){
 			result=3;
 		}
 		return result/Math.max(x, y);

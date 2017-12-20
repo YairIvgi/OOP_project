@@ -38,5 +38,4 @@ public class AveragingElaborateCoordinate {
 		WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi, String.valueOf(swLat), String.valueOf(swLon),  String.valueOf(swAlt));
 		return result;
 	}
-
 }
