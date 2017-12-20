@@ -14,6 +14,7 @@ import org.apache.commons.csv.CSVRecord;
  * @Description The class returns estimated location if you don't have GPS reception, from your previous data.
  * This is the second algorithm 
  * @author Yair Ivgi
+ * edit by Idan Hollander
  */
 
 
@@ -34,20 +35,20 @@ public class FindLocByMac {
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
-		for(CSVRecord record : records){
+		for(CSVRecord record : records){//File Records
 			WifiSpot point = findInDataBase(record);
 			CsvRecordPoint crp = new CsvRecordPoint(record, point);
 			dataList.add(crp);		
 		}
 		printCsv(dataList);
 	}
-
+	//searching in database file
 	private WifiSpot findInDataBase(CSVRecord record) throws IOException{
 		File file = new File(m_DataBaseFilePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		List <WifiSpot> points = new ArrayList<WifiSpot>();
-		for(CSVRecord DBrecord : records){
+		for(CSVRecord DBrecord : records){//Data Base Records
 			double PI=lineResemblance(DBrecord,record);
 			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
 			points.add(point);
@@ -65,20 +66,22 @@ public class FindLocByMac {
 		AveragingElaborateCoordinate AV = new AveragingElaborateCoordinate();
 		return AV.centerOfPoints(result);
 	}
-
+	//line scanning
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
 		int rNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
 		int dbNumOfSamples = Integer.parseInt(DBrecord.get("WiFi networks"));
 		double arr[] =new double[rNumOfSamples];
 		boolean existsSuchMac;
-		for (int i = 1; i <= rNumOfSamples; i++){
+		for (int i = 1; i <= rNumOfSamples; i++){//scanning samples in file
 			existsSuchMac= false;
-			for (int j = 1; j <= dbNumOfSamples; j++){
+			for (int j = 1; j <= dbNumOfSamples; j++){//scanning samples in DB
+				//check if file and data base has same MAC in scanned line
 				if(record.get("MAC"+String.valueOf(i)).equals(DBrecord.get("MAC"+String.valueOf(j)))){
 					arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),DBrecord.get("Signal"+String.valueOf(j)));
 					existsSuchMac= true;
 				}
 			}
+			//check if existing mac not found
 			if(!existsSuchMac){
 				arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),"-120");
 			}
@@ -89,7 +92,7 @@ public class FindLocByMac {
 		}
 		return resemblance;
 	}
-
+//writing csv
 	private void printCsv(List<CsvRecordPoint> dataList) throws Exception{
 		String outputPath = m_filePath.replace(".csv", "Estimated_Location.csv");
 		WriteCsv wc = new WriteCsv(outputPath);
@@ -97,11 +100,12 @@ public class FindLocByMac {
 		wc.close();
 	}
 	
-	
+	//calculate weight
 	private static double clacPercentage(String strA,String strB){
 		double x = Double.parseDouble(strA);
 		double y = Double.parseDouble(strB);
 		double result;
+		//check if y is signal
 		if(y!=-120 ){
 			result = Math.abs(Math.abs(x)-Math.abs(y));
 		}else{
