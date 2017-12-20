@@ -13,8 +13,7 @@ import org.apache.commons.csv.CSVRecord;
 /**
  * @Description The class returns estimated location if you don't have GPS reception, from your previous data.
  * This is the second algorithm 
- * @author Yair Ivgi
- * edit by Idan Hollander
+ * @author Yair Ivgi and Idan Hollander
  */
 
 
@@ -53,6 +52,16 @@ public class FindLocByMac {
 			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
 			points.add(point);
 		}
+		if(!ifAnyMacInDB(points)) {//if there is no mac in database that equals one mac in the row in the noGPS file
+			String id = points.get(0).getId();
+			String ssid = points.get(0).getSsid();
+			String time = points.get(0).getTime();
+			String channel = points.get(0).getChannel();
+			String mac = points.get(0).getMac();
+			String rssi = points.get(0).getRssi();
+			WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi,"Not Found","Not Found","Not Found");
+			return result;
+		}
 		Collections.sort(points, new Comparator<WifiSpot>() {
 			@Override
 			public int compare(WifiSpot o1, WifiSpot o2) {
@@ -60,12 +69,12 @@ public class FindLocByMac {
 			}
 		});
 		int index = points.size()-1;
-		while(index>=0&&points.get(index).getRssi().contains("E")) {
+		while(index>=0&&points.get(index).getRssi().contains("E")) {//if we have some numbers that written with expo
 			index--;
 		}
 		List <WifiSpot> result =new ArrayList<WifiSpot>(); 
 		for (int i = 0; i < m_Accuracy; i++) {
-			if(index> m_Accuracy) {
+			if(index> m_Accuracy) {//if we have  more regular numbers that not written with expo than than numbers we equals with
 				result.add(points.get(index-i));
 			}
 			else
@@ -73,6 +82,15 @@ public class FindLocByMac {
 		}
 		AveragingElaborateCoordinate AV = new AveragingElaborateCoordinate();
 		return AV.centerWeightOfPoints(result);
+	}
+	//Check if there is a mac in database that equals one mac in the row in the noGPS file
+	public boolean ifAnyMacInDB(List<WifiSpot>points) {
+		for(int i=1;i<points.size();i++) {
+			if(!points.get(0).getRssi().equals(points.get(i).getRssi())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	//line scanning
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
