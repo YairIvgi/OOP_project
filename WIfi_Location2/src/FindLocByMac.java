@@ -59,12 +59,20 @@ public class FindLocByMac {
 				return o1.getRssi().compareTo(o2.getRssi());
 			}
 		});
+		int index = points.size()-1;
+		while(index>=0&&points.get(index).getRssi().contains("E")) {
+			index--;
+		}
 		List <WifiSpot> result =new ArrayList<WifiSpot>(); 
 		for (int i = 0; i < m_Accuracy; i++) {
-			result.add(points.get(i));
+			if(index> m_Accuracy) {
+				result.add(points.get(index-i));
+			}
+			else
+				result.add(points.get(i));
 		}
 		AveragingElaborateCoordinate AV = new AveragingElaborateCoordinate();
-		return AV.centerOfPoints(result);
+		return AV.centerWeightOfPoints(result);
 	}
 	//line scanning
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
@@ -92,28 +100,29 @@ public class FindLocByMac {
 		}
 		return resemblance;
 	}
-//writing csv
+	//writing csv
 	private void printCsv(List<CsvRecordPoint> dataList) throws Exception{
 		String outputPath = m_filePath.replace(".csv", "Estimated_Location.csv");
 		WriteCsv wc = new WriteCsv(outputPath);
 		wc.estimatedLocationFormat(dataList);
 		wc.close();
 	}
-	
+
 	//calculate weight
 	private static double clacPercentage(String strA,String strB){
 		double x = Double.parseDouble(strA);
 		double y = Double.parseDouble(strB);
-		double result;
+		double diff;
 		//check if y is signal
 		if(y!=-120 ){
-			result = Math.abs(Math.abs(x)-Math.abs(y));
+			diff = Math.abs(Math.abs(x)-Math.abs(y));
 		}else{
-			result=100;
+			diff=100;
 		}
-		if(result<3){
-			result=3;
+		if(diff<3){
+			diff=3;
 		}
-		return result/Math.max(x, y);
+		double result=10000/(Math.pow(diff, 0.4)*Math.pow(x, 2));
+		return result;
 	}
 }
