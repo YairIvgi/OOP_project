@@ -22,6 +22,13 @@ public class FindLocByMac {
 	private	String m_filePath;
 	private String m_DataBaseFilePath;
 	private int m_Accuracy;
+	private final double POWER=2;
+	private final double NORM=10000;
+	private final double SIG_DIFF=0.4;
+	private final double MIN_DIFF=3;
+	private final double NO_SIG=-120;
+	private final double DIFF_NO_SIG=100;
+	
 
 	public FindLocByMac(String DataBaseFilePath,int accuracy){
 		m_DataBaseFilePath = DataBaseFilePath;
@@ -49,6 +56,7 @@ public class FindLocByMac {
 		List <WifiSpot> points = new ArrayList<WifiSpot>();
 		for(CSVRecord DBrecord : records){//Data Base Records
 			double PI=lineResemblance(DBrecord,record);
+			System.out.println(PI);
 			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
 			points.add(point);
 		}
@@ -98,7 +106,8 @@ public class FindLocByMac {
 		int dbNumOfSamples = Integer.parseInt(DBrecord.get("WiFi networks"));
 		double arr[] =new double[rNumOfSamples];
 		boolean existsSuchMac;
-		for (int i = 1; i <= rNumOfSamples; i++){//scanning samples in file
+		//scanning samples in file
+		for (int i = 1; i <= rNumOfSamples; i++){
 			existsSuchMac= false;
 			for (int j = 1; j <= dbNumOfSamples; j++){//scanning samples in DB
 				//check if file and data base has same MAC in scanned line
@@ -109,7 +118,7 @@ public class FindLocByMac {
 			}
 			//check if existing mac not found
 			if(!existsSuchMac){
-				arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),"-120");
+				arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),String.valueOf(NO_SIG));
 			}
 		}
 		double resemblance=1;
@@ -127,20 +136,20 @@ public class FindLocByMac {
 	}
 
 	//calculate weight
-	private static double clacPercentage(String strA,String strB){
+	private double clacPercentage(String strA,String strB){
 		double x = Double.parseDouble(strA);
 		double y = Double.parseDouble(strB);
 		double diff;
 		//check if y is signal
-		if(y!=-120 ){
+		if(y != NO_SIG ){
 			diff = Math.abs(Math.abs(x)-Math.abs(y));
 		}else{
-			diff=100;
+			diff = DIFF_NO_SIG;
 		}
-		if(diff<3){
-			diff=3;
+		if(diff < MIN_DIFF){
+			diff = MIN_DIFF;
 		}
-		double result=10000/(Math.pow(diff, 0.4)*Math.pow(x, 2));
+		double result = NORM/(Math.pow(diff, SIG_DIFF)*Math.pow(x, POWER));
 		return result;
 	}
 }
