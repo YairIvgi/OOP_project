@@ -22,12 +22,12 @@ public class FindLocByMac {
 	private	String m_filePath;
 	private String m_DataBaseFilePath;
 	private int m_Accuracy;
-	private final double POWER=2;
-	private final double NORM=10000;
-	private final double SIG_DIFF=0.4;
-	private final double MIN_DIFF=3;
-	private final double NO_SIG=-120;
-	private final double DIFF_NO_SIG=100;
+	private static final double POWER=2;
+	private static final double NORM=10000;
+	private static final double SIG_DIFF=0.4;
+	private static final double MIN_DIFF=3;
+	private static final double NO_SIG=-120;
+	private static final double DIFF_NO_SIG=100;
 	
 
 	public FindLocByMac(String DataBaseFilePath,int accuracy){
@@ -56,7 +56,6 @@ public class FindLocByMac {
 		List <WifiSpot> points = new ArrayList<WifiSpot>();
 		for(CSVRecord DBrecord : records){//Data Base Records
 			double PI=lineResemblance(DBrecord,record);
-			System.out.println(PI);
 			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
 			points.add(point);
 		}
@@ -136,7 +135,7 @@ public class FindLocByMac {
 	}
 
 	//calculate weight
-	private double clacPercentage(String strA,String strB){
+	private static double clacPercentage(String strA,String strB){
 		double x = Double.parseDouble(strA);
 		double y = Double.parseDouble(strB);
 		double diff;
