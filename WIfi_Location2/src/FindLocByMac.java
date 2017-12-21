@@ -59,7 +59,7 @@ public class FindLocByMac {
 			String channel = points.get(0).getChannel();
 			String mac = points.get(0).getMac();
 			String rssi = points.get(0).getRssi();
-			WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi,"Not Found","Not Found","Not Found");
+			WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi,null,null,null);
 			return result;
 		}
 		Collections.sort(points, new Comparator<WifiSpot>() {
