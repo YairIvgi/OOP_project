@@ -42,7 +42,7 @@ public class AveragingElaborateCoordinate {
 		WifiSpot result = new WifiSpot(id,mac,ssid,time,channel,rssi, String.valueOf(swLat), String.valueOf(swLon),  String.valueOf(swAlt));
 		return result;
 	}
-	//for algo2
+//	for algo2
 	public WifiSpot centerWeightOfPoints(List <WifiSpot> points){
 		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
 		String id = points.get(0).getId();

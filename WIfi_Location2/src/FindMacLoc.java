@@ -59,14 +59,17 @@ public class FindMacLoc {
 		File file = new File(m_filePath);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		
 		//scan every line in the input
 		for(CSVRecord record : records){	
 			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
+			
 			//check all mac's in line
 			for (int i = 1; i <= numOfSamples ; i++) {
 				List <WifiSpot> points = null;
 				String mac = record.get("MAC"+String.valueOf(i));
 				WifiSpot point = null;
+				
 				//check if we already have that mac.
 				AveragingElaborateCoordinate AE = new AveragingElaborateCoordinate();
 				if(allPoints.size() == 0){
@@ -126,7 +129,4 @@ public class FindMacLoc {
 		}
 		return result;
 	}
-	
-//return the center point of the 3 appearances of the mac
-
 }
