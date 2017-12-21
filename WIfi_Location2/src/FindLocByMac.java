@@ -84,7 +84,7 @@ public class FindLocByMac {
 		return AV.centerWeightOfPoints(result);
 	}
 	//Check if there is a mac in database that equals one mac in the row in the noGPS file
-	public boolean ifAnyMacInDB(List<WifiSpot>points) {
+	private boolean ifAnyMacInDB(List<WifiSpot>points) {
 		for(int i=1;i<points.size();i++) {
 			if(!points.get(0).getRssi().equals(points.get(i).getRssi())) {
 				return true;
