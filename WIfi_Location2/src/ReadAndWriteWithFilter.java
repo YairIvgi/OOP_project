@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.List;
 
@@ -13,10 +15,12 @@ import org.boehn.kmlframework.kml.Placemark;
 import org.boehn.kmlframework.kml.TimePrimitive;
 import org.boehn.kmlframework.kml.TimeStamp;
 
+
 /**
  * @information This class reads form .csv and writes to .kml .
  * @author Yair Ivgi and Idan Holander
  */
+
 
 public class ReadAndWriteWithFilter {
 
@@ -90,6 +94,7 @@ public class ReadAndWriteWithFilter {
 				maxIndex=i;
 			}
 		}
+
 		return maxIndex;
 	}
 
