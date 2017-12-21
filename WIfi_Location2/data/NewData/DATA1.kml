@@ -1,0 +1,1955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="c66c3d85-6f07-4a5d-80aa-c512336dd57e">
+<Placemark id="e24b544d-38e9-486e-b255-2d474608855b">
+<name>Ariel_University</name>
+<description>MAC: 8c:0c:90:2e:e8:18
+ Frequncy: 6
+ Signal: -70
+</description>
+<TimeStamp id="1ca9a8ee-ec4a-43d2-8ec4-c290082a8251">
+<when>2017-11-09T14:54:18-00:01</when>
+</TimeStamp>
+<Point id="51e78c31-9980-4586-b500-5c35041af257">
+<coordinates>35.210677641326,32.1041010114005</coordinates>
+</Point>
+</Placemark>
+<Placemark id="ea61786b-0edf-4054-afb2-ce2bee14f9b7">
+<name>Ariel_University</name>
+<description>MAC: 8c:0c:90:2f:d3:d8
+ Frequncy: 11
+ Signal: -88
+</description>
+<TimeStamp id="af267a31-ea28-466e-81ae-d6781bd85dff">
+<when>2017-11-09T14:54:27-00:01</when>
+</TimeStamp>
+<Point id="9e42d398-600a-449a-b633-9df3d8511cc4">
+<coordinates>35.2109497706651,32.1040306142341</coordinates>
+</Point>
+</Placemark>
+<Placemark id="c1a0c7ad-c050-4ba3-8cda-9a0e8f8dfedc">
+<name></name>
+<description>MAC: 1c:b9:c4:96:06:b7
+ Frequncy: 36
+ Signal: -84
+</description>
+<TimeStamp id="d3274779-1aa3-492f-9e79-ee3766f49494">
+<when>2017-11-09T14:54:29-00:01</when>
+</TimeStamp>
+<Point id="090629cb-3327-4e42-adb8-e2b340671fe9">
+<coordinates>35.2109290171235,32.1040260885451</coordinates>
+</Point>
+</Placemark>
+<Placemark id="cc58e628-1bd5-4bcf-a28c-2896b1b298b1">
+<name>Ariel_University</name>
+<description>MAC: 8c:0c:90:2d:34:38
+ Frequncy: 11
+ Signal: -75
+</description>
+<TimeStamp id="678d2efa-1f96-45a3-899d-eed86ed18ca1">
+<when>2017-11-09T14:54:35-00:01</when>
+</TimeStamp>
+<Point id="ec526313-7d8c-4068-9ff8-9af148de225b">
+<coordinates>35.2108332485327,32.1040101140465</coordinates>
+</Point>
+</Placemark>
+<Placemark id="43a681cf-7983-406c-8a33-a99e2a266b0b">
+<name>Ariel_University</name>
+<description>MAC: 24:79:2a:2b:24:98
+ Frequncy: 1
+ Signal: -82
+</description>
+<TimeStamp id="cec0201d-8a3d-4b5e-957d-2a86255f6e5e">
+<when>2017-11-09T14:54:38-00:01</when>
+</TimeStamp>
+<Point id="d727d726-80d4-4e43-91e0-b04f4b6ce31e">
+<coordinates>35.2108332485327,32.1040101140465</coordinates>
+</Point>
+</Placemark>
+<Placemark id="53021efa-4652-421b-bc8d-b4d97dfec64f">
+<name>Ariel_University</name>
+<description>MAC: 24:79:2a:2c:61:68
+ Frequncy: 6
+ Signal: -87
+</description>
+<TimeStamp id="5b579bc1-3284-47ef-99f6-2cc7293a73fb">
+<when>2017-11-09T14:54:41-00:01</when>
+</TimeStamp>
+<Point id="a3867b24-3bcd-44e2-b448-a2e4153875fd">
+<coordinates>35.2107292839355,32.1040287143518</coordinates>
+</Point>
+</Placemark>
+<Placemark id="09164d20-bbbe-487e-a691-1278c2c3d610">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:06:b8
+ Frequncy: 1
+ Signal: -85
+</description>
+<TimeStamp id="927b4cbc-db1b-43e3-8531-09f794972ac1">
+<when>2017-11-09T14:54:44-00:01</when>
+</TimeStamp>
+<Point id="01066780-3eb6-423b-a44a-178dd1561d45">
+<coordinates>35.2106893636816,32.1040230287943</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d51cd2c1-e60d-46f2-a5ed-17dfeaaf209d">
+<name>Ariel_University</name>
+<description>MAC: 24:79:2a:2c:5c:18
+ Frequncy: 11
+ Signal: -93
+</description>
+<TimeStamp id="01e17e07-7b73-44c3-8959-0bfff68f219e">
+<when>2017-11-09T14:54:49-00:01</when>
+</TimeStamp>
+<Point id="60d59dad-050e-4f6d-8bba-35d95e88bc5c">
+<coordinates>35.2105969981693,32.1039946062907</coordinates>
+</Point>
+</Placemark>
+<Placemark id="f0f745da-9064-4bd6-8e17-41d1bc74830d">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:06:b8
+ Frequncy: 1
+ Signal: -80
+</description>
+<TimeStamp id="78c5b28f-b0e6-46a0-ae18-173928c94001">
+<when>2017-11-09T14:54:56-00:01</when>
+</TimeStamp>
+<Point id="889e09f6-564d-4a2c-b845-1836d858408d">
+<coordinates>35.2105333201894,32.1039292336598</coordinates>
+</Point>
+</Placemark>
+<Placemark id="798408d4-3c6d-4452-aa5e-4f1b1f035784">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:06:bc
+ Frequncy: 36
+ Signal: -81
+</description>
+<TimeStamp id="7a5e30ce-2527-4108-9839-bc0f9c75c58a">
+<when>2017-11-09T14:55:07-00:01</when>
+</TimeStamp>
+<Point id="ec8aa6ad-b1c8-43c1-a141-3b22b2370e9a">
+<coordinates>35.2103935057855,32.1039464068303</coordinates>
+</Point>
+</Placemark>
+<Placemark id="3f5a911f-fe13-452b-b3f0-f880cbc37fc8">
+<name>Ariel_University</name>
+<description>MAC: 24:79:2a:2c:5c:18
+ Frequncy: 11
+ Signal: -77
+</description>
+<TimeStamp id="233d7373-787d-4f2c-bef6-e75bcfda46ad">
+<when>2017-11-09T14:55:11-00:01</when>
+</TimeStamp>
+<Point id="a4e6ed31-3f59-4f68-82ae-bd9df9345b83">
+<coordinates>35.210354948716,32.1039522417507</coordinates>
+</Point>
+</Placemark>
+<Placemark id="110486f6-d6fa-4d61-abeb-06b8c156b5aa">
+<name>Ariel_University</name>
+<description>MAC: 24:79:2a:2c:5b:d8
+ Frequncy: 1
+ Signal: -87
+</description>
+<TimeStamp id="b2e879ab-a8ce-440d-b2b4-126b9cf67be8">
+<when>2017-11-09T14:55:15-00:01</when>
+</TimeStamp>
+<Point id="5785bcbf-e154-4540-8324-022af00d655c">
+<coordinates>35.210284786092,32.1038816091871</coordinates>
+</Point>
+</Placemark>
+<Placemark id="4bb52539-eacf-46d9-b043-ff4ad0dd3542">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:06:b8
+ Frequncy: 1
+ Signal: -73
+</description>
+<TimeStamp id="dc0976a4-813d-488e-bcf6-e592e57619f5">
+<when>2017-11-09T14:55:19-00:01</when>
+</TimeStamp>
+<Point id="2d0db810-4c55-4d74-9294-3f088ea82a79">
+<coordinates>35.2102418799643,32.1038394100523</coordinates>
+</Point>
+</Placemark>
+<Placemark id="06bf4f00-fc3d-4e20-b5cc-63a5908f4a04">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:06:bc
+ Frequncy: 36
+ Signal: -70
+</description>
+<TimeStamp id="afc8f154-63e2-49ce-a600-5e1d8117ca93">
+<when>2017-11-09T14:55:22-00:01</when>
+</TimeStamp>
+<Point id="01130aff-0f2d-44e1-beba-b1413afde0f4">
+<coordinates>35.2102038130012,32.1038159691032</coordinates>
+</Point>
+</Placemark>
+<Placemark id="87dfc89a-c2b4-456e-8db5-57ada3de6b0c">
+<name>Ariel_University</name>
+<description>MAC: 24:79:2a:2c:5b:d8
+ Frequncy: 1
+ Signal: -81
+</description>
+<TimeStamp id="f6d6df28-238d-4097-9b87-cf2f2cd2068d">
+<when>2017-11-09T14:55:25-00:01</when>
+</TimeStamp>
+<Point id="3aad117d-fe8c-4e59-ad92-359b2ebe40e4">
+<coordinates>35.210175653497,32.1037973804647</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7ff1604d-5c68-4ce8-a738-fce30460ed65">
+<name>Onicom</name>
+<description>MAC: c0:4a:00:71:ee:ee
+ Frequncy: 9
+ Signal: -92
+</description>
+<TimeStamp id="b9e28174-90ca-4bae-904e-c3b50c7c28b7">
+<when>2017-11-09T14:55:29-00:01</when>
+</TimeStamp>
+<Point id="dfde02aa-b76b-450a-8fb9-22a7ba59243c">
+<coordinates>35.2101401581849,32.1037743959058</coordinates>
+</Point>
+</Placemark>
+<Placemark id="54289d7f-15aa-42d9-a80c-c75ba11b5431">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:06:b8
+ Frequncy: 1
+ Signal: -68
+</description>
+<TimeStamp id="18729c8e-1bc3-4e8d-bab6-f9df60a79e6f">
+<when>2017-11-09T14:55:31-00:01</when>
+</TimeStamp>
+<Point id="a92e29cf-2457-40ff-9440-056d9911b6f2">
+<coordinates>35.2101268827786,32.1037734140824</coordinates>
+</Point>
+</Placemark>
+<Placemark id="03507375-dddf-4e29-b75b-f45a708d71c1">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:88
+ Frequncy: 6
+ Signal: -90
+</description>
+<TimeStamp id="df6790e7-79e7-41de-a3d2-1f8f3cdfe3f8">
+<when>2017-11-09T14:55:33-00:01</when>
+</TimeStamp>
+<Point id="a01f1616-6457-4108-af39-54fee141e563">
+<coordinates>35.2101166134201,32.1037741003393</coordinates>
+</Point>
+</Placemark>
+<Placemark id="a9d6459c-1c8e-402d-b109-94cb9b5dedbf">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:e5:a8
+ Frequncy: 11
+ Signal: -92
+</description>
+<TimeStamp id="a854f8f8-4da7-4a07-a8e6-8d88f1065cbb">
+<when>2017-11-09T14:55:35-00:01</when>
+</TimeStamp>
+<Point id="37c0eb07-a465-4494-92a6-c145612f7560">
+<coordinates>35.2101101707401,32.1037713835476</coordinates>
+</Point>
+</Placemark>
+<Placemark id="04195ea8-8c42-4707-8652-1c5264e7e68e">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:fd:48
+ Frequncy: 1
+ Signal: -86
+</description>
+<TimeStamp id="f7bdd0ca-b6a5-4180-8ee4-b7744ae94437">
+<when>2017-11-09T14:55:37-00:01</when>
+</TimeStamp>
+<Point id="cb758beb-af4e-48fb-8fd7-c08236490c41">
+<coordinates>35.2100917427602,32.1037657088656</coordinates>
+</Point>
+</Placemark>
+<Placemark id="5010d20a-b178-494c-9a55-de98c2a918fd">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:fd:4c
+ Frequncy: 44
+ Signal: -89
+</description>
+<TimeStamp id="c14a7414-e85b-4c52-99d1-60a096adefe0">
+<when>2017-11-09T14:55:39-00:01</when>
+</TimeStamp>
+<Point id="597b4491-e717-49ab-830e-a1da9cdd37a7">
+<coordinates>35.2100781594308,32.1037532587538</coordinates>
+</Point>
+</Placemark>
+<Placemark id="49338dba-96a3-4424-8416-ab37bd2c7a06">
+<name></name>
+<description>MAC: 1c:b9:c4:96:06:b7
+ Frequncy: 36
+ Signal: -67
+</description>
+<TimeStamp id="a7adc604-ee8c-47ce-868c-76840e605cc3">
+<when>2017-11-09T14:55:41-00:01</when>
+</TimeStamp>
+<Point id="0099c931-abd4-4815-ace6-01d5394501dd">
+<coordinates>35.2100463976694,32.1037351743178</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e7d70ed0-eb41-477c-bf2b-ecc224ef3658">
+<name>DIRECT_51_HP_DeskJet_3630_series</name>
+<description>MAC: 3c:52:82:ef:d4:52
+ Frequncy: 6
+ Signal: -81
+</description>
+<TimeStamp id="88c61eea-acb3-4862-84ca-c0dbf40bad33">
+<when>2017-11-09T14:55:44-00:01</when>
+</TimeStamp>
+<Point id="761ce92b-c7d3-4f32-9661-ced50a481c57">
+<coordinates>35.2100247228105,32.1037214295056</coordinates>
+</Point>
+</Placemark>
+<Placemark id="3a442bf9-8ee8-4d19-a512-01169a0415ad">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:1c:bc
+ Frequncy: 36
+ Signal: -81
+</description>
+<TimeStamp id="53884b76-9059-48b9-8543-41e7e7c335b5">
+<when>2017-11-09T14:55:46-00:01</when>
+</TimeStamp>
+<Point id="1a51ea9a-8e7a-4603-91cb-a962ffec52e9">
+<coordinates>35.2100043834349,32.1037065018067</coordinates>
+</Point>
+</Placemark>
+<Placemark id="a1170b89-a706-452e-be31-c87da0d6ef44">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ed:48
+ Frequncy: 6
+ Signal: -82
+</description>
+<TimeStamp id="3fe0676f-a5a0-4df8-8f3e-d9674aa0a541">
+<when>2017-11-09T14:55:50-00:01</when>
+</TimeStamp>
+<Point id="e5785cfe-5217-4c8f-8df8-ad9ff6e9bbc5">
+<coordinates>35.2099674868845,32.103671422604</coordinates>
+</Point>
+</Placemark>
+<Placemark id="9ee5a579-03cf-4849-b724-e828272147c8">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:12:af:78
+ Frequncy: 11
+ Signal: -85
+</description>
+<TimeStamp id="4ef1c28c-5de7-4c41-9ed7-ca8a499f6855">
+<when>2017-11-09T14:55:52-00:01</when>
+</TimeStamp>
+<Point id="abedf0b5-b576-451f-97df-9cd0086ce98e">
+<coordinates>35.2099586011249,32.1036485938691</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e8e18726-8b06-4a1f-b07b-b30092120d0f">
+<name>KCG_ADSL</name>
+<description>MAC: 00:1d:aa:81:d8:3c
+ Frequncy: 3
+ Signal: -83
+</description>
+<TimeStamp id="db79d141-5167-43eb-9c38-9fa1ffb529bf">
+<when>2017-11-09T14:55:54-00:01</when>
+</TimeStamp>
+<Point id="1d15b06a-862b-4a31-bd1c-79a789473128">
+<coordinates>35.2099561295139,32.10363402634</coordinates>
+</Point>
+</Placemark>
+<Placemark id="245933c1-433c-49d9-b761-484b0e1bfc6f">
+<name></name>
+<description>MAC: 1c:b9:c4:95:fd:47
+ Frequncy: 44
+ Signal: -85
+</description>
+<TimeStamp id="4c3d7558-2f24-4129-84bc-fff402fb8af1">
+<when>2017-11-09T14:55:56-00:01</when>
+</TimeStamp>
+<Point id="369b6a56-93bb-442f-a906-e21ce655030e">
+<coordinates>35.2099417976152,32.1036065763058</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7c830a23-4e6f-48e4-b536-728503d60225">
+<name>IT_MNG</name>
+<description>MAC: 1c:b9:c4:15:ed:b8
+ Frequncy: 1
+ Signal: -82
+</description>
+<TimeStamp id="7022337e-71a5-4135-a10d-4889f974b601">
+<when>2017-11-09T14:55:58-00:01</when>
+</TimeStamp>
+<Point id="4bbaf713-1fd8-492b-a4b2-0a002e399c9f">
+<coordinates>35.209918575194,32.1035840463758</coordinates>
+</Point>
+</Placemark>
+<Placemark id="aa589479-eb69-48e1-8194-845e88275099">
+<name></name>
+<description>MAC: 1c:b9:c4:92:af:77
+ Frequncy: 40
+ Signal: -87
+</description>
+<TimeStamp id="0995e6c8-a9f2-4a83-8a82-600e8d99f038">
+<when>2017-11-09T14:56:00-00:01</when>
+</TimeStamp>
+<Point id="f83d7ae0-262a-4854-bc0c-0f610a797704">
+<coordinates>35.2099002189774,32.1035705974428</coordinates>
+</Point>
+</Placemark>
+<Placemark id="8f7ea252-059a-4218-8be1-6855c9172c9e">
+<name>KCG_ADSL</name>
+<description>MAC: 00:1d:aa:81:d8:3c
+ Frequncy: 3
+ Signal: -74
+</description>
+<TimeStamp id="b6513f54-0e0f-4768-93ca-6af758f9b82c">
+<when>2017-11-09T14:56:05-00:01</when>
+</TimeStamp>
+<Point id="d38c82af-8366-41f6-896a-1011108683d4">
+<coordinates>35.2098487084544,32.1035175210669</coordinates>
+</Point>
+</Placemark>
+<Placemark id="a90f2f1a-9f8e-4c86-803e-a8e68f381a64">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:f1:5c
+ Frequncy: 44
+ Signal: -80
+</description>
+<TimeStamp id="00e1a39d-61e1-4117-8614-95fc479bf5cd">
+<when>2017-11-09T14:56:09-00:01</when>
+</TimeStamp>
+<Point id="bb9b1ed3-3427-4a4d-a0c1-28cc07303b8c">
+<coordinates>35.2098192286717,32.1034750518456</coordinates>
+</Point>
+</Placemark>
+<Placemark id="0fcde32d-c2c9-4d55-bf04-63d8210e4ed9">
+<name>AUC_4_2_24</name>
+<description>MAC: d8:5d:4c:9e:69:22
+ Frequncy: 1
+ Signal: -84
+</description>
+<TimeStamp id="f5bc9da4-f51e-44c9-9ac6-1cc56d5ea0eb">
+<when>2017-11-09T14:56:13-00:01</when>
+</TimeStamp>
+<Point id="58c372e3-d2bc-4943-ab5f-d98310aca1ef">
+<coordinates>35.2097874848765,32.103422255729</coordinates>
+</Point>
+</Placemark>
+<Placemark id="67763709-132a-422a-90a5-952da2242307">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ed:3c
+ Frequncy: 44
+ Signal: -78
+</description>
+<TimeStamp id="5238fae5-9c49-496a-a435-60c33806b9e8">
+<when>2017-11-09T14:56:17-00:01</when>
+</TimeStamp>
+<Point id="4cdb5f9a-20b3-402c-9e3f-fb80d0ec453f">
+<coordinates>35.2097672767554,32.1033765676089</coordinates>
+</Point>
+</Placemark>
+<Placemark id="3b4e3802-746c-48ec-ae70-c8f579fa8c73">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:12:af:7c
+ Frequncy: 40
+ Signal: -82
+</description>
+<TimeStamp id="c51707c4-11ea-448b-ae0a-4e6acf2cea76">
+<when>2017-11-09T14:56:21-00:01</when>
+</TimeStamp>
+<Point id="4c1d13b2-983e-4f08-a40c-387735d974eb">
+<coordinates>35.2097563859341,32.1033362424355</coordinates>
+</Point>
+</Placemark>
+<Placemark id="87583737-1603-4206-bf58-3b86c2c4eaec">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:12:af:7c
+ Frequncy: 40
+ Signal: -77
+</description>
+<TimeStamp id="0b79828d-ce5f-4485-be3d-60de83c23b7c">
+<when>2017-11-09T14:56:25-00:01</when>
+</TimeStamp>
+<Point id="21da1c4e-bea3-4f43-b2e4-ca6645f72172">
+<coordinates>35.2097525254903,32.1032780765222</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6273d321-5bc1-4c74-8366-d9e69dd00eed">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:f4:7c
+ Frequncy: 36
+ Signal: -81
+</description>
+<TimeStamp id="b853f98d-726b-4802-9f00-cead6cb5e493">
+<when>2017-11-09T14:56:29-00:01</when>
+</TimeStamp>
+<Point id="b71ae7a8-19e6-454b-8d0f-1a54e9d6d5a0">
+<coordinates>35.2097490528454,32.1032374681411</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6083e96a-9d31-4aee-8a5e-ece52182956c">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:30:3c
+ Frequncy: 44
+ Signal: -83
+</description>
+<TimeStamp id="4a0eba0d-e033-421a-9fc8-e33ed599e38d">
+<when>2017-11-09T14:56:37-00:01</when>
+</TimeStamp>
+<Point id="48738fc3-f36e-4043-adb4-9d5b918d6985">
+<coordinates>35.2097316453601,32.1031813470321</coordinates>
+</Point>
+</Placemark>
+<Placemark id="adcce55c-0a65-4e48-8a3b-931172f9947e">
+<name></name>
+<description>MAC: 1c:b9:c4:92:af:77
+ Frequncy: 40
+ Signal: -80
+</description>
+<TimeStamp id="a9833aa5-d49f-4f11-93d2-caa448d0e8ec">
+<when>2017-11-09T14:56:40-00:01</when>
+</TimeStamp>
+<Point id="8c1997f8-5ad5-428f-b530-e117ab25f450">
+<coordinates>35.2097290851405,32.1031630187898</coordinates>
+</Point>
+</Placemark>
+<Placemark id="1da0f9fa-c25a-4ec3-bb93-b4dfef7ba4f8">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ed:3c
+ Frequncy: 44
+ Signal: -70
+</description>
+<TimeStamp id="788cc851-19f1-488c-9469-fdb9d44bb21e">
+<when>2017-11-09T14:56:44-00:01</when>
+</TimeStamp>
+<Point id="6303011d-bcd9-41a5-b329-e65207b90061">
+<coordinates>35.2097307707899,32.1031626700353</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e0e4a75f-b3e3-477d-b5d8-b85d27249500">
+<name>DIRECT_3B_HP_DeskJet_3630_series</name>
+<description>MAC: 3c:52:82:ef:c4:3c
+ Frequncy: 6
+ Signal: -86
+</description>
+<TimeStamp id="cb00bc13-08f5-463a-a22f-239fb843d344">
+<when>2017-11-09T14:57:00-00:01</when>
+</TimeStamp>
+<Point id="716ae1e8-ee61-4923-a232-5306d981854e">
+<coordinates>35.2097808527648,32.1029906875209</coordinates>
+</Point>
+</Placemark>
+<Placemark id="0ed51845-b7f7-4114-aa70-1f74b2a766dc">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:ec:3c
+ Frequncy: 36
+ Signal: -83
+</description>
+<TimeStamp id="21da2ef7-8a86-4839-9465-6d53974e9b5c">
+<when>2017-11-09T14:57:02-00:01</when>
+</TimeStamp>
+<Point id="da6f4138-6af6-425e-b410-b6eafed45bf4">
+<coordinates>35.2097791765356,32.1029680192282</coordinates>
+</Point>
+</Placemark>
+<Placemark id="fc2fd604-f6f2-4d7a-bed5-ff6f7bb105e3">
+<name></name>
+<description>MAC: 1c:b9:c4:96:ed:37
+ Frequncy: 44
+ Signal: -72
+</description>
+<TimeStamp id="2619139b-14c5-4e29-ad4f-396fb2b528ba">
+<when>2017-11-09T14:57:04-00:01</when>
+</TimeStamp>
+<Point id="5bd59331-1ff8-4e75-9c57-4cd58816b581">
+<coordinates>35.2097743694955,32.1029476602473</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d64375c7-dd7b-47a8-96b8-d1e9c944fd92">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:30:38
+ Frequncy: 1
+ Signal: -77
+</description>
+<TimeStamp id="99b30459-f94c-4550-82b1-ab4a8d38910b">
+<when>2017-11-09T14:57:06-00:01</when>
+</TimeStamp>
+<Point id="6c8133b5-c5c9-4ed9-acbf-ee0bc53e83d9">
+<coordinates>35.2097788028601,32.1029230770243</coordinates>
+</Point>
+</Placemark>
+<Placemark id="92e7375c-931d-4191-872c-d5282f4b6d78">
+<name>KCG_ADSL</name>
+<description>MAC: 00:1d:aa:81:d8:3c
+ Frequncy: 3
+ Signal: -68
+</description>
+<TimeStamp id="723eacd4-de7e-4162-9759-d51bc798ccc0">
+<when>2017-11-09T14:57:08-00:01</when>
+</TimeStamp>
+<Point id="b18eb2b8-d187-416e-be12-fb082846f083">
+<coordinates>35.2097921898907,32.1028930234207</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e867ce8f-201d-4dfe-916b-66bee1966716">
+<name>AUC</name>
+<description>MAC: 00:27:19:e8:ed:58
+ Frequncy: 9
+ Signal: -78
+</description>
+<TimeStamp id="e64a611c-d24d-43a7-9fec-d528b024613e">
+<when>2017-11-09T14:57:10-00:01</when>
+</TimeStamp>
+<Point id="28f215c9-a9cd-4293-a8a8-af1c789874a1">
+<coordinates>35.2097994660901,32.1028714056402</coordinates>
+</Point>
+</Placemark>
+<Placemark id="be6ed5c5-2321-4d57-8abf-a78b60276193">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ee:9c
+ Frequncy: 36
+ Signal: -83
+</description>
+<TimeStamp id="a7cbcdf6-bbc5-4c1a-9c92-77ebae42e5fb">
+<when>2017-11-09T14:57:16-00:01</when>
+</TimeStamp>
+<Point id="4ee58c2d-ce1e-4f64-9694-f718b8db1a8d">
+<coordinates>35.2098223753274,32.1028148031052</coordinates>
+</Point>
+</Placemark>
+<Placemark id="67376903-af06-4163-8331-b1958399c2b8">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ee:98
+ Frequncy: 6
+ Signal: -85
+</description>
+<TimeStamp id="6b7b6380-5a00-4eaf-8b88-229e0f352f89">
+<when>2017-11-09T14:57:18-00:01</when>
+</TimeStamp>
+<Point id="4c5e5a10-d49b-47ca-8dfd-41d39bdae307">
+<coordinates>35.2098251199267,32.1027948411465</coordinates>
+</Point>
+</Placemark>
+<Placemark id="597a54b1-25db-4181-b469-4e1c5004c749">
+<name>AUC</name>
+<description>MAC: 00:27:19:e8:ed:58
+ Frequncy: 9
+ Signal: -72
+</description>
+<TimeStamp id="9ab75150-5cc3-41a3-bf13-98324f6f80e5">
+<when>2017-11-09T14:57:22-00:01</when>
+</TimeStamp>
+<Point id="2ffa0563-1dab-46af-abcf-f1af3d38988d">
+<coordinates>35.2098321931438,32.1027757177199</coordinates>
+</Point>
+</Placemark>
+<Placemark id="0160c653-36f6-4030-8706-95f99569c675">
+<name>AUC</name>
+<description>MAC: 00:27:19:e8:ed:58
+ Frequncy: 9
+ Signal: -66
+</description>
+<TimeStamp id="f04a678f-7a56-4645-9756-5d73b93371ed">
+<when>2017-11-09T14:57:27-00:01</when>
+</TimeStamp>
+<Point id="f95fc569-ede2-4b3c-9d61-135c76db8b28">
+<coordinates>35.2098618079549,32.102730782732</coordinates>
+</Point>
+</Placemark>
+<Placemark id="53dd93a4-5903-4d06-b3b3-7216ea6e92f9">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:6c
+ Frequncy: 44
+ Signal: -85
+</description>
+<TimeStamp id="903b33aa-85d5-4129-8347-fbe70c45e28d">
+<when>2017-11-09T14:57:30-00:01</when>
+</TimeStamp>
+<Point id="77a670eb-ee2f-4076-9c06-8c164a097bf4">
+<coordinates>35.2098836153278,32.1026833099446</coordinates>
+</Point>
+</Placemark>
+<Placemark id="893638a0-194c-43d1-92e7-65ad407d2835">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:68
+ Frequncy: 6
+ Signal: -87
+</description>
+<TimeStamp id="e5b1cb76-89af-40b9-ba10-0289e78f7564">
+<when>2017-11-09T14:57:35-00:01</when>
+</TimeStamp>
+<Point id="6771107a-66f1-4d4e-a7d1-396479b77cff">
+<coordinates>35.2099221769222,32.1026129745676</coordinates>
+</Point>
+</Placemark>
+<Placemark id="40f46662-16b2-4773-b557-16b8063e1467">
+<name>AUC</name>
+<description>MAC: 00:27:19:e8:ed:58
+ Frequncy: 9
+ Signal: -61
+</description>
+<TimeStamp id="246eaf4b-0c83-4eaf-9373-658121f15b98">
+<when>2017-11-09T14:57:40-00:01</when>
+</TimeStamp>
+<Point id="e05d7928-ea9b-40d2-bc61-9d1ca99e5789">
+<coordinates>35.2099057533623,32.1026026219375</coordinates>
+</Point>
+</Placemark>
+<Placemark id="4d2e1cf1-0dc7-4e41-ab8c-1e08ab6c2151">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ee:9c
+ Frequncy: 36
+ Signal: -77
+</description>
+<TimeStamp id="e99e0469-0aea-4400-9b54-4a6fa7985211">
+<when>2017-11-09T14:57:43-00:01</when>
+</TimeStamp>
+<Point id="ef27be7e-5f9c-4ac7-9d1e-4ee05bee073d">
+<coordinates>35.2099122401219,32.1025584129057</coordinates>
+</Point>
+</Placemark>
+<Placemark id="99ba0eee-f5bc-480a-88ef-3ba4ba634554">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:ee:98
+ Frequncy: 6
+ Signal: -80
+</description>
+<TimeStamp id="db6c2db5-6144-45ac-b091-113ba62b47c7">
+<when>2017-11-09T14:57:47-00:01</when>
+</TimeStamp>
+<Point id="8da6aa79-0e7d-4f9e-b20a-4801915e02e4">
+<coordinates>35.209942205241,32.1025052255334</coordinates>
+</Point>
+</Placemark>
+<Placemark id="9b1866d9-1731-4384-9369-56461284cd46">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:1e:68
+ Frequncy: 1
+ Signal: -81
+</description>
+<TimeStamp id="d8d6b031-f442-4fa7-8a17-35fb16d87dec">
+<when>2017-11-09T14:57:50-00:01</when>
+</TimeStamp>
+<Point id="1622a2b2-5961-4f87-bbad-6eab370d8641">
+<coordinates>35.2099640685665,32.1024479597528</coordinates>
+</Point>
+</Placemark>
+<Placemark id="c1a42c13-f8f1-415e-ae2c-2ea67402c8f8">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3a:38
+ Frequncy: 11
+ Signal: -80
+</description>
+<TimeStamp id="5821b4b6-563a-48d3-b201-adfee9f0b8c8">
+<when>2017-11-09T14:57:54-00:01</when>
+</TimeStamp>
+<Point id="32e55f80-1d30-411a-bbc4-46e494ca5485">
+<coordinates>35.2100096903243,32.1024162269479</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7fd76248-123e-46bd-a4fb-b2442112ab6a">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:04:78
+ Frequncy: 11
+ Signal: -93
+</description>
+<TimeStamp id="3ea5ace5-ecb3-4df7-9fe0-ad5b21087589">
+<when>2017-11-09T14:58:25-00:01</when>
+</TimeStamp>
+<Point id="0e7e486b-c45e-46a4-9563-f19b410bdba9">
+<coordinates>35.2099742046483,32.1020918671377</coordinates>
+</Point>
+</Placemark>
+<Placemark id="77f40ada-5e72-4a65-8190-cb0d7d5ac5ad">
+<name>Coolnet_Hotspot</name>
+<description>MAC: 00:18:25:12:72:f0
+ Frequncy: 6
+ Signal: -94
+</description>
+<TimeStamp id="7941b5c8-1c8a-4a33-ae95-98a244fb8488">
+<when>2017-11-09T14:58:28-00:01</when>
+</TimeStamp>
+<Point id="6a2fe05f-1b6d-4667-a09c-7345ac77ab08">
+<coordinates>35.2099416659407,32.1020675210478</coordinates>
+</Point>
+</Placemark>
+<Placemark id="c058b5e5-286a-46e8-99bf-b14c0b4f1732">
+<name></name>
+<description>MAC: 1c:b9:c4:95:ed:77
+ Frequncy: 60
+ Signal: -79
+</description>
+<TimeStamp id="b83f392a-d7ea-492a-87fd-5e7393fa91ef">
+<when>2017-11-09T14:58:32-00:01</when>
+</TimeStamp>
+<Point id="3325c8e9-d843-4e5f-8ce9-552456a9885d">
+<coordinates>35.2098974207389,32.1020315359106</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6905d80d-b2fa-4aa3-aca1-f716b1f944c3">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:5c
+ Frequncy: 36
+ Signal: -86
+</description>
+<TimeStamp id="bc707ed1-34b4-4c2e-9353-c697bf67797e">
+<when>2017-11-09T14:58:36-00:01</when>
+</TimeStamp>
+<Point id="340ee3cb-b712-4689-9e79-03d97c06404c">
+<coordinates>35.2098706906049,32.1020226054513</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d1b2e3cc-741f-4b04-8501-ac66b39324a1">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:04:7c
+ Frequncy: 36
+ Signal: -82
+</description>
+<TimeStamp id="c5fedc23-9ad8-47dc-a6a0-e0634d29b1ba">
+<when>2017-11-09T14:58:40-00:01</when>
+</TimeStamp>
+<Point id="d7149d30-9b57-444b-b9f7-e866ee1f8adb">
+<coordinates>35.2098448245616,32.1020072209642</coordinates>
+</Point>
+</Placemark>
+<Placemark id="0cdae7eb-db30-4d7b-b4e8-3207c8eacdab">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:58
+ Frequncy: 11
+ Signal: -78
+</description>
+<TimeStamp id="a22fd880-4055-4567-8dd2-19ee26f80f55">
+<when>2017-11-09T14:58:44-00:01</when>
+</TimeStamp>
+<Point id="25fb47e9-2b10-4203-bfff-36f80c4f58da">
+<coordinates>35.2097975968175,32.1019955329817</coordinates>
+</Point>
+</Placemark>
+<Placemark id="b6e5e836-b887-4275-ba60-a172a4d1490c">
+<name></name>
+<description>MAC: 1c:b9:c4:96:04:77
+ Frequncy: 36
+ Signal: -78
+</description>
+<TimeStamp id="a822aef8-de89-4579-8d2f-133924eb953b">
+<when>2017-11-09T14:58:49-00:01</when>
+</TimeStamp>
+<Point id="a0bdfe4e-2e5c-49d3-b40a-f174e10137d2">
+<coordinates>35.2097129418016,32.1019773295001</coordinates>
+</Point>
+</Placemark>
+<Placemark id="872ad8a7-7287-4853-8624-e734235700a0">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:1b:88
+ Frequncy: 11
+ Signal: -87
+</description>
+<TimeStamp id="a5dfae0c-3add-4bc9-90bf-0bd95fdc1f1c">
+<when>2017-11-09T14:58:52-00:01</when>
+</TimeStamp>
+<Point id="965ba4ac-e37c-4605-b220-d1deb5e18ba0">
+<coordinates>35.2096700926504,32.101978059291</coordinates>
+</Point>
+</Placemark>
+<Placemark id="baa86f92-7864-4320-9ea2-db68a69d1a73">
+<name>lab_6_1_3</name>
+<description>MAC: c4:12:f5:f6:a0:18
+ Frequncy: 3
+ Signal: -86
+</description>
+<TimeStamp id="c5bd5e84-8000-4a86-a2c7-9d84514606ff">
+<when>2017-11-09T14:58:56-00:01</when>
+</TimeStamp>
+<Point id="d60b2687-04e0-4922-843e-3528b84dc94b">
+<coordinates>35.2096021701562,32.10200602859</coordinates>
+</Point>
+</Placemark>
+<Placemark id="64a6b09b-cfee-40a5-b908-e34121bb0333">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:58
+ Frequncy: 11
+ Signal: -73
+</description>
+<TimeStamp id="3abe2f9d-5590-486c-be43-3f94a93e1a12">
+<when>2017-11-09T14:59:00-00:01</when>
+</TimeStamp>
+<Point id="9272322c-08c3-47d2-abd2-d7f1cbafad9d">
+<coordinates>35.209556466104,32.1020246666633</coordinates>
+</Point>
+</Placemark>
+<Placemark id="07170950-f311-4a67-aa93-038495a7cbbf">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:58
+ Frequncy: 11
+ Signal: -67
+</description>
+<TimeStamp id="d624004e-df4c-4bff-9982-ca86ec49c233">
+<when>2017-11-09T14:59:04-00:01</when>
+</TimeStamp>
+<Point id="89758936-1a09-436f-9f44-2e3e6784f9eb">
+<coordinates>35.2095001969305,32.1020540855363</coordinates>
+</Point>
+</Placemark>
+<Placemark id="5b387b8b-77c4-4f58-97e7-7e1bfd84abaa">
+<name>DIRECT_F4_HP_DeskJet_3630_series</name>
+<description>MAC: a0:8c:fd:0a:d5:f5
+ Frequncy: 6
+ Signal: -76
+</description>
+<TimeStamp id="885a8789-46da-484c-bca7-f96d30dea7fc">
+<when>2017-11-09T14:59:08-00:01</when>
+</TimeStamp>
+<Point id="7f53e35d-9e68-4e26-a9cd-7f8603398b23">
+<coordinates>35.209475783387,32.1020880500946</coordinates>
+</Point>
+</Placemark>
+<Placemark id="23ab39de-e608-4d9b-a3a3-c55e7a28659a">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:04:7c
+ Frequncy: 36
+ Signal: -72
+</description>
+<TimeStamp id="63cb3108-a85f-4697-a0ca-1abfac105dec">
+<when>2017-11-09T14:59:11-00:01</when>
+</TimeStamp>
+<Point id="7589b3aa-d4dc-4629-a556-e7245d516a8b">
+<coordinates>35.209444295945,32.1021036904661</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7adaf704-4bce-4c43-afc1-3aed293b0a19">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:3d:5c
+ Frequncy: 36
+ Signal: -70
+</description>
+<TimeStamp id="cea47945-1ed2-40ac-9029-29c6c8064e0b">
+<when>2017-11-09T14:59:14-00:01</when>
+</TimeStamp>
+<Point id="68dd9de1-6078-468a-a59e-8919439e1d46">
+<coordinates>35.209408518048,32.1021157764523</coordinates>
+</Point>
+</Placemark>
+<Placemark id="544de7a0-e196-4121-8345-1f36658068f5">
+<name></name>
+<description>MAC: 1c:b9:c4:96:f1:97
+ Frequncy: 60
+ Signal: -80
+</description>
+<TimeStamp id="cfeec2dd-6617-4d27-aa04-6e216ed6d78b">
+<when>2017-11-09T14:59:16-00:01</when>
+</TimeStamp>
+<Point id="afb97e6c-7a2a-4dc9-aa1a-9f888e0e3865">
+<coordinates>35.2093886633279,32.1021225451101</coordinates>
+</Point>
+</Placemark>
+<Placemark id="747b0009-efde-4474-845a-f0b396a7a359">
+<name>DIRECT_55_HP_DeskJet_3630_series</name>
+<description>MAC: 3c:52:82:ef:d4:56
+ Frequncy: 6
+ Signal: -76
+</description>
+<TimeStamp id="fa35467c-b1f4-4a74-a2a3-3a64bcc041c6">
+<when>2017-11-09T14:59:18-00:01</when>
+</TimeStamp>
+<Point id="451de55f-3bf4-4231-8df2-9f066bbcfc64">
+<coordinates>35.2093758294405,32.102125640395</coordinates>
+</Point>
+</Placemark>
+<Placemark id="507787fc-343b-4ea8-bec4-81204b13a23c">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:d8
+ Frequncy: 1
+ Signal: -84
+</description>
+<TimeStamp id="8c6fc905-dff6-4239-850c-aa33a7101fe8">
+<when>2017-11-09T14:59:20-00:01</when>
+</TimeStamp>
+<Point id="224babae-2a8c-4744-8a64-81c52b491474">
+<coordinates>35.2093483546287,32.1021268475595</coordinates>
+</Point>
+</Placemark>
+<Placemark id="20650b09-4943-4fb2-a167-d95cbea67f40">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:28:f8
+ Frequncy: 6
+ Signal: -89
+</description>
+<TimeStamp id="5116521c-9ebf-4095-b77d-b681219d99c5">
+<when>2017-11-09T14:59:22-00:01</when>
+</TimeStamp>
+<Point id="0783f2d6-5ca8-42f3-948b-2b1707f01dc4">
+<coordinates>35.2093285405195,32.1021242307835</coordinates>
+</Point>
+</Placemark>
+<Placemark id="cd6b3ce8-c516-41dc-b639-23de863cfe7b">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:d8
+ Frequncy: 1
+ Signal: -79
+</description>
+<TimeStamp id="e65ccae3-8fd2-4315-80f4-810a8bb880c2">
+<when>2017-11-09T14:59:25-00:01</when>
+</TimeStamp>
+<Point id="1f60934c-7855-4d47-a0c1-aee2bc31ccd6">
+<coordinates>35.2092805846919,32.1021332702278</coordinates>
+</Point>
+</Placemark>
+<Placemark id="b90e9947-0928-4f0a-ba8b-720cf36ae623">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:d8
+ Frequncy: 1
+ Signal: -74
+</description>
+<TimeStamp id="aa69d3da-7f14-4587-908b-d7b07dad701a">
+<when>2017-11-09T14:59:28-00:01</when>
+</TimeStamp>
+<Point id="77208ffd-1d54-42bb-b92a-e7b5576797b7">
+<coordinates>35.209257656882,32.1021381856494</coordinates>
+</Point>
+</Placemark>
+<Placemark id="8b69b29a-0007-45d3-8079-f754e0ba8be2">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:d8
+ Frequncy: 1
+ Signal: -66
+</description>
+<TimeStamp id="bd36e697-6109-4ce0-8e7a-747a736b3c2b">
+<when>2017-11-09T14:59:31-00:01</when>
+</TimeStamp>
+<Point id="5d5263a5-f27f-4b63-a572-b6a840362b40">
+<coordinates>35.209254194627,32.1021503952569</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6e364e39-f06c-4821-898b-652222d7ba7a">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:dc
+ Frequncy: 36
+ Signal: -69
+</description>
+<TimeStamp id="3ba50a07-5fdf-43a6-924c-9e5886acc8a3">
+<when>2017-11-09T14:59:35-00:01</when>
+</TimeStamp>
+<Point id="29db1035-c114-45fb-a823-e6513d00d251">
+<coordinates>35.2092190820786,32.10218511437</coordinates>
+</Point>
+</Placemark>
+<Placemark id="5eb69f8d-8d16-4086-ad01-3ebd8109973e">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:dc
+ Frequncy: 36
+ Signal: -63
+</description>
+<TimeStamp id="bdab5f00-67a5-40fb-a9dd-45b1a0ac83ee">
+<when>2017-11-09T14:59:37-00:01</when>
+</TimeStamp>
+<Point id="ddf378e1-3a1a-4eff-bd4f-908e1806392c">
+<coordinates>35.2092053326679,32.1021908007631</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e977c553-18e6-4f55-b33c-f259c47f9243">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:dc
+ Frequncy: 36
+ Signal: -56
+</description>
+<TimeStamp id="7c963fe0-881a-420e-9b49-2e44d1075cd9">
+<when>2017-11-09T14:59:39-00:01</when>
+</TimeStamp>
+<Point id="bdddac6e-d74e-4766-9baa-2ff4c746828e">
+<coordinates>35.2091903774312,32.1022036817047</coordinates>
+</Point>
+</Placemark>
+<Placemark id="c99b9b6d-e2e7-40ce-b351-fe1f66e6470f">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:33:c8
+ Frequncy: 11
+ Signal: -81
+</description>
+<TimeStamp id="6613cabd-979d-4215-bda4-92bce2d3de62">
+<when>2017-11-09T14:59:42-00:01</when>
+</TimeStamp>
+<Point id="419d8e5c-7a26-43ac-bc64-4b754b9ef551">
+<coordinates>35.209160422318,32.10222354176</coordinates>
+</Point>
+</Placemark>
+<Placemark id="93e64478-7571-4f3c-996e-63993d84b670">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:33:cc
+ Frequncy: 36
+ Signal: -84
+</description>
+<TimeStamp id="008bf7b6-bf9e-4058-9482-5322db164f93">
+<when>2017-11-09T14:59:44-00:01</when>
+</TimeStamp>
+<Point id="b9344ce6-d988-4ce2-9c7a-3edbfb56d0a1">
+<coordinates>35.2091366393971,32.1022439992105</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e63aa2ba-21e0-493d-94ef-91d27ec24bdc">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:43:e8
+ Frequncy: 1
+ Signal: -82
+</description>
+<TimeStamp id="1fbc2b89-a250-48de-ad89-b53f33d43306">
+<when>2017-11-09T14:59:46-00:01</when>
+</TimeStamp>
+<Point id="ba2528fa-192b-458d-9ce7-5f25d5d97fc1">
+<coordinates>35.2091161239778,32.1022631296987</coordinates>
+</Point>
+</Placemark>
+<Placemark id="357d9017-9391-4a15-9997-56c9fe4922d0">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:f1:48
+ Frequncy: 1
+ Signal: -74
+</description>
+<TimeStamp id="ec4ca63c-4dcf-4f33-86e5-d1a13a4ad64f">
+<when>2017-11-09T14:59:50-00:01</when>
+</TimeStamp>
+<Point id="f6133e11-964a-4c05-81b8-01246406ae2e">
+<coordinates>35.2090766143754,32.1022817558189</coordinates>
+</Point>
+</Placemark>
+<Placemark id="58db0a61-590d-4519-8813-3e257d48c502">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:28:f8
+ Frequncy: 6
+ Signal: -76
+</description>
+<TimeStamp id="2e04dc61-1116-4fbf-b15f-6585322785ec">
+<when>2017-11-09T14:59:52-00:01</when>
+</TimeStamp>
+<Point id="b9825f1c-cd7d-4592-b2b8-e42dff701a8f">
+<coordinates>35.2090688546496,32.1022897717001</coordinates>
+</Point>
+</Placemark>
+<Placemark id="35818604-b1ba-4fb3-a8b6-867d2c3346dc">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:28:fc
+ Frequncy: 36
+ Signal: -75
+</description>
+<TimeStamp id="6a9703d8-aeb1-4521-9829-eda2ddc69737">
+<when>2017-11-09T14:59:54-00:01</when>
+</TimeStamp>
+<Point id="cd0a6cdd-8606-4bcd-865b-6c420f901940">
+<coordinates>35.2090690847032,32.1022921485299</coordinates>
+</Point>
+</Placemark>
+<Placemark id="4abc2f22-d6a7-43cc-a0ad-a8484c4ad864">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:43:e8
+ Frequncy: 1
+ Signal: -75
+</description>
+<TimeStamp id="728f5699-5a63-4fcc-a185-a6ff008e5085">
+<when>2017-11-09T15:00:02-00:01</when>
+</TimeStamp>
+<Point id="f86e970c-87bd-4b44-9552-eaee9cb99527">
+<coordinates>35.2090762020174,32.1023051010447</coordinates>
+</Point>
+</Placemark>
+<Placemark id="252e5eb6-4089-4cd8-a3e0-020e03feec1e">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2c:18
+ Frequncy: 1
+ Signal: -81
+</description>
+<TimeStamp id="cdbdb05c-6c12-4ff1-9cfe-8ee652bdbe77">
+<when>2017-11-09T15:00:10-00:01</when>
+</TimeStamp>
+<Point id="aa16dc52-6c85-4275-bff8-cf27731084e0">
+<coordinates>35.2090564433806,32.1022886088687</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d8a3b5d8-a6a0-4530-8443-b851df8d43ee">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:f4:78
+ Frequncy: 1
+ Signal: -80
+</description>
+<TimeStamp id="a34d2e1f-779f-49d3-8b93-16753f00abbe">
+<when>2017-11-09T15:00:16-00:01</when>
+</TimeStamp>
+<Point id="9162a75e-0657-4733-8f14-8039f393c0a9">
+<coordinates>35.209038610949,32.1022750671996</coordinates>
+</Point>
+</Placemark>
+<Placemark id="94956478-4b65-4a3a-a0dc-e7056fc91206">
+<name></name>
+<description>MAC: 1c:b9:c4:96:f1:47
+ Frequncy: 36
+ Signal: -83
+</description>
+<TimeStamp id="2770b6e0-5e42-4f5f-95d0-7c4408fc922e">
+<when>2017-11-09T15:00:25-00:01</when>
+</TimeStamp>
+<Point id="6e2343d8-6254-4965-8e01-c9d894af2f58">
+<coordinates>35.2090008130515,32.102261434969</coordinates>
+</Point>
+</Placemark>
+<Placemark id="97f30591-9595-4e7d-8876-8a1536eb0f9d">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2f:68
+ Frequncy: 6
+ Signal: -76
+</description>
+<TimeStamp id="310b0de1-3f9f-4a1f-a320-dc64aaa55c78">
+<when>2017-11-09T15:00:32-00:01</when>
+</TimeStamp>
+<Point id="e30400ce-c7b9-492b-a9ed-77efc615f4d7">
+<coordinates>35.2089096085345,32.1023353986259</coordinates>
+</Point>
+</Placemark>
+<Placemark id="714eb487-e07e-4cef-bde5-abdd0a375898">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:b1:78
+ Frequncy: 1
+ Signal: -69
+</description>
+<TimeStamp id="131148eb-0cb2-4ba7-9e48-31bc0e930c0b">
+<when>2017-11-09T15:00:36-00:01</when>
+</TimeStamp>
+<Point id="9889dbe8-62a4-45aa-9a03-aa53b9cf8b21">
+<coordinates>35.2088829496874,32.1023798406882</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6f1ace08-26bc-4772-b49f-41873d8da401">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2f:68
+ Frequncy: 6
+ Signal: -69
+</description>
+<TimeStamp id="afb8c35e-773e-43c7-ac31-47c1954d3d9c">
+<when>2017-11-09T15:00:41-00:01</when>
+</TimeStamp>
+<Point id="d243995d-62e7-4635-be07-09c2ada48adb">
+<coordinates>35.2088766567503,32.1024222918326</coordinates>
+</Point>
+</Placemark>
+<Placemark id="1ee62624-3e9c-4c67-8f5f-21602f0cfd1d">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:33:cc
+ Frequncy: 36
+ Signal: -77
+</description>
+<TimeStamp id="bc15e76a-1cb3-46d5-9e58-a024fd175b3c">
+<when>2017-11-09T15:00:44-00:01</when>
+</TimeStamp>
+<Point id="e44797ea-a653-461b-8c15-211b8761d5f2">
+<coordinates>35.208865194859,32.1024665595723</coordinates>
+</Point>
+</Placemark>
+<Placemark id="3b6afc1e-7dc6-4820-83c2-7f7dcf086d9f">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2f:6c
+ Frequncy: 36
+ Signal: -66
+</description>
+<TimeStamp id="a3d7a6df-8593-44a2-9308-7b98292afdd4">
+<when>2017-11-09T15:00:49-00:01</when>
+</TimeStamp>
+<Point id="aa7f1e9f-ce40-4d16-8a86-7b15f7bd41b6">
+<coordinates>35.2088655766276,32.1025418529198</coordinates>
+</Point>
+</Placemark>
+<Placemark id="2438400b-ef9e-49e0-8f1c-5cf3c2d336c6">
+<name></name>
+<description>MAC: 1c:b9:c4:94:2f:67
+ Frequncy: 36
+ Signal: -63
+</description>
+<TimeStamp id="fe55b78c-3e77-4514-aff2-fc4dfcb9a728">
+<when>2017-11-09T15:00:53-00:01</when>
+</TimeStamp>
+<Point id="09ab5bb2-a036-41d5-b85f-266ed3288ebf">
+<coordinates>35.2088631932977,32.1025678241955</coordinates>
+</Point>
+</Placemark>
+<Placemark id="ef8ccbc8-6864-4759-93ec-73f4bf3efa18">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2f:68
+ Frequncy: 6
+ Signal: -60
+</description>
+<TimeStamp id="7ad90a7b-b65b-4945-8122-e21a12375bcc">
+<when>2017-11-09T15:00:57-00:01</when>
+</TimeStamp>
+<Point id="003df3cc-0b35-4f46-9ac6-e3abe9f8c9fd">
+<coordinates>35.2088762269408,32.1025991485496</coordinates>
+</Point>
+</Placemark>
+<Placemark id="e84ed680-9ea9-4eba-bb05-3d251f4c4dfe">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:28:f8
+ Frequncy: 6
+ Signal: -71
+</description>
+<TimeStamp id="d15c6d4e-4073-4ee6-85b2-8333ca32f000">
+<when>2017-11-09T15:01:01-00:01</when>
+</TimeStamp>
+<Point id="53061c57-5272-4d4d-a995-5edc5818e900">
+<coordinates>35.2088846460383,32.102623566033</coordinates>
+</Point>
+</Placemark>
+<Placemark id="2dfa5b9b-8c62-47f1-8d0a-11998afbd393">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:d2:88
+ Frequncy: 11
+ Signal: -86
+</description>
+<TimeStamp id="8a279400-4b10-4e4b-afa8-313bc64f5546">
+<when>2017-11-09T15:01:04-00:01</when>
+</TimeStamp>
+<Point id="e2d1dd2e-610d-4085-b7ec-446459eb2a9c">
+<coordinates>35.2088855274367,32.102640755027</coordinates>
+</Point>
+</Placemark>
+<Placemark id="99c5e501-dc3d-4988-a2c6-143b09c05c9d">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:d2:8c
+ Frequncy: 44
+ Signal: -82
+</description>
+<TimeStamp id="800f0799-f584-4031-81d5-10575b3b2470">
+<when>2017-11-09T15:01:09-00:01</when>
+</TimeStamp>
+<Point id="92e40225-e4a9-44f0-a38e-3c30c6ec43dd">
+<coordinates>35.2089108756549,32.1026605029744</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7342061f-c65a-422d-b20e-4abf4014cb74">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:08:78:c8
+ Frequncy: 6
+ Signal: -82
+</description>
+<TimeStamp id="67940d23-8f32-4bbc-9ea4-bb5b37d4020d">
+<when>2017-11-09T15:01:13-00:01</when>
+</TimeStamp>
+<Point id="331b7999-d978-469c-aa09-6865afcc5a30">
+<coordinates>35.2089199237736,32.1026627040655</coordinates>
+</Point>
+</Placemark>
+<Placemark id="558459f3-2b86-47ee-b932-089c4e49df11">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:12:7c:c8
+ Frequncy: 11
+ Signal: -62
+</description>
+<TimeStamp id="940c1fa0-32fe-45dc-bb5a-7a43990ca289">
+<when>2017-11-09T15:02:06-00:01</when>
+</TimeStamp>
+<Point id="3dc4dbe4-5997-48da-bbe4-6e0f43093fee">
+<coordinates>35.2089353807238,32.1031216738586</coordinates>
+</Point>
+</Placemark>
+<Placemark id="b061c2a8-46be-4484-8970-1d73a7c484e5">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:08:94:1c
+ Frequncy: 40
+ Signal: -64
+</description>
+<TimeStamp id="3b5960c4-5f9a-4b14-8169-73ab2290b013">
+<when>2017-11-09T15:02:10-00:01</when>
+</TimeStamp>
+<Point id="3e5e8347-55d8-45c4-bc57-edcaa0200fd7">
+<coordinates>35.2089037341537,32.1031616578263</coordinates>
+</Point>
+</Placemark>
+<Placemark id="79c48dcb-ff66-457a-8c46-24b1670c9f23">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:08:94:18
+ Frequncy: 1
+ Signal: -60
+</description>
+<TimeStamp id="57eeeb6a-1d2b-4e47-ad2e-2442a45b0066">
+<when>2017-11-09T15:02:14-00:01</when>
+</TimeStamp>
+<Point id="c542c103-ca6d-4f6e-82f0-98fc02bebc76">
+<coordinates>35.2088582226069,32.1031959568681</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7045f29a-129f-4691-b26a-1c7de6e8c636">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:08:94:1c
+ Frequncy: 40
+ Signal: -54
+</description>
+<TimeStamp id="398c8643-1c59-4bca-bef9-a440b307a894">
+<when>2017-11-09T15:02:18-00:01</when>
+</TimeStamp>
+<Point id="7ce73eeb-bdf8-4ac4-96d3-9208493c672f">
+<coordinates>35.2088431346023,32.1032309035096</coordinates>
+</Point>
+</Placemark>
+<Placemark id="300c89ae-6717-45ae-981a-f7e8babda6cb">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:12:7c:cc
+ Frequncy: 36
+ Signal: -70
+</description>
+<TimeStamp id="7d52a12f-93de-4397-b379-61ec7947411b">
+<when>2017-11-09T15:02:20-00:01</when>
+</TimeStamp>
+<Point id="cddd6369-7827-4c4b-a5d6-6f54046d8128">
+<coordinates>35.2088539722196,32.1032545353241</coordinates>
+</Point>
+</Placemark>
+<Placemark id="524540a5-9941-4e09-a2ae-de2b8007cb37">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:13:08
+ Frequncy: 11
+ Signal: -88
+</description>
+<TimeStamp id="846ea041-850c-4c10-bda2-2b30335cc917">
+<when>2017-11-09T15:02:24-00:01</when>
+</TimeStamp>
+<Point id="e6d7bafd-8615-4628-8080-9271109f40be">
+<coordinates>35.2088755822512,32.1032939050876</coordinates>
+</Point>
+</Placemark>
+<Placemark id="cbd23609-e40d-4943-aede-29f6b1cc4755">
+<name></name>
+<description>MAC: 1c:b9:c4:92:7c:c7
+ Frequncy: 36
+ Signal: -77
+</description>
+<TimeStamp id="c7e21193-aae3-4658-90b7-5c5ea7ebbd75">
+<when>2017-11-09T15:02:26-00:01</when>
+</TimeStamp>
+<Point id="473ca7cc-d542-4d25-83d2-15e07581e79b">
+<coordinates>35.2088910205922,32.1033126765464</coordinates>
+</Point>
+</Placemark>
+<Placemark id="afd2e513-ea37-444a-b7ca-c4e47b867774">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:13:0c
+ Frequncy: 44
+ Signal: -83
+</description>
+<TimeStamp id="4c036ab2-3c59-416c-94d1-a91cef22a4d7">
+<when>2017-11-09T15:02:34-00:01</when>
+</TimeStamp>
+<Point id="b3ff128b-7740-4c7d-a9a7-fdae50daa90b">
+<coordinates>35.2089349543187,32.1033754205064</coordinates>
+</Point>
+</Placemark>
+<Placemark id="60f626a4-c4a3-499d-a93b-32fd7687085a">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:28:e8
+ Frequncy: 1
+ Signal: -81
+</description>
+<TimeStamp id="b34ae382-2939-4052-858d-2f5c345cf2d7">
+<when>2017-11-09T15:02:36-00:01</when>
+</TimeStamp>
+<Point id="e051c28c-da5f-42c2-acb8-24852524013b">
+<coordinates>35.208941582171,32.1033998229123</coordinates>
+</Point>
+</Placemark>
+<Placemark id="4f4e8fd4-6679-4deb-9569-acf2ccd98af5">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:08:78:cc
+ Frequncy: 40
+ Signal: -73
+</description>
+<TimeStamp id="dfabc36c-d454-4d55-bda5-b67e00d26f6e">
+<when>2017-11-09T15:02:41-00:01</when>
+</TimeStamp>
+<Point id="50d93479-8018-4232-a154-bbf08a84f418">
+<coordinates>35.2089900907232,32.1034409674777</coordinates>
+</Point>
+</Placemark>
+<Placemark id="01084646-9129-43a0-a92b-40597d16c166">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:08:78:cc
+ Frequncy: 40
+ Signal: -67
+</description>
+<TimeStamp id="64aebde1-42b5-4be8-9a07-6882766d2f90">
+<when>2017-11-09T15:02:45-00:01</when>
+</TimeStamp>
+<Point id="d2f12d88-0027-4fa5-9b9e-955ccca71feb">
+<coordinates>35.2090203132095,32.1034689464428</coordinates>
+</Point>
+</Placemark>
+<Placemark id="285b6fff-65e6-467f-b1bf-c556cbd7552f">
+<name></name>
+<description>MAC: ec:8c:a2:88:78:c7
+ Frequncy: 40
+ Signal: -71
+</description>
+<TimeStamp id="29bc8ed5-cc0e-40ad-9457-184e8ae6cd48">
+<when>2017-11-09T15:02:49-00:01</when>
+</TimeStamp>
+<Point id="b80eb6e8-aa25-4dda-a3b8-9bbf8f215c44">
+<coordinates>35.2090352084413,32.1035225728117</coordinates>
+</Point>
+</Placemark>
+<Placemark id="63fbfa16-2f1f-4985-b3b6-4fadb0a3f055">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:b0:e8
+ Frequncy: 6
+ Signal: -87
+</description>
+<TimeStamp id="092cea57-ce95-458e-8a01-a6fac2715d53">
+<when>2017-11-09T15:02:53-00:01</when>
+</TimeStamp>
+<Point id="d08f55e3-68c5-4b38-aca9-b9a0b59e6cf1">
+<coordinates>35.2090563455126,32.1035723310816</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6f2926e4-80b3-4eba-9074-1806bd40bb95">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:d3:68
+ Frequncy: 1
+ Signal: -84
+</description>
+<TimeStamp id="47e1b03f-3005-4d7f-8d1d-ae58f94ad89c">
+<when>2017-11-09T15:02:56-00:01</when>
+</TimeStamp>
+<Point id="422199a0-479d-4642-9ae5-f434255cdb91">
+<coordinates>35.2090663275211,32.1035793991811</coordinates>
+</Point>
+</Placemark>
+<Placemark id="25782502-f683-4ea1-ac57-3efe1b35bb92">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:28:e8
+ Frequncy: 1
+ Signal: -75
+</description>
+<TimeStamp id="ed6f43dd-e4b3-4874-841c-7208a9c55a31">
+<when>2017-11-09T15:02:58-00:01</when>
+</TimeStamp>
+<Point id="3e9e51a3-517b-4391-85ce-93d4ee73decb">
+<coordinates>35.2090720264185,32.1035992034404</coordinates>
+</Point>
+</Placemark>
+<Placemark id="90447661-e9af-42f8-bef4-879b32593abd">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:b0:e8
+ Frequncy: 6
+ Signal: -76
+</description>
+<TimeStamp id="0ec8d3e6-8cbb-4310-b747-b862924049ec">
+<when>2017-11-09T15:03:19-00:01</when>
+</TimeStamp>
+<Point id="b3314fc2-fa9d-43eb-8801-06a26d911d32">
+<coordinates>35.2091471162383,32.1037627450851</coordinates>
+</Point>
+</Placemark>
+<Placemark id="4aff7898-4eb5-4271-9fd2-ba68a08c6c5a">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:d3:68
+ Frequncy: 1
+ Signal: -71
+</description>
+<TimeStamp id="e9bf17f9-fb4c-405c-bfa6-cbbded2a2ca1">
+<when>2017-11-09T15:03:23-00:01</when>
+</TimeStamp>
+<Point id="c7685d96-3a7f-4272-bc51-969f7b40bae0">
+<coordinates>35.2091837508924,32.1038112892609</coordinates>
+</Point>
+</Placemark>
+<Placemark id="daaad7fa-d2c6-4d32-92cc-7fcf1854f9e9">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:d3:68
+ Frequncy: 1
+ Signal: -65
+</description>
+<TimeStamp id="24c5c2b1-1281-4ed9-8227-ba3b06ded61e">
+<when>2017-11-09T15:03:27-00:01</when>
+</TimeStamp>
+<Point id="51e2e0b9-ece5-41dc-ae90-268289f576ea">
+<coordinates>35.2092391682132,32.1038548480245</coordinates>
+</Point>
+</Placemark>
+<Placemark id="51c5d584-2fae-4c8a-8f4f-820c1592fde5">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:cc:dc
+ Frequncy: 36
+ Signal: -71
+</description>
+<TimeStamp id="bb24f5f9-500a-4af1-8a5e-3ab8c0ee5ab9">
+<when>2017-11-09T15:03:31-00:01</when>
+</TimeStamp>
+<Point id="3ab222a1-1cb0-495a-a66c-391a72c6a2db">
+<coordinates>35.2092708319774,32.1039188057013</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d29c4af6-ba1a-4d81-988e-8da59a665820">
+<name></name>
+<description>MAC: 8c:0c:90:ae:16:83
+ Frequncy: 8
+ Signal: -83
+</description>
+<TimeStamp id="b2edd0ef-9b68-4002-9121-53c4adf875ff">
+<when>2017-11-09T15:03:35-00:01</when>
+</TimeStamp>
+<Point id="79f6e672-4c1e-4058-80ed-302386f24ede">
+<coordinates>35.2092756238139,32.1039436408231</coordinates>
+</Point>
+</Placemark>
+<Placemark id="57a64839-1649-4a92-a291-0438388a32cb">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:cc:d8
+ Frequncy: 1
+ Signal: -72
+</description>
+<TimeStamp id="6a32208d-38f9-476f-9e4e-97266018586d">
+<when>2017-11-09T15:03:38-00:01</when>
+</TimeStamp>
+<Point id="a0e97859-1482-4c57-8408-2802651306c1">
+<coordinates>35.2092915361368,32.1039581219348</coordinates>
+</Point>
+</Placemark>
+<Placemark id="56785f1c-f3a5-4e64-8d1b-64d0dcf0c393">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:d3:68
+ Frequncy: 1
+ Signal: -56
+</description>
+<TimeStamp id="ad09f834-14a2-4a99-bb70-1eed87a2052b">
+<when>2017-11-09T15:03:43-00:01</when>
+</TimeStamp>
+<Point id="0bfa6796-1fc6-4279-8e03-ab69473c2b8f">
+<coordinates>35.2093255030259,32.1040052469919</coordinates>
+</Point>
+</Placemark>
+<Placemark id="caf8f9f7-97a4-4c32-bfcf-b81dfa47419e">
+<name>Guest</name>
+<description>MAC: a2:6c:ac:9f:fb:27
+ Frequncy: 52
+ Signal: -83
+</description>
+<TimeStamp id="7ceca510-ce61-47c3-8c25-5d89998ccd78">
+<when>2017-11-09T15:03:47-00:01</when>
+</TimeStamp>
+<Point id="fde3f9f7-9431-4dbe-b851-2d0bf201e513">
+<coordinates>35.2093498707171,32.1040531908347</coordinates>
+</Point>
+</Placemark>
+<Placemark id="25006809-f8ea-45c3-a322-97823885b0dc">
+<name>CliClap</name>
+<description>MAC: 90:6c:ac:a0:3d:eb
+ Frequncy: 1
+ Signal: -80
+</description>
+<TimeStamp id="c53cf2e3-d9b2-4f22-a8bf-514b4fa3aae1">
+<when>2017-11-09T15:03:49-00:01</when>
+</TimeStamp>
+<Point id="797b2591-d140-4591-83be-3d1a6f58bf1f">
+<coordinates>35.2093478143112,32.1040846491061</coordinates>
+</Point>
+</Placemark>
+<Placemark id="87deab9c-7a22-4212-befe-46e5cdaa992e">
+<name>Ariel_University</name>
+<description>MAC: ec:8c:a2:26:d3:68
+ Frequncy: 1
+ Signal: -50
+</description>
+<TimeStamp id="7d86dc62-48d4-41e5-b60d-7c67f5ef545b">
+<when>2017-11-09T15:03:52-00:01</when>
+</TimeStamp>
+<Point id="953228e2-b8f3-43fa-b09a-9cf6e0d802e5">
+<coordinates>35.209351665254,32.1041130309766</coordinates>
+</Point>
+</Placemark>
+<Placemark id="1272e96d-ff04-4969-a7a1-4b499b8bdaaa">
+<name>giftwizard</name>
+<description>MAC: c2:6c:ac:a0:3d:eb
+ Frequncy: 1
+ Signal: -68
+</description>
+<TimeStamp id="d49bcaf7-9b40-48f7-b767-8688e97bcec6">
+<when>2017-11-09T15:03:54-00:01</when>
+</TimeStamp>
+<Point id="b98f156b-7d22-4322-9f9e-07ef4b97e765">
+<coordinates>35.2093479879293,32.1041434043599</coordinates>
+</Point>
+</Placemark>
+<Placemark id="8129000d-895e-49d0-b73f-0c41fc3c4462">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:05:3c
+ Frequncy: 44
+ Signal: -79
+</description>
+<TimeStamp id="79ac493a-1127-4571-9125-271bec0b5241">
+<when>2017-11-09T15:03:59-00:01</when>
+</TimeStamp>
+<Point id="7a3558f8-4c54-4bb7-bfdd-4fa688eb3e49">
+<coordinates>35.2093579234858,32.1042181471541</coordinates>
+</Point>
+</Placemark>
+<Placemark id="dfb82060-f964-4e1f-a86d-701c8ee2f0a3">
+<name>artsim</name>
+<description>MAC: b2:6c:ac:a0:18:29
+ Frequncy: 11
+ Signal: -78
+</description>
+<TimeStamp id="65d18cf0-cde3-4c8d-ad47-68ea3ec60655">
+<when>2017-11-09T15:04:01-00:01</when>
+</TimeStamp>
+<Point id="5ee0f0d1-c672-48e1-8a90-4652ca0e567c">
+<coordinates>35.2093740860356,32.104238317166</coordinates>
+</Point>
+</Placemark>
+<Placemark id="4636f825-06d7-4cd0-aee0-c73d21612b30">
+<name>shapedo</name>
+<description>MAC: f2:6c:ac:9f:fb:1f
+ Frequncy: 11
+ Signal: -80
+</description>
+<TimeStamp id="4758ccd7-79c7-46f7-8f60-36d4ff0b4180">
+<when>2017-11-09T15:04:03-00:01</when>
+</TimeStamp>
+<Point id="15de59ca-30b8-4583-bdcd-7fc13fdf28f5">
+<coordinates>35.2093871904215,32.1042689162161</coordinates>
+</Point>
+</Placemark>
+<Placemark id="60164e4e-18e1-413d-b5e1-fa3a75a4829a">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:62:48
+ Frequncy: 11
+ Signal: -81
+</description>
+<TimeStamp id="396d6710-6da1-4d15-a7f9-6e4acf76a139">
+<when>2017-11-09T15:04:08-00:01</when>
+</TimeStamp>
+<Point id="a7f94fea-4dce-41e1-bdf2-0babc4405f52">
+<coordinates>35.2094133745927,32.1043314393224</coordinates>
+</Point>
+</Placemark>
+<Placemark id="7332e93e-263a-4cef-bb73-33710014b6ac">
+<name>TP_LINK_ADD150</name>
+<description>MAC: 74:ea:3a:ad:d1:50
+ Frequncy: 1
+ Signal: -79
+</description>
+<TimeStamp id="e79d064e-8940-4038-8bc1-0014749d17de">
+<when>2017-11-09T15:04:11-00:01</when>
+</TimeStamp>
+<Point id="926b997b-51df-4a60-894f-6fe7e590a4d4">
+<coordinates>35.2094289257705,32.1043390404415</coordinates>
+</Point>
+</Placemark>
+<Placemark id="fc67e9ac-efce-4701-941b-cabacdb93fd6">
+<name></name>
+<description>MAC: 00:27:22:f3:bb:2b
+ Frequncy: 6
+ Signal: -77
+</description>
+<TimeStamp id="b34a36eb-8981-4c50-ad95-edaacd3ecdfe">
+<when>2017-11-09T15:04:15-00:01</when>
+</TimeStamp>
+<Point id="8a9d7a96-2449-4c93-a49f-4b40ad4ae5aa">
+<coordinates>35.2094540794159,32.1043511013378</coordinates>
+</Point>
+</Placemark>
+<Placemark id="0ed05d31-6874-4a37-b5ed-21b6ee35dd4b">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:62:48
+ Frequncy: 11
+ Signal: -75
+</description>
+<TimeStamp id="0dd7e839-e621-4e8d-a82c-1c9af21c0d13">
+<when>2017-11-09T15:04:24-00:01</when>
+</TimeStamp>
+<Point id="92427b84-c2fd-43d7-a04b-1b96f1b8a78a">
+<coordinates>35.2095832000095,32.104389099026</coordinates>
+</Point>
+</Placemark>
+<Placemark id="0632bc4a-c8b6-4711-b032-e5da78d92525">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:34:bc
+ Frequncy: 36
+ Signal: -80
+</description>
+<TimeStamp id="45aa6d51-4ea6-434d-b863-74e3e6f54be8">
+<when>2017-11-09T15:04:28-00:01</when>
+</TimeStamp>
+<Point id="311ed895-b35b-4359-9633-cd027333b948">
+<coordinates>35.2096290887246,32.1044004587418</coordinates>
+</Point>
+</Placemark>
+<Placemark id="8300db6a-ed60-4b38-a017-5bc44d59ecf7">
+<name>restore</name>
+<description>MAC: e2:6c:ac:a0:18:29
+ Frequncy: 11
+ Signal: -76
+</description>
+<TimeStamp id="aee7ad8b-58f5-4a24-bdc6-15e04684dbe6">
+<when>2017-11-09T15:04:35-00:01</when>
+</TimeStamp>
+<Point id="6e1dd5f6-823b-4542-ae67-09e95ac546cb">
+<coordinates>35.2096829611838,32.1044556973486</coordinates>
+</Point>
+</Placemark>
+<Placemark id="323cd3aa-1050-4818-b271-8f90f39d3e27">
+<name>Guest</name>
+<description>MAC: 90:6c:ac:a0:60:4d
+ Frequncy: 1
+ Signal: -66
+</description>
+<TimeStamp id="99b1c34f-028b-489d-a4f1-9e929cca8995">
+<when>2017-11-09T15:05:09-00:01</when>
+</TimeStamp>
+<Point id="ec10bc85-8f91-4513-a645-34b887391898">
+<coordinates>35.2100555104064,32.104580948221</coordinates>
+</Point>
+</Placemark>
+<Placemark id="6a726e7f-2caa-4f45-a074-048ee409b6b5">
+<name>iAgree</name>
+<description>MAC: f8:d1:11:77:75:4e
+ Frequncy: 7
+ Signal: -74
+</description>
+<TimeStamp id="26d8b3c2-9983-4916-b164-e570400b5ab2">
+<when>2017-11-09T15:05:13-00:01</when>
+</TimeStamp>
+<Point id="03d71bc0-78b7-4765-b6c8-542147c61f20">
+<coordinates>35.2100725521522,32.1045684613384</coordinates>
+</Point>
+</Placemark>
+<Placemark id="ab97b243-6358-44e6-a481-3636dbc6f4bc">
+<name></name>
+<description>MAC: 8c:0c:90:6f:36:58
+ Frequncy: 1
+ Signal: -76
+</description>
+<TimeStamp id="51fedff2-4f4b-49de-8baa-27f91ca6e22b">
+<when>2017-11-09T15:05:17-00:01</when>
+</TimeStamp>
+<Point id="66794479-f1c3-4756-8715-6f76d1ad487a">
+<coordinates>35.2101086882019,32.1045860748302</coordinates>
+</Point>
+</Placemark>
+<Placemark id="da220d73-9cae-4ca2-8736-788f5508e95e">
+<name></name>
+<description>MAC: 8c:0c:90:6f:36:58
+ Frequncy: 1
+ Signal: -69
+</description>
+<TimeStamp id="f51c71a7-b5ff-4d9a-80f1-a0a0b43f9efc">
+<when>2017-11-09T15:05:22-00:01</when>
+</TimeStamp>
+<Point id="4a8c0cdf-a9e9-4317-8e7e-00b0788a7eab">
+<coordinates>35.2101893309587,32.104639069363</coordinates>
+</Point>
+</Placemark>
+<Placemark id="fb388d62-6d01-4c4d-b36f-bba82370cbc1">
+<name>Ariel_University</name>
+<description>MAC: 8c:0c:90:2f:36:58
+ Frequncy: 1
+ Signal: -68
+</description>
+<TimeStamp id="e04d0a3b-614c-4abe-80cf-9c4933e5bd1a">
+<when>2017-11-09T15:05:25-00:01</when>
+</TimeStamp>
+<Point id="6ad9176d-6d36-4642-8067-e95ef28b2e24">
+<coordinates>35.2102150308846,32.1046509791915</coordinates>
+</Point>
+</Placemark>
+<Placemark id="08c315d2-e19b-4680-ac19-6aba5232486e">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:20:38
+ Frequncy: 11
+ Signal: -72
+</description>
+<TimeStamp id="3b7c3c2c-bc8a-4bf3-ac9c-c191888e13f2">
+<when>2017-11-09T15:05:28-00:01</when>
+</TimeStamp>
+<Point id="6913eb44-9cc3-4599-899f-2c5b48912b23">
+<coordinates>35.2102429096362,32.1046512741409</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d7106fb6-8827-4407-be1c-93e4645137dc">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:05:78
+ Frequncy: 6
+ Signal: -72
+</description>
+<TimeStamp id="3b6f1a02-84d2-4de9-a34c-bd986d59c3ce">
+<when>2017-11-09T15:06:17-00:01</when>
+</TimeStamp>
+<Point id="7d65a9f4-26e4-40c3-87f8-f0dbb9b54d4a">
+<coordinates>35.2107678021757,32.1048382995521</coordinates>
+</Point>
+</Placemark>
+<Placemark id="3d50e85d-eadc-4938-912c-bd1ea552e459">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:16:05:7c
+ Frequncy: 36
+ Signal: -69
+</description>
+<TimeStamp id="c32f2746-dbe9-49cb-83a7-824b51568e22">
+<when>2017-11-09T15:06:21-00:01</when>
+</TimeStamp>
+<Point id="9ba90860-3e0a-4842-9421-f38a7b1e8262">
+<coordinates>35.2107812202025,32.1048285252031</coordinates>
+</Point>
+</Placemark>
+<Placemark id="bbf60791-255a-4a98-bf56-c9ce1b7354b4">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:14:2b:c8
+ Frequncy: 11
+ Signal: -72
+</description>
+<TimeStamp id="740c8b9f-8f56-42fa-b7a9-1ae595eed3c8">
+<when>2017-11-09T15:06:39-00:01</when>
+</TimeStamp>
+<Point id="1e05b6a1-3566-4bbb-8abf-2fb6eae282dd">
+<coordinates>35.2109932130301,32.1048883165267</coordinates>
+</Point>
+</Placemark>
+<Placemark id="a9784630-6268-48b6-a0d8-3fdca5b88de2">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:ed:48
+ Frequncy: 11
+ Signal: -80
+</description>
+<TimeStamp id="3d8e9a99-13bd-4e7d-aae1-4e3da563277f">
+<when>2017-11-09T15:07:27-00:01</when>
+</TimeStamp>
+<Point id="19071762-1655-4674-8e14-5a958a4153f9">
+<coordinates>35.2114759260819,32.1047696062527</coordinates>
+</Point>
+</Placemark>
+<Placemark id="3073fda4-e4a6-4d77-97ae-824a3e097133">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:44:88
+ Frequncy: 6
+ Signal: -87
+</description>
+<TimeStamp id="a4304eb3-2574-41c4-8b95-83e8f1e3c18f">
+<when>2017-11-09T15:07:31-00:01</when>
+</TimeStamp>
+<Point id="63faf50f-ddbf-4d72-b863-f438a0b0a7d5">
+<coordinates>35.2115149192002,32.1047215947211</coordinates>
+</Point>
+</Placemark>
+<Placemark id="d2c4b233-dbab-43a1-9286-6532ee4376b6">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:ed:4c
+ Frequncy: 52
+ Signal: -80
+</description>
+<TimeStamp id="8222d996-8a4b-490d-8a13-b647e392eb38">
+<when>2017-11-09T15:07:56-00:01</when>
+</TimeStamp>
+<Point id="6d2aa8c6-42b3-4306-a1b3-03d37fe88e28">
+<coordinates>35.2115067506844,32.1043801220803</coordinates>
+</Point>
+</Placemark>
+<Placemark id="085a1396-2131-4281-8eb6-ab0e79f08aa9">
+<name>Ariel_University</name>
+<description>MAC: 1c:b9:c4:15:41:78
+ Frequncy: 11
+ Signal: -79
+</description>
+<TimeStamp id="a17f344f-4928-42c3-a7e4-983dd0e3cf92">
+<when>2017-11-09T15:07:58-00:01</when>
+</TimeStamp>
+<Point id="811790ce-8b6f-447f-9bce-7f2d5bfd8af2">
+<coordinates>35.2114997884184,32.1043536896907</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

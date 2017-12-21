@@ -1,13 +1,13 @@
 
 public class WifiSpot {
 	/**
-	 * @information This class represent one sample of a WiFi point and all of its information.
-	 * @author Yair Ivgi
+	 * @author Yair Ivgi 
+	 * this class represent one sample of a WiFi point and all of its information.
 	 */
-
+	
 	private String mac;
 	private String ssid;
-	private String time;
+	private String firstSeen;
 	private String channel;
 	private String rssi;
 	private String currentLatitude;
@@ -16,16 +16,16 @@ public class WifiSpot {
 	private String type;
 	private String id;
 
-	/** 
-	 * Constructor of WiFi point.
-	 * @author Yair Ivgi
+	/**
+	 * @author Yair Ivgi 
+	 * the constructor of WiFi point 
 	 */
 
 	public WifiSpot(String id,String mac,String ssid,String firstSeen,String channel,String rssi,String currentLatitude,String currentLongitude,String altitudeMeters){
 		this.id=id;
 		this.mac=mac;
 		this.ssid=ssid;
-		this.time=firstSeen;
+		this.firstSeen=firstSeen;
 		this.channel=channel;
 		this.rssi=rssi;
 		this.currentLatitude=currentLatitude;
@@ -57,7 +57,7 @@ public class WifiSpot {
 	}
 
 	public String getTime() {
-		return time;
+		return firstSeen;
 	}
 
 	public String getChannel() {

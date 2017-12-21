@@ -33,7 +33,7 @@ public class Main {
 		//// part 2 - Algo1 and Algo2////
 
 		FindMacLoc fM2 = new FindMacLoc();
-		fM2.locateMac_FromFolder("c://temp//scanes");
+		fM2.locateMac_FromFolder("c://temp//scanes",3);
 		
 		FindLocByMac fL =new FindLocByMac("c://temp//DATA.csv", 5); 
 		fL.estimatedLoc_FromFile("c://temp//no_gps.csv");
