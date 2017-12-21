@@ -35,6 +35,7 @@ public class Main {
 		FindMacLoc fM2 = new FindMacLoc();
 		fM2.locateMac_FromFolder("c://temp//scanes//BM3",5);
 		
+
 		FindLocByMac fL =new FindLocByMac("c://temp//scanes//BM3//NewData//DATA.csv", 5); 
 		fL.estimatedLoc_FromFile("c://temp//scanes//_comb_no_gps_ts1.csv");
 	}

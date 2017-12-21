@@ -117,7 +117,8 @@ public class FindLocByMac {
 		int dbNumOfSamples = Integer.parseInt(DBrecord.get("WiFi networks"));
 		double arr[] =new double[rNumOfSamples];
 		boolean existsSuchMac;
-		for (int i = 1; i <= rNumOfSamples; i++){//scanning samples in file
+		//scanning samples in file
+		for (int i = 1; i <= rNumOfSamples; i++){
 			existsSuchMac= false;
 			for (int j = 1; j <= dbNumOfSamples; j++){//scanning samples in DB
 				//check if file and data base has same MAC in scanned line
@@ -128,8 +129,7 @@ public class FindLocByMac {
 			}
 			//check if existing mac not found
 			if(!existsSuchMac){
-				arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),"-120");
-//				clacPercentage(record.get("Signal"+String.valueOf(i)),"-120");
+				arr[i-1] = clacPercentage(record.get("Signal"+String.valueOf(i)),String.valueOf(NO_SIG));
 			}
 		}
 		double resemblance=1;
