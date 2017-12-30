@@ -1,9 +1,12 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import genral.AveragingElaborateCoordinate;
+import genral.WifiSpot;
 /**
  * Test centerOfPoints and centerWeightOfPoints methods.
  * @author Idan Hollander
