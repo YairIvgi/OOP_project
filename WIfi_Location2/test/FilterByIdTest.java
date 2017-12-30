@@ -1,9 +1,11 @@
+package filter;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
@@ -13,12 +15,12 @@ import org.junit.Test;
 
 /**
  * Test the getFiltered method.
- * @author Yair Ivgi and Idan Holander
+ * @author Yair Ivgi and Idan Holander 
  */
 
-public class FilterByLocationTest {
+public class FilterByIdTest {
 	@Test
-	public void test() {
+	public void test() throws IOException {
 		RawCsvReader cr=new RawCsvReader();
 		try {
 			cr.readFolder("data");
@@ -26,19 +28,12 @@ public class FilterByLocationTest {
 			Reader in;
 			in = new FileReader(file);
 
-			FilterByLocation location=new FilterByLocation(34.806, 32.165, 0.022);
+			FilterById id=new FilterById("GT-N7100");
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-			List<CSVRecord> filteredRecords = location.getFiltered(records);
-			double currentLon;
-			double currentLat;
-			double dist;
+			List<CSVRecord> filteredRecords = id.getFiltered(records);
 			for(CSVRecord record:records) {
-				currentLat = Double.parseDouble(record.get("Lat"));
-				currentLon = Double.parseDouble(record.get("Lon"));
-				dist=Math.sqrt(Math.pow(currentLon-location.getLon(), 2)+Math.pow(currentLat-location.getLat(), 2));
-				if(dist<=location.getRadius()){
+				if(record.get("ID").equals(id.getID()))
 					assertTrue(filteredRecords.contains(record));
-				}
 				else
 					assertFalse(filteredRecords.contains(record));
 			}

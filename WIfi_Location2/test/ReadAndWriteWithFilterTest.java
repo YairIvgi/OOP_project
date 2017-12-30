@@ -13,6 +13,7 @@ import org.junit.Test;
  */
 
 public class ReadAndWriteWithFilterTest {
+	
 	@Test
 	public void testHighestSignalIndex() {
 		ReadAndWriteWithFilter rw=new ReadAndWriteWithFilter();
@@ -31,6 +32,7 @@ public class ReadAndWriteWithFilterTest {
 			fail("file cannot be read: "+e.getMessage());
 		}
 	}
+	
 	@Test
 	public void testKml() {
 		ReadAndWriteWithFilter rw=new ReadAndWriteWithFilter();

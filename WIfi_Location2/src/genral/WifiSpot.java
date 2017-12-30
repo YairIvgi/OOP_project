@@ -1,3 +1,5 @@
+package genral;
+
 
 public class WifiSpot {
 	/**
