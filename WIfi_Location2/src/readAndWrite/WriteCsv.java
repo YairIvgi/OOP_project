@@ -1,9 +1,13 @@
+package readAndWrite;
+
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.csv.CSVRecord;
+import genral.CsvRecordPoint;
+import genral.RawData;
+import genral.WifiSpot;
 
 /** 
  * This class writes the data of all the WifiSpot into a .csv format file.
@@ -120,22 +124,23 @@ public class WriteCsv {
 			writeLine(line);
 		}
 	}
+	
 	public void estimatedLocationFormat(List<CsvRecordPoint> dataList){
 		for(CsvRecordPoint record : dataList) {
-			int namberOfWifi=Integer.parseInt(record.m_record.get("WiFi networks"));
+			int namberOfWifi=Integer.parseInt(record.getM_record().get("WiFi networks"));
 			String line = null;
-			line=record.m_record.get("Time");						//"Time"
-			line+=","+record.m_record.get("ID");					//"ID"
-			line+=","+record.m_point.getCurrentLatitude();			//"Lat"
-			line+=","+record.m_point.getCurrentLongitude();			//"Lon"
-			line+=","+record.m_point.getAltitudeMeters();			//"Alt"
+			line=record.getM_record().get("Time");						//"Time"
+			line+=","+record.getM_record().get("ID");					//"ID"
+			line+=","+record.getM_point().getCurrentLatitude();			//"Lat"
+			line+=","+record.getM_point().getCurrentLongitude();			//"Lon"
+			line+=","+record.getM_point().getAltitudeMeters();			//"Alt"
 			line+=","+String.valueOf(namberOfWifi);					//"WiFi networks"
 
 			for (int i = 1; i <= namberOfWifi; i++) {
-				line+=","+record.m_record.get("SSID"+i);			//"SSID"
-				line+=","+record.m_record.get("MAC"+i);				//"MAC"
-				line+=","+record.m_record.get("Frequncy"+i);		//"Frequency/channel"
-				line+=","+record.m_record.get("Signal"+i);			//"Signal/RSSI"			
+				line+=","+record.getM_record().get("SSID"+i);			//"SSID"
+				line+=","+record.getM_record().get("MAC"+i);				//"MAC"
+				line+=","+record.getM_record().get("Frequncy"+i);		//"Frequency/channel"
+				line+=","+record.getM_record().get("Signal"+i);			//"Signal/RSSI"			
 			}
 			if(namberOfWifi<10){
 				for (int q = namberOfWifi; q < 10; q++) {

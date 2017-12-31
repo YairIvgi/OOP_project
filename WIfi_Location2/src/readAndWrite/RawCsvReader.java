@@ -1,3 +1,5 @@
+package readAndWrite;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +11,9 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+
+import genral.RawData;
+import genral.WifiSpot;
 
 /** 
  * @information This class reads all the .csv files using commons-csv-1.5.jar .
