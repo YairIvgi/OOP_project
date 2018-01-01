@@ -10,6 +10,8 @@ import filter.FilterByLocation;
 import filter.FilterByTime;
 import filter.IFilter;
 import filter.IOperationFilter;
+import filter.IOperationWithOneFilter;
+import filter.NotFilters;
 import filter.OrFilters;
 import readAndWrite.DataBaseIO;
 import readAndWrite.RawCsvReader;
@@ -25,7 +27,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		//// part 0- write the csv file////
 
-				String folderPath = "C://Users//יאיר//desktop//new//try";	
+				String folderPath = "C:\\Users\\user\\Desktop\\try";	
 				RawCsvReader folder=new RawCsvReader();
 				try {
 					folder.readFolder(folderPath);
@@ -44,18 +46,20 @@ public class Main {
 				List<CSVRecord> records3 = rw.filterData(folder.getOutputFile(), filterLocation);		//filter by coordinates
 		 		IOperationFilter andfilter = new AndFilters(folder.getOutputFile());
 		 		IOperationFilter orfilter = new OrFilters(folder.getOutputFile());
+		 		IOperationWithOneFilter notfilter = new NotFilters(folder.getOutputFile());
 				List<CSVRecord> records4 = andfilter.getFiltered (filterId, filterTime);
 				List<CSVRecord> records5 = orfilter.getFiltered (filterId, filterTime);
-				rw.writeKML(folderPath,records4);
-				rw.writeCSV(folderPath, records4);
+				List<CSVRecord> records6 = notfilter.getFiltered(filterId);
+				rw.writeKML(folderPath,records6);
+				rw.writeCSV(folderPath, records6);
 
 		//// part 2 - Algo1 and Algo2////
 
-		FindMacLoc fM2 = new FindMacLoc();
-		fM2.locateMac_FromFolder("c://temp//scanes//BM3",5);
+		//FindMacLoc fM2 = new FindMacLoc();
+		//fM2.locateMac_FromFolder("C:\\temp\\scanes\\BM3",5);
 		
 
-		FindLocByMac fL =new FindLocByMac("c://temp//scanes//BM3//NewData//DATA.csv", 5); 
-		fL.estimatedLoc_FromFile("c://temp//scanes//_comb_no_gps_ts1.csv");
+		//FindLocByMac fL =new FindLocByMac("C:\\temp\\scanes\\newData\\DATA.csv", 5); 
+		//fL.estimatedLoc_FromFile("C:\\temp\\scanes\\_comb_no_gps_ts1.csv");
 	}
 }
