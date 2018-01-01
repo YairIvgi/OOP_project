@@ -69,5 +69,13 @@ public class Main {
 //
 //		FindLocByMac fL =new FindLocByMac("c://temp//scanes//BM3//NewData//DATA.csv", 5); 
 //		fL.estimatedLoc_FromFile("c://temp//scanes//_comb_no_gps_ts1.csv");
+
+
+		//FindMacLoc fM2 = new FindMacLoc();
+		//fM2.locateMac_FromFolder("C:\\temp\\scanes\\BM3",5);
+		
+
+		//FindLocByMac fL =new FindLocByMac("C:\\temp\\scanes\\newData\\DATA.csv", 5); 
+		//fL.estimatedLoc_FromFile("C:\\temp\\scanes\\_comb_no_gps_ts1.csv");
 	}
 }
