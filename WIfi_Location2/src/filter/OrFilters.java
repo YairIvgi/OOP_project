@@ -3,7 +3,6 @@ package filter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
@@ -31,7 +30,7 @@ public class OrFilters implements IOperationFilter {
 		List<CSVRecord> filteredRecords2 = filter2.getFiltered(records);
 		UnionRecords unite = new UnionRecords(filteredRecords1);
 		unite.combainData(filteredRecords2);
-		return unite.getM_records();
+		return unite.get_records();
 	}
 
 }

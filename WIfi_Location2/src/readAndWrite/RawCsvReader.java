@@ -32,10 +32,15 @@ public class RawCsvReader {
 
 	public  void readFolder(String folderPath) throws Exception{
 		File dir = new File(folderPath+"\\newData");
-		dir.mkdir();
+		if (dir.mkdir()) {
+			System.out.println("directory " + dir.getAbsolutePath() + " created");
+		} else {
+			System.out.println("directory " + dir.getAbsolutePath() + " failed");			
+		}
 		outputFile= dir.getPath()+"\\DATA.csv";
 		List<RawData> data;
 		File folder = new File(folderPath);
+		System.out.println("output file " + folder.getAbsolutePath());			
 
 		File[] listOfFiles = folder.listFiles(new FilenameFilter(){
 			public boolean accept(File dir, String filename){

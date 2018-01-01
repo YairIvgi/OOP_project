@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
@@ -32,13 +33,16 @@ public class DataBaseIO {
 	 * @author Yair Ivgi
 	 */
 
-	public List<CSVRecord> filterData(String fileName, IFilter filter) throws Exception{
+	public List<CSVRecord> readData(String fileName) throws Exception{
 		try {
 			File file = new File(fileName);
 			Reader in = new FileReader(file);
+			List<CSVRecord> result = new ArrayList<CSVRecord>();
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-			List<CSVRecord> filteredRecords = filter.getFiltered(records);
-			return filteredRecords;
+			for (CSVRecord record : records) {
+				result.add(record);
+			}
+			return	result;
 		} catch (Exception e) {
 			throw new Exception("Error reading file\n" + e);		
 		}
@@ -77,7 +81,6 @@ public class DataBaseIO {
 				maxIndex=i;
 			}
 		}
-
 		return maxIndex;
 	}
 
@@ -106,6 +109,14 @@ public class DataBaseIO {
 			ifi.setTimePrimitive(timeAtPoint);
 			document.addFeature(ifi);					//add the place mark to the Document
 		}
+		if(!outputPath.contains("\\newData")){
+			File dir = new File(outputPath+"\\newData");
+			if (dir.mkdir()) {
+				System.out.println("directory " + dir.getAbsolutePath() + " created");
+			} else {
+				System.out.println("directory " + dir.getAbsolutePath() + " failed");			
+			}
+		}
 		outputPath += "\\newData\\DATA.kml";			//generate the kml file
 		kml.createKml(outputPath);
 	}
@@ -117,6 +128,14 @@ public class DataBaseIO {
 	 */
 
 	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
+		if(!outputPath.contains("\\newData")){
+			File dir = new File(outputPath+"\\newData");
+			if (dir.mkdir()) {
+				System.out.println("directory " + dir.getAbsolutePath() + " created");
+			} else {
+				System.out.println("directory " + dir.getAbsolutePath() + " failed");			
+			}
+		}
 		WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATA.csv");
 		for(CSVRecord record : records) {
 			int namberOfWifi=Integer.parseInt(record.get("WiFi networks"));
