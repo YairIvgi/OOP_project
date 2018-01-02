@@ -28,6 +28,16 @@ public class FindMacLoc {
 	private	 String m_folderPath = null;
 	private int m_Accuracy;
 
+	public FindMacLoc(String filePath, int accuracy) {
+		m_filePath=filePath;
+		m_folderPath=filePath.replace(".csv", "");
+		m_Accuracy=accuracy;
+	}
+	public FindMacLoc() {
+		m_filePath = null;
+		m_folderPath = null;
+		m_Accuracy = 0;
+	}
 	/**
 	 * Receive organized data from file 
 	 * @author Yair Ivgi
@@ -39,12 +49,32 @@ public class FindMacLoc {
 		m_Accuracy=accuracy;
 		locate();
 	}
+	/**
+	 * Receive raw data from one mac 
+	 * @author Idan Hollander
+	 * @throws Exception 
+	 */
 
+	public void locateMac_FromExistingMac(String mac) throws Exception {
+		List <WifiSpot> points = null;
+		WifiSpot point = null;
+		AveragingElaborateCoordinate AE = new AveragingElaborateCoordinate();
+		points = findMacsInDB(mac);
+		if(points.size()==0) {
+			System.out.println("no macs like this in the database");
+			return;
+		}
+		point = AE.centerOfPoints(points);
+		List<WifiSpot> allPoints=new ArrayList<WifiSpot>();
+		allPoints.add(point);
+		WriteCsv w= new WriteCsv(m_folderPath+"Mac_estimated_Loc.csv", allPoints);
+		w.ListOfpointsFormat();
+		w.close();
+	}
 	/**
 	 * Receive raw data from folder 
 	 * @author Yair Ivgi
 	 */
-	
 	public void locateMac_FromFolder(String folderPath,int accuracy) throws Exception{
 		m_folderPath = folderPath;
 		m_Accuracy=accuracy;
