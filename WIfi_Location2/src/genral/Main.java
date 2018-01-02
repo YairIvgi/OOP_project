@@ -1,6 +1,5 @@
 package genral;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
@@ -40,9 +39,11 @@ public class Main {
 
 				DataBaseIO rw = new DataBaseIO();
 				FilterData fd = new FilterData();
+				
 				IFilter filterId = new FilterById("Lenovo PB2-690Y");
 				IFilter filterTime = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
 				IFilter filterLocation = new FilterByLocation(34.806, 32.165, 0.022);
+				
 				List<CSVRecord> records1 = rw.readData(folder.getOutputFile());			
 				records1 = fd.filterData(records1, filterId);							//filter by id
 				List<CSVRecord> records2 = rw.readData(folder.getOutputFile());			

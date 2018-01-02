@@ -11,4 +11,5 @@ import org.apache.commons.csv.CSVRecord;
 public interface IFilter {
 
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception;
+	
 }

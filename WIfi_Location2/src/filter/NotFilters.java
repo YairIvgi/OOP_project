@@ -4,15 +4,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import readAndWrite.UnionRecords;
-
-public class NotFilters implements IOperationWithOneFilter{
+public class NotFilters implements IOperationFilter{
 
 	private String m_fileName;
 	
@@ -21,7 +18,7 @@ public class NotFilters implements IOperationWithOneFilter{
 	}
 	
 	@Override
-	public List<CSVRecord> getFiltered(IFilter filter) throws Exception {
+	public List<CSVRecord> getFiltered(IFilter filter, IFilter filter2) throws Exception {
 		File file = new File(m_fileName);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
