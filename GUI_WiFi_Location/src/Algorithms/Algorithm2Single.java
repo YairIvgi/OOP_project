@@ -21,9 +21,11 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import genral.FindLocByMac;
+import javax.swing.JLabel;
 
 public class Algorithm2Single extends JFrame {
 	private JTextField txtEnterRowFrom;
+	private JLabel lblResult;
 	public static void main (String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -66,12 +68,11 @@ public class Algorithm2Single extends JFrame {
 					in = new FileReader(file);
 					Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 					for(CSVRecord record: records) {
-						System.out.println("My place is"+record.get("Lat")+","+record.get("Lon")+","+record.get("Alt"));
+						lblResult.setText("My place is "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
 					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 				}
-				dispose();
 			}
 		});
 		
@@ -81,16 +82,22 @@ public class Algorithm2Single extends JFrame {
 				dispose();
 			}
 		});
+		
+		lblResult = new JLabel("result");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(txtEnterRowFrom, GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(107)
 					.addComponent(btnOk, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnCancel, GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
 					.addGap(173))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblResult, GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -101,7 +108,8 @@ public class Algorithm2Single extends JFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancel)
 						.addComponent(btnOk))
-					.addContainerGap(142, Short.MAX_VALUE))
+					.addGap(44)
+					.addComponent(lblResult, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 	}

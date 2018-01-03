@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class Algorithm2Multi extends JFrame {
 	private JTextField txtMac_1;
@@ -33,6 +34,7 @@ public class Algorithm2Multi extends JFrame {
 	private JTextField txtSignal_2;
 	private JTextField txtMac_3;
 	private JTextField txtSignal_3;
+	private JLabel lblNewLabel;
 	
 	public static void main (String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -123,14 +125,15 @@ public class Algorithm2Multi extends JFrame {
 					in = new FileReader(file);
 					Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 					for(CSVRecord record: records) {
-						System.out.println("My place is"+record.get("Lat")+","+record.get("Lon")+","+record.get("Alt"));
+						lblNewLabel.setText("My place is "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
 					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 				}
-				dispose();
 			}
 		});
+		
+		lblNewLabel = new JLabel("New label");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -152,6 +155,10 @@ public class Algorithm2Multi extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnCancel, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
 					.addGap(153))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -172,7 +179,9 @@ public class Algorithm2Multi extends JFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancel)
 						.addComponent(btnOk))
-					.addContainerGap(106, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		getContentPane().setLayout(groupLayout);
 	}

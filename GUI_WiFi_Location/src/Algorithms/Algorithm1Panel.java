@@ -27,10 +27,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import javax.swing.JLabel;
 
 public class Algorithm1Panel extends JFrame {
 	private JTextField txtEnterMac;
-	public Algorithm1Panel(String dbPath) {
+	private JLabel lblNewLabel;
+	public Algorithm1Panel() {
 		
 		txtEnterMac = new JTextField();
 		txtEnterMac.addActionListener(new ActionListener() {
@@ -57,8 +59,9 @@ public class Algorithm1Panel extends JFrame {
 				try {
 					Reader in =new FileReader(file);
 					Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+					
 					for(CSVRecord record: records) {
-						System.out.println("Mac place is"+record.get("Lat")+","+record.get("Lon")+","+record.get("Alt"));
+						lblNewLabel.setText("Mac place is "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
 					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -74,6 +77,10 @@ public class Algorithm1Panel extends JFrame {
 				dispose();
 			}
 		});
+		
+		JLabel label = new JLabel("");
+		
+		lblNewLabel = new JLabel("New label");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -85,8 +92,13 @@ public class Algorithm1Panel extends JFrame {
 					.addGap(160))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(txtEnterMac, GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+					.addComponent(txtEnterMac, GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
 					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(176)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(215, Short.MAX_VALUE))
+				.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -97,7 +109,11 @@ public class Algorithm1Panel extends JFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnOk)
 						.addComponent(btnCancel))
-					.addContainerGap(131, Short.MAX_VALUE))
+					.addGap(5)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(label)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 	}
@@ -107,7 +123,7 @@ public class Algorithm1Panel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Algorithm1Panel frame = new Algorithm1Panel("C:\\temp\\scanes");
+					Algorithm1Panel frame = new Algorithm1Panel();
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setBounds(100, 100, 773, 501);
 					frame.setVisible(true);
