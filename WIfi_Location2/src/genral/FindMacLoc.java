@@ -1,6 +1,8 @@
 package genral;
 
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -61,7 +63,7 @@ public class FindMacLoc {
 		AveragingElaborateCoordinate AE = new AveragingElaborateCoordinate();
 		points = findMacsInDB(mac);
 		if(points.size()==0) {
-			System.out.println("no macs like this in the database");
+			fail("no macs like this in the database");
 			return;
 		}
 		point = AE.centerOfPoints(points);
