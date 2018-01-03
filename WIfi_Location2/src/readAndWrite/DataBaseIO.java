@@ -16,7 +16,6 @@ import org.boehn.kmlframework.kml.Placemark;
 import org.boehn.kmlframework.kml.TimePrimitive;
 import org.boehn.kmlframework.kml.TimeStamp;
 
-import filter.IFilter;
 
 
 /**
