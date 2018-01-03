@@ -26,6 +26,8 @@ import org.apache.commons.csv.CSVRecord;
 import org.boehn.kmlframework.kml.KmlException;
 
 import Algorithms.Algorithm1Panel;
+import Algorithms.Algorithm2Multi;
+import Algorithms.Algorithm2Single;
 import Filter.FilterOperation;
 import Filter.FilterType;
 import Filter.FiltersSelections;
@@ -48,15 +50,18 @@ public class WiFi_App implements IFiltersSelect{
 	JRadioButton radioButtonNone;
 	JRadioButton radioButtonAnd;
 	JRadioButton radioButtonOr;
-	
+
 	private FilterType type1;
 	private FilterType type2;
+
+	private IFilter filter1 = null;
+	private IFilter filter2 = null;
 
 	private List<CSVRecord> m_records = new ArrayList<CSVRecord>();
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	public static FiltersSelections selections = new FiltersSelections();
-	
-	
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -72,6 +77,59 @@ public class WiFi_App implements IFiltersSelect{
 			}
 		});
 	}
+
+	class Task1 implements Runnable{
+		public void run(){
+			//update filters
+			if(WiFi_App.selections.getM_type1()!=null) {
+				switch (WiFi_App.selections.getM_type1()){
+				case ById:
+					filter1 = new FilterById("Lenovo PB2-690Y");
+					break;
+				case ByLocation:
+					filter1 = new FilterByLocation(34.806, 32.165, 0.022);
+					break;
+				case ByTime:
+					try {
+						filter1 = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
+					} catch (Exception e2) {
+						String message = "oops error: "+e2.getMessage();			
+						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					break;
+				}
+			}
+			if(WiFi_App.selections.getM_type2()!=null) {
+				switch (WiFi_App.selections.getM_type2()){
+				case ById:
+					filter2 = new FilterById("Lenovo PB2-690Y");
+					break;
+				case ByLocation:
+					filter2 = new FilterByLocation(34.806, 32.165, 0.022);
+					break;
+				case ByTime:
+					try {
+						filter2 = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
+					} catch (Exception e1) {
+						String message = "oops error: "+e1.getMessage();			
+						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					break;
+				}
+			}
+			if(WiFi_App.selections.getM_time().getType()!=null)
+				System.out.println(WiFi_App.selections.getM_time().getType().toString()+"  "+WiFi_App.selections.getM_time().getFrom());
+			if(WiFi_App.selections.getM_id().getType()!=null)
+				System.out.println(WiFi_App.selections.getM_id().getType().toString()+"  "+WiFi_App.selections.getM_id().getId());
+			if(WiFi_App.selections.getM_location().getType()!=null)
+				System.out.println(WiFi_App.selections.getM_location().getType().toString()+"  "+WiFi_App.selections.getM_location().getLat());
+		}
+	}
+
+
+
 
 	/**
 	 * Create the application.
@@ -145,45 +203,50 @@ public class WiFi_App implements IFiltersSelect{
 		JButton btnNewButtonExecute = new JButton("Execute Filter");
 		btnNewButtonExecute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IFilter filter1 = null;
-				IFilter filter2 = null;
-				switch (WiFi_App.selections.getM_type1()){
-				case ById:
-					filter1 = new FilterById("Lenovo PB2-690Y");
-					break;
-				case ByLocation:
-					filter1 = new FilterByLocation(34.806, 32.165, 0.022);
-					break;
-				case ByTime:
-					try {
-						filter1 = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
-					} catch (Exception e2) {
-						String message = "oops error: "+e2.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
+				if(WiFi_App.selections.getM_type1()!=null) {
+					switch (WiFi_App.selections.getM_type1()){
+					case ById:
+						filter1 = new FilterById("Lenovo PB2-690Y");
+						break;
+					case ByLocation:
+						filter1 = new FilterByLocation(34.806, 32.165, 0.022);
+						break;
+					case ByTime:
+						try {
+							filter1 = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
+						} catch (Exception e2) {
+							String message = "oops error: "+e2.getMessage();			
+							JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+						break;
 					}
-					break;
 				}
-				switch (WiFi_App.selections.getM_type2()){
-				case ById:
-					filter2 = new FilterById("Lenovo PB2-690Y");
-					break;
-				case ByLocation:
-					filter2 = new FilterByLocation(34.806, 32.165, 0.022);
-					break;
-				case ByTime:
-					try {
-						filter2 = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
-					} catch (Exception e1) {
-						String message = "oops error: "+e1.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
+				if(WiFi_App.selections.getM_type2()!=null) {
+					switch (WiFi_App.selections.getM_type2()){
+					case ById:
+						filter2 = new FilterById("Lenovo PB2-690Y");
+						break;
+					case ByLocation:
+						filter2 = new FilterByLocation(34.806, 32.165, 0.022);
+						break;
+					case ByTime:
+						try {
+							filter2 = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
+						} catch (Exception e1) {
+							String message = "oops error: "+e1.getMessage();			
+							JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+						break;
 					}
-					break;
 				}
-				System.out.println(WiFi_App.selections.getM_time().getType().toString()+"  "+WiFi_App.selections.getM_time().getFrom());
-				System.out.println(WiFi_App.selections.getM_id().getType().toString()+"  "+WiFi_App.selections.getM_id().getId());
-				System.out.println(WiFi_App.selections.getM_location().getType().toString()+"  "+WiFi_App.selections.getM_location().getLat());
+				if(WiFi_App.selections.getM_time().getType()!=null)
+					System.out.println(WiFi_App.selections.getM_time().getType().toString()+"  "+WiFi_App.selections.getM_time().getFrom());
+				if(WiFi_App.selections.getM_id().getType()!=null)
+					System.out.println(WiFi_App.selections.getM_id().getType().toString()+"  "+WiFi_App.selections.getM_id().getId());
+				if(WiFi_App.selections.getM_location().getType()!=null)
+					System.out.println(WiFi_App.selections.getM_location().getType().toString()+"  "+WiFi_App.selections.getM_location().getLat());
 			}
 		});
 
@@ -215,6 +278,7 @@ public class WiFi_App implements IFiltersSelect{
 				if(filePath !=null){
 					try {
 						m_records.addAll(db.readData(filePath));
+						update() ;
 					} catch (Exception e1) {
 						String message = "There was a problem reading the selected file";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -244,6 +308,7 @@ public class WiFi_App implements IFiltersSelect{
 					}
 					try {
 						m_records.addAll(db.readData(folder.getOutputFile()));
+						update();
 					} catch (Exception e1) {
 						String message = "An error occurred";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -271,6 +336,7 @@ public class WiFi_App implements IFiltersSelect{
 					try {
 						ur.addDataFromFile(filePath);
 						m_records = ur.get_records();
+						update();
 					} catch (IOException e1) {
 						String message = "There was a problem reading the selected file";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -294,6 +360,7 @@ public class WiFi_App implements IFiltersSelect{
 					try {
 						ur.addDataFromFolder(folderPath);
 						m_records = ur.get_records();
+						update() ;
 					} catch (Exception e1) {
 						String message = "There was a problem reading the selected folder";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -368,6 +435,7 @@ public class WiFi_App implements IFiltersSelect{
 				m_records = null;
 				labelFilter1.setEnabled(false);
 				labelFilter2.setEnabled(false);
+				update();
 			}
 		});
 
@@ -431,13 +499,13 @@ public class WiFi_App implements IFiltersSelect{
 				filterIDPanel.setVisible(true);				
 			}
 		});
-		
+
 		mntmById.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mnFilters.add(mntmById);
-		
+
 		JSeparator separator_3 = new JSeparator();
 		mnFilters.add(separator_3);
-		
+
 		JMenuItem mntmResetFilter = new JMenuItem("Reset Filter 1");
 		mntmResetFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -446,7 +514,7 @@ public class WiFi_App implements IFiltersSelect{
 		});
 		mntmResetFilter.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mnFilters.add(mntmResetFilter);
-		
+
 		JMenuItem mntmResetFilter_1 = new JMenuItem("Reset Filter 2");
 		mntmResetFilter_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -455,10 +523,10 @@ public class WiFi_App implements IFiltersSelect{
 		});
 		mntmResetFilter_1.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mnFilters.add(mntmResetFilter_1);
-		
+
 		JSeparator separator_4 = new JSeparator();
 		mnFilters.add(separator_4);
-		
+
 		JMenuItem mntmSaveFilters = new JMenuItem("Save Filters ");
 		mntmSaveFilters.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mnFilters.add(mntmSaveFilters);
@@ -484,6 +552,8 @@ public class WiFi_App implements IFiltersSelect{
 		JMenuItem mntmSingleScan = new JMenuItem("Single Scan");
 		mntmSingleScan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Algorithm2Single algorithm2Single= new Algorithm2Single();
+				algorithm2Single.setVisible(true);
 			}
 		});
 		mntmSingleScan.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -492,6 +562,8 @@ public class WiFi_App implements IFiltersSelect{
 		JMenuItem mntmMultiScan = new JMenuItem("Multi Scan");
 		mntmMultiScan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Algorithm2Multi algorithm2Multi= new Algorithm2Multi();
+				algorithm2Multi.setVisible(true);
 			}
 		});
 		mntmMultiScan.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -518,8 +590,8 @@ public class WiFi_App implements IFiltersSelect{
 	@Override
 	public void setFilter2(String filter2) {
 		if(radioButtonAnd.isSelected() || radioButtonOr.isSelected()){
-		labelFilter2.setEnabled(true);
-		labelFilter2.setText(filter2);	
+			labelFilter2.setEnabled(true);
+			labelFilter2.setText(filter2);	
 		}
 	}
 
@@ -562,7 +634,13 @@ public class WiFi_App implements IFiltersSelect{
 	@Override
 	public void serializeFilter() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+
+	public void update() {
+		Task1 bl = new Task1();
+		Thread t = new Thread(bl);
+		t.start();
+	}
 }
