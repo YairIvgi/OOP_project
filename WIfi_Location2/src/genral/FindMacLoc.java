@@ -31,9 +31,9 @@ public class FindMacLoc {
 	private int m_Accuracy;
 
 	public FindMacLoc(String filePath, int accuracy) {
-		m_filePath=filePath;
-		m_folderPath=filePath.replace(".csv", "");
-		m_Accuracy=accuracy;
+		this.m_filePath=filePath;
+		this.m_folderPath=filePath.replace(".csv", "");
+		this.m_Accuracy=accuracy;
 	}
 	public FindMacLoc() {
 		m_filePath = null;
