@@ -4,13 +4,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import readAndWrite.UnionRecords;
 
 public class NotFilters implements IOperationWithOneFilter{
 
