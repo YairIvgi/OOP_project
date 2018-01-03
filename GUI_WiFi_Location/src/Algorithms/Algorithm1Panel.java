@@ -1,6 +1,7 @@
 package Algorithms;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Panels.FilterLocPanel;
 import Panels.WiFi_App;
@@ -10,6 +11,11 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -19,9 +25,12 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+
 public class Algorithm1Panel extends JFrame {
 	private JTextField txtEnterMac;
-	public Algorithm1Panel() {
+	public Algorithm1Panel(String dbPath) {
 		
 		txtEnterMac = new JTextField();
 		txtEnterMac.addActionListener(new ActionListener() {
@@ -35,7 +44,26 @@ public class Algorithm1Panel extends JFrame {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				FindMacLoc alg1=new FindMacLoc("C:\\temp\\scanes\\BM3.csv", 4);
+				try {
+					alg1.locateMac_FromExistingMac(txtEnterMac.getText());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					String message = "oops error: "+e1.getMessage();			
+					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				File file = new File("C:\\temp\\scanes\\BM3Mac_estimated_Loc.csv");
+				try {
+					Reader in =new FileReader(file);
+					Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+					for(CSVRecord record: records) {
+						System.out.println("Mac place is"+record.get("Lat")+","+record.get("Lon")+","+record.get("Alt"));
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -79,7 +107,7 @@ public class Algorithm1Panel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Algorithm1Panel frame = new Algorithm1Panel();
+					Algorithm1Panel frame = new Algorithm1Panel("C:\\temp\\scanes");
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setBounds(100, 100, 773, 501);
 					frame.setVisible(true);
