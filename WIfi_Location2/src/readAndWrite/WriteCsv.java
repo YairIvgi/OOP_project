@@ -171,7 +171,7 @@ public class WriteCsv {
 	 * @author Yair Ivgi 
 	 */
 
-	void writeLine(String line){
+	public void writeLine(String line){
 		outs.println(line);
 	}
 
