@@ -70,7 +70,7 @@ public class Algorithm2Single extends JFrame {
 					return;
 				}
 				String folder = System.getProperty("user.dir");
-				String output=folder+"\\OneStringForAlgorithm2.csv";
+				String output=folder+"\\Algorithm2Estimated_Location.csv";
 				File file = new File(output);
 				Reader in;
 				try {

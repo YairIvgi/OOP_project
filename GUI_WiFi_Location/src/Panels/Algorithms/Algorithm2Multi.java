@@ -141,7 +141,7 @@ public class Algorithm2Multi extends JFrame {
 					return;
 				}
 				String folder = System.getProperty("user.dir");
-				String output=folder+"\\threeMacForAlgorithm2.csv";
+				String output=folder+"\\Algorithm2Estimated_Location.csv";
 				File file = new File(output);
 				Reader in;
 				try {
