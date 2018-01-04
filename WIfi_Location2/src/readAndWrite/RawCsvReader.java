@@ -36,8 +36,6 @@ public class RawCsvReader {
 		outputFile= dir.getPath()+"\\DATA.csv";
 		List<RawData> data;
 		File folder = new File(folderPath);
-		System.out.println("output file " + folder.getAbsolutePath());			
-
 		File[] listOfFiles = folder.listFiles(new FilenameFilter(){
 			public boolean accept(File dir, String filename){
 				return filename.endsWith(".csv"); 

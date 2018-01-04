@@ -1,6 +1,5 @@
 package Panels.Filter;
 
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -26,23 +25,6 @@ public class FilterLocPanel extends JFrame {
 	private JTextPane textPaneLatitude;
 	private JTextPane textPaneRadius;
 	private JCheckBox checkBoxNot;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FilterLocPanel frame = new FilterLocPanel(null);
-					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

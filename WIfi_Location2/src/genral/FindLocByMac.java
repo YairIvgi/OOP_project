@@ -54,6 +54,8 @@ public class FindLocByMac {
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		List<CSVRecord> oneLineRecord  = new ArrayList<CSVRecord>();
 		for(CSVRecord record: records){
+			WifiSpot point = findInDataBase(record);
+			CsvRecordPoint crp = new CsvRecordPoint(record, point);
 			oneLineRecord.add(record);
 		}
 		estimatedLoc(oneLineRecord);
@@ -87,7 +89,7 @@ public class FindLocByMac {
 	public void estimatedLoc(List<CSVRecord> noGps) throws Exception{
 		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
 		for(CSVRecord record : m_records){					
-			WifiSpot point = findInDataBase(m_records,record);
+			WifiSpot point = findInDataBase(record);
 			CsvRecordPoint crp = new CsvRecordPoint(record, point);
 			dataList.add(crp);		
 		}
@@ -97,15 +99,15 @@ public class FindLocByMac {
 	}
 	
 //searching in database file
-	private WifiSpot findInDataBase(List<CSVRecord> records,CSVRecord record) throws IOException{
-		List <WifiSpot> points = new ArrayList<WifiSpot>();
-		for(CSVRecord DBrecord : records){				//Data Base Records
+	private WifiSpot findInDataBase(CSVRecord record) throws IOException{
+		List<WifiSpot> points = new ArrayList<WifiSpot>();
+		for(CSVRecord DBrecord : m_records){				//Data Base Records
 			double PI	=	lineResemblance(DBrecord,record);
 			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
 			points.add(point);
 		}
 		//if there is no mac in database that equals one mac in the row in the noGPS file
-		if(!ifAnyNoMacInDB(points)) {		
+		if(!ifNoMacInDB(points)) {		
 			String id = points.get(0).getId();
 			String ssid = points.get(0).getSsid();
 			String time = points.get(0).getTime();
@@ -130,7 +132,7 @@ public class FindLocByMac {
 			m_Accuracy = 5;
 		}
 		for (int i = 0; i < m_Accuracy; i++) {
-//			if we have  more regular numbers that not written with expo than than numbers we equals with
+//			if we have  more regular numbers that not written with expo than the numbers we equals with
 			if(index> m_Accuracy) {
 				result.add(points.get(index-i));
 			}
@@ -142,7 +144,7 @@ public class FindLocByMac {
 	}
 	
 	//Check if there is a mac in database that equals one mac in the row in the noGPS file
-	private boolean ifAnyNoMacInDB(List<WifiSpot>	points) {
+	private boolean ifNoMacInDB(List<WifiSpot>	points) {
 		for(int i=1; i < points.size(); i++) {
 			if(!points.get(0).getRssi().equals(points.get(i).getRssi())) {
 				return true;

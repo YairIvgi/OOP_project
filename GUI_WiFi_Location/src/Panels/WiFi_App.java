@@ -128,7 +128,6 @@ public class WiFi_App implements IFiltersSelect{
 				case ById:
 					filter1 = new FilterById(selections.getM_id().getId());		
 					isNot1 = selections.getM_id().isNot();
-					System.out.println("wifi isNot: "+isNot1);
 					break;
 				case ByLocation:
 					double lat,lon,radius;
@@ -232,6 +231,7 @@ public class WiFi_App implements IFiltersSelect{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frame.setBounds(100, 100, 800, 600);  
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -321,7 +321,6 @@ public class WiFi_App implements IFiltersSelect{
 					case ById:
 						filter1 = new FilterById(selections.getM_id().getId());		
 						isNot1 = selections.getM_id().isNot();
-						System.out.println("wifi isNot: "+isNot1);
 						break;
 					case ByLocation:
 						double lat,lon,radius;
@@ -513,7 +512,7 @@ public class WiFi_App implements IFiltersSelect{
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
 				if(records.size() ==0){			
-					JOptionPane.showMessageDialog(new JFrame(),"Error- Please start new project", "Dialog",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
 				AddData ad = new AddData(mntmAddFile2);
@@ -545,7 +544,7 @@ public class WiFi_App implements IFiltersSelect{
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
 				if(records.size() ==0){			
-					JOptionPane.showMessageDialog(new JFrame(),"Error- Please start new project", "Dialog",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
 				AddData ad = new AddData(mntmAddFolder2);
@@ -593,7 +592,6 @@ public class WiFi_App implements IFiltersSelect{
 				WiFi_App.selections.setM_folderPath(folderPath);
 				if(folderPath !=null){
 					try {
-						System.out.println("not null ");
 						DataBaseIO io = new DataBaseIO();
 						io.writeCSV(folderPath, records);
 					} catch (Exception e1) {
@@ -738,7 +736,7 @@ public class WiFi_App implements IFiltersSelect{
 		JSeparator separator_3 = new JSeparator();
 		mnFilters.add(separator_3);
 
-		JMenuItem mntmResetFilter = new JMenuItem("Reset Filter 1");
+		JMenuItem mntmResetFilter = new JMenuItem("Reset Filters");
 		mntmResetFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				resetFilter1();
@@ -762,28 +760,25 @@ public class WiFi_App implements IFiltersSelect{
 		JMenuItem mntmSaveFilters = new JMenuItem("Save Filters ");
 		mntmSaveFilters.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FiltersSelections obj = new FiltersSelections();
-				
-				String folder = System.getProperty("user.dir");
-				File file = new File(folder,"SaveFilters.obj");
-				try {
-					FileOutputStream fos = new FileOutputStream(file);
-					ObjectOutputStream oos = new ObjectOutputStream(fos);
-					obj.setM_id(selections.getM_id());
-					obj.setM_location(selections.getM_location());
-					obj.setM_time(selections.getM_time());
-					obj.setM_type1(selections.getM_type1());
-					obj.setM_type2(selections.getM_type2());
-					obj.setM_labelFilter1(selections.getM_labelFilter1());
-					obj.setM_labelFilter2(selections.getM_labelFilter2());
-					obj.setM_operation(selections.getM_operation());
-					oos.writeObject(obj);
-					oos.close();
-					fos.close();
-				} catch (Exception e3) {
-					String message = "Error can't save filters";			
-					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-				}
+//				FiltersSelections obj = new FiltersSelections();	
+//				String folder = System.getProperty("user.dir");
+//				File file = new File(folder,"SaveFilters.obj");
+//				try {
+//					FileOutputStream fos = new FileOutputStream(file);
+//					ObjectOutputStream oos = new ObjectOutputStream(fos);
+//					obj.setM_id(selections.getM_id());
+//					obj.setM_location(selections.getM_location());
+//					obj.setM_time(selections.getM_time());
+//					obj.setM_type1(selections.getM_type1());
+//					obj.setM_type2(selections.getM_type2());
+//					obj.setM_operation(selections.getM_operation());
+//					oos.writeObject(obj);
+//					oos.close();
+//					fos.close();
+//				} catch (Exception e3) {
+//					String message = "Error can't save filters";			
+//					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+//				}
 			}
 		});
 		mntmSaveFilters.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -792,35 +787,26 @@ public class WiFi_App implements IFiltersSelect{
 		JMenuItem UploadSavedFilter = new JMenuItem("Upload Saved Filter");
 		UploadSavedFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FiltersSelections obj2 = null;
-				try {
-					String folder = System.getProperty("user.dir");
-					File file = new File(folder,"SaveFilters.obj");
-					FileInputStream fis = new FileInputStream(file);
-					ObjectInputStream ois = new ObjectInputStream(fis);
-					obj2 = (FiltersSelections)ois.readObject();
-					selections.setM_id(obj2.getM_id());
-					selections.setM_location(obj2.getM_location());
-					selections.setM_time(obj2.getM_time());
-					selections.setM_labelFilter1(obj2.getM_labelFilter1());
-					selections.setM_labelFilter2(obj2.getM_labelFilter2());
-					selections.setM_type1(obj2.getM_type1());
-					selections.setM_type2(obj2.getM_type2());
-					selections.setM_operation(obj2.getM_operation());
-					
-					if(selections.getM_labelFilter1().isEnabled()){
-						setFilter1(selections.getM_labelFilter1().getText());
-					}
-					if(selections.getM_labelFilter2().isEnabled()){
-						setFilter2(selections.getM_labelFilter2().getText());
-					}
-					ois.close();
-					fis.close();
-					
-				} catch (Exception e4) {
-					String message = "Error can't upload filters";			
-					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-				}
+//				FiltersSelections obj2 = null;
+//				try {
+//					String folder = System.getProperty("user.dir");
+//					File file = new File(folder,"SaveFilters.obj");
+//					FileInputStream fis = new FileInputStream(file);
+//					ObjectInputStream ois = new ObjectInputStream(fis);
+//					obj2 = (FiltersSelections)ois.readObject();
+//					selections.setM_id(obj2.getM_id());
+//					selections.setM_location(obj2.getM_location());
+//					selections.setM_time(obj2.getM_time());
+//					selections.setM_type1(obj2.getM_type1());
+//					selections.setM_type2(obj2.getM_type2());
+//					selections.setM_operation(obj2.getM_operation());
+//					ois.close();
+//					fis.close();
+//					
+//				} catch (Exception e4) {
+//					String message = "Error can't upload filters";			
+//					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+//				}
 			}
 		});
 		UploadSavedFilter.setFont(new Font("Segoe UI", Font.PLAIN, 22));

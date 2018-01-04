@@ -1,6 +1,7 @@
 package Panels.Algorithms;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -8,23 +9,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import Panels.WiFi_App;
 import genral.FindMacLoc;
-import java.awt.Font;
-import java.awt.Color;
 
 public class Algorithm1Panel extends JFrame {
 	
@@ -34,12 +30,13 @@ public class Algorithm1Panel extends JFrame {
 		setTitle("Algorithm 1");
 		setBounds(100, 100, 600, 400);
 		txtEnterMac = new JTextField();
+		txtEnterMac.setBounds(132, 26, 275, 47);
 		txtEnterMac.setBackground(new Color(192, 192, 192));
 		txtEnterMac.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtEnterMac.setText("Enter mac");
 		txtEnterMac.setColumns(10);
 		
-		JButton btnOk = new JButton("OK");
+		JButton btnOk = new JButton("Locate");
+		btnOk.setBounds(200, 110, 113, 35);
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -60,84 +57,55 @@ public class Algorithm1Panel extends JFrame {
 					boolean existMac =false;
 					for(CSVRecord record: records) {
 						existMac=true;
-						lblNewLabel.setText("Mac place is "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
+						lblNewLabel.setText("Mac Location: "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
 					}
 					if(!existMac) {
-						lblNewLabel.setText("no macs like this in the database");
+						lblNewLabel.setText("No such MAC in the Data base");
 					}
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					String message = "Error "+e.getMessage();			
+					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 				}
 			}
+			
 		});
-
 		
-		JButton btnCancel = new JButton("cancel");
-		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		btnCancel.addActionListener(new ActionListener() {
+		JLabel label = new JLabel("");
+		label.setBounds(176, 286, 45, 0);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(15, 202, 563, 69);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		getContentPane().setLayout(null);
+		getContentPane().add(btnOk);
+		getContentPane().add(label);
+		getContentPane().add(txtEnterMac);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Enter mac");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(15, 26, 113, 47);
+		getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Mac Location:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(15, 155, 146, 60);
+		getContentPane().add(lblNewLabel_2);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 286, 578, 51);
+		getContentPane().add(panel);
+		
+		JButton btnReturn = new JButton("Return");
+		btnReturn.setBounds(201, 0, 113, 35);
+		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		
-		JLabel label = new JLabel("");
-		
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(152)
-					.addComponent(btnOk, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(btnCancel, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-					.addGap(160))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(176)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(357, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(txtEnterMac, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(288, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(218, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(24)
-					.addComponent(txtEnterMac, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-					.addGap(38)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnOk)
-						.addComponent(btnCancel))
-					.addGap(44)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-					.addGap(29)
-					.addComponent(label)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		getContentPane().setLayout(groupLayout);
-	}
-
-
-	public static void main (String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Algorithm1Panel frame = new Algorithm1Panel();
-					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					frame.setBounds(100, 100, 773, 501);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		panel.setLayout(null);
+		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnReturn.setActionCommand("Cancel");
+		panel.add(btnReturn);
 	}
 }

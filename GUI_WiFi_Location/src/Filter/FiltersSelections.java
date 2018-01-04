@@ -21,8 +21,6 @@ public class FiltersSelections implements Serializable{
 	private FilterType m_type2;
 	private String m_folderPath;
 	private int m_diffrentMac;
-	private JLabel m_labelFilter1;
-	private JLabel m_labelFilter2;
 
 	public FiltersSelections(){
 		m_id = new FilterSelectionID();
@@ -103,52 +101,4 @@ public class FiltersSelections implements Serializable{
 		this.m_diffrentMac = diffrentMac;
 	}
 
-	public JLabel getM_labelFilter1() {
-		return m_labelFilter1;
-	}
-
-	public void setM_labelFilter1(JLabel m_labelFilter1) {
-		this.m_labelFilter1 = m_labelFilter1;
-	}
-
-	public JLabel getM_labelFilter2() {
-		return m_labelFilter2;
-	}
-
-	public void setM_labelFilter2(JLabel m_labelFilter2) {
-		this.m_labelFilter2 = m_labelFilter2;
-	}
-
-	
-	
-//	public static void main(String[] args) {
-//		FiltersSelections obj = new FiltersSelections();
-//		
-//		String folder = System.getProperty("user.dir");
-//		File file = new File(folder,"FiltersSelections.obj");
-//		try {
-//			FileOutputStream fos = new FileOutputStream(file);
-//			ObjectOutputStream oos = new ObjectOutputStream(fos);
-//			oos.writeObject(obj);
-//			oos.close();
-//			fos.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		FiltersSelections obj2 = null;
-//		try {
-//			File file1 = new File(folder,"FiltersSelections.obj");
-//			FileInputStream fis = new FileInputStream(file1);
-//			ObjectInputStream ois = new ObjectInputStream(fis);
-//			obj2 = (FiltersSelections)ois.readObject();
-//			ois.close();
-//			fis.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		int k = 0;
-//	}
-	
-	
 }
