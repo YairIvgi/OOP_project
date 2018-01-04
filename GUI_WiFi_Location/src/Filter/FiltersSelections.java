@@ -1,13 +1,10 @@
 package Filter;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JLabel;
 
 import org.apache.commons.csv.CSVRecord;
 
@@ -24,7 +21,8 @@ public class FiltersSelections implements Serializable{
 	private FilterType m_type2;
 	private String m_folderPath;
 	private int m_diffrentMac;
-
+	private JLabel m_labelFilter1;
+	private JLabel m_labelFilter2;
 
 	public FiltersSelections(){
 		m_id = new FilterSelectionID();
@@ -105,6 +103,23 @@ public class FiltersSelections implements Serializable{
 		this.m_diffrentMac = diffrentMac;
 	}
 
+	public JLabel getM_labelFilter1() {
+		return m_labelFilter1;
+	}
+
+	public void setM_labelFilter1(JLabel m_labelFilter1) {
+		this.m_labelFilter1 = m_labelFilter1;
+	}
+
+	public JLabel getM_labelFilter2() {
+		return m_labelFilter2;
+	}
+
+	public void setM_labelFilter2(JLabel m_labelFilter2) {
+		this.m_labelFilter2 = m_labelFilter2;
+	}
+
+	
 	
 //	public static void main(String[] args) {
 //		FiltersSelections obj = new FiltersSelections();
