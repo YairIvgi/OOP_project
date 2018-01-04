@@ -35,6 +35,10 @@ public class FiltersSelections implements Serializable{
 	public List<CSVRecord> getRecords() {
 		return m_records;
 	}
+	
+	public void setRecords(List<CSVRecord> records) {
+		 m_records = records;
+	}
 
 
 	public FilterSelectionID getM_id() {

@@ -55,6 +55,10 @@ import javax.swing.JList;
 import javax.swing.JTextPane;
 
 public class WiFi_App implements IFiltersSelect{
+	/**
+	 * @Description The is the main panel of the GUI of WiFi_Location. 
+	 * @author Yair Ivgi
+	 */
 
 	private JFrame frame;
 	private JLabel labelFilter1;
@@ -172,7 +176,8 @@ public class WiFi_App implements IFiltersSelect{
 					try {
 						FileOutputStream fos = new FileOutputStream(file);
 						ObjectOutputStream oos = new ObjectOutputStream(fos);
-						obj = selections;
+						obj.setRecords(selections.getRecords()); 
+						obj.setDiffrentMac(selections.getDiffrentMac());
 						oos.writeObject(obj);
 						oos.close();
 						fos.close();
@@ -538,7 +543,8 @@ public class WiFi_App implements IFiltersSelect{
 					String message = "The Data is up to date";			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 				}
-				selections = obj2;
+				selections.setRecords(obj2.getRecords());
+				selections.setDiffrentMac(obj2.getDiffrentMac());
 				updateDataLabel();
 			}
 		});
@@ -629,6 +635,11 @@ public class WiFi_App implements IFiltersSelect{
 		mnFilters.add(separator_4);
 
 		JMenuItem mntmSaveFilters = new JMenuItem("Save Filters ");
+		mntmSaveFilters.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		mntmSaveFilters.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mnFilters.add(mntmSaveFilters);
 

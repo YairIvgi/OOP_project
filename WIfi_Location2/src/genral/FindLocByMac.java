@@ -42,6 +42,31 @@ public class FindLocByMac {
 		m_DataBaseFilePath = DataBaseFilePath;
 		m_Accuracy = accuracy;
 	}
+	
+	public void estimatedLoc_FromString(String line) throws Exception {
+		String output="C:\\Users\\user\\Desktop\\try\\newData\\OneStringForAlgorithm2.csv";
+		WriteCsv w=new WriteCsv(output);
+		w.writeLine(line);
+		w.close();
+		estimatedLoc_FromFile(output);
+	}
+	
+	public void estimatedLoc_FromMacs(String mac1, String signal1, String mac2, String signal2, String mac3, String signal3) throws Exception {
+		WifiSpot wf1=new WifiSpot("user", mac1, "Ariel_University", "2018-01-02 17:42:08", "15", signal1, "?", "?", "?");
+		WifiSpot wf2=new WifiSpot("user", mac2, "Ariel_University", "2018-01-02 17:42:08", "11", signal2, "?", "?", "?");
+		WifiSpot wf3=new WifiSpot("user", mac3, "Ariel_University", "2018-01-02 17:42:08", "10", signal3, "?", "?", "?");
+		RawData rd= new RawData();
+		rd.add(wf1);
+		rd.add(wf2);
+		rd.add(wf3);
+		List<RawData> result = new ArrayList<RawData>();
+		result.add(rd);
+		String output="C:\\Users\\user\\Desktop\\try\\newData\\MacsForAlgorithm2.csv";
+		WriteCsv wc=new WriteCsv(output);
+		wc.dataBaseFormat(result);
+		wc.close();
+		estimatedLoc_FromFile(output);
+	}
 
 	public void estimatedLoc_FromFile(String filePath) throws Exception{
 		m_filePath = filePath;
