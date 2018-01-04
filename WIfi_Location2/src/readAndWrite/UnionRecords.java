@@ -56,11 +56,13 @@ public class UnionRecords {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
 		result.addAll(m_records);
 		boolean Contain;
+		int i,j;
 		for(CSVRecord record : records){
 			Contain = false;
 			for(CSVRecord record2: m_records){
-				if(record.get("Time").equals(record2.get("Time")) && record.get("ID").equals(record2.get("ID"))){
+				if(record.get("Time").equals(record2.get("Time")) && record.get("ID").equals(record2.get("ID")) && record.get("SSID1").equals(record2.get("SSID1"))){
 					Contain = true;
+					break;
 				}
 			}
 			if(!Contain){

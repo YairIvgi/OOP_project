@@ -109,13 +109,10 @@ public class DataBaseIO {
 		}
 		if(!outputPath.contains("\\newData")){
 			File dir = new File(outputPath+"\\newData");
-			if (dir.mkdir()) {
-				System.out.println("directory " + dir.getAbsolutePath() + " created");
-			} else {
-				System.out.println("directory " + dir.getAbsolutePath() + " failed");			
-			}
+			dir.mkdir();
+			outputPath += "\\newData";
 		}
-		outputPath += "\\newData\\DATA.kml";			//generate the kml file
+		outputPath += "\\DATA.kml";			//generate the kml file
 		kml.createKml(outputPath);
 	}
 
@@ -128,11 +125,7 @@ public class DataBaseIO {
 	public void writeCSV(String outputPath,List<CSVRecord> records) throws Exception {
 		if(!outputPath.contains("\\newData")){
 			File dir = new File(outputPath+"\\newData");
-			if (dir.mkdir()) {
-				System.out.println("directory " + dir.getAbsolutePath() + " created");
-			} else {
-				System.out.println("directory " + dir.getAbsolutePath() + " failed");			
-			}
+			dir.mkdir();
 		}
 		WriteCsv wc=new WriteCsv(outputPath+"\\newData\\DATA.csv");
 		for(CSVRecord record : records) {

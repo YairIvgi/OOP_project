@@ -41,26 +41,27 @@ public class Main {
 				FilterData fd = new FilterData();
 				
 				IFilter filterId = new FilterById("Lenovo PB2-690Y");
-				IFilter filterTime = new FilterByTime("2016-12-1  10:43:00", "2017-12-1  20:50:14");
+				IFilter filterTime = new FilterByTime("2017-10-27  16:25:00", "2017-10-27  16:36:14");
 				IFilter filterLocation = new FilterByLocation(34.806, 32.165, 0.022);
 				
 				List<CSVRecord> records1 = rw.readData(folder.getOutputFile());			
-				records1 = fd.filterData(records1, filterId);							//filter by id
+				records1 = fd.filterData(records1, filterId,false);							//filter by id without NOT
 				List<CSVRecord> records2 = rw.readData(folder.getOutputFile());			
-				records2 = fd.filterData(records2, filterTime);		//filter by time frame
+				records2 = fd.filterData(records2, filterTime,false);		//filter by time frame without NOT
 				List<CSVRecord> records3 = rw.readData(folder.getOutputFile());		
-				records3 = fd.filterData(records3, filterLocation);		//filter by coordinates
-
-		 		IOperationFilter andfilter = new AndFilters(folder.getOutputFile());
-		 		IOperationFilter orfilter = new OrFilters(folder.getOutputFile());
-				List<CSVRecord> records4 = andfilter.getFiltered (filterId, filterTime);
-				List<CSVRecord> records5 = orfilter.getFiltered (filterId, filterTime);
-				rw.writeKML(folderPath,records5);
-				UnionRecords un = new UnionRecords(records5);
-				un.addDataFromFolder("C://temp//scanes//BM2");
-				records5 = un.get_records();
-				rw.writeCSV(folderPath, records5);
-				rw.writeKML(folderPath, records5);
+				records3 = fd.filterData(records3, filterLocation,false);		//filter by coordinates without NOT
+			
+				List<CSVRecord> records10 = rw.readData(folder.getOutputFile());			
+		 		IOperationFilter andfilter = new AndFilters();
+		 		IOperationFilter orfilter = new OrFilters();
+//				List<CSVRecord> records4 = andfilter.getFiltered (records10,filterId, filterTime);
+//				List<CSVRecord> records5 = orfilter.getFiltered (records10,filterId,false filterTime);
+//				rw.writeKML(folderPath,records5);
+//				UnionRecords un = new UnionRecords(records5);
+//				un.addDataFromFolder("C://temp//scanes//BM2");
+//				records5 = un.get_records();
+//				rw.writeCSV(folderPath, records5);
+//				rw.writeKML(folderPath, records5);
 
 		//// part 2 - Algo1 and Algo2////
 //

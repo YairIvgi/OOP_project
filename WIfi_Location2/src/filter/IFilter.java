@@ -1,4 +1,5 @@
 package filter;
+import java.io.Serializable;
 import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
@@ -8,8 +9,8 @@ import org.apache.commons.csv.CSVRecord;
  * @author Yair Ivgi
  */
 
-public interface IFilter {
+public interface IFilter extends Serializable{
 
-	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception;
+	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records,boolean isNot) throws Exception;
 	
 }

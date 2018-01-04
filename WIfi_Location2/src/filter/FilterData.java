@@ -12,9 +12,9 @@ public class FilterData {
 	 * @author Yair Ivgi
 	 */
 
-	public List<CSVRecord> filterData(List<CSVRecord> records, IFilter filter) throws Exception{
+	public List<CSVRecord> filterData(List<CSVRecord> records, IFilter filter,boolean isNot) throws Exception{
 		try {
-			List<CSVRecord> filteredRecords = filter.getFiltered(records);
+			List<CSVRecord> filteredRecords = filter.getFiltered(records,isNot);
 			return filteredRecords;
 		} catch (Exception e) {
 			throw new Exception("Error reading file\n" + e);		

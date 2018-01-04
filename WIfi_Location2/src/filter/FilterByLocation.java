@@ -10,6 +10,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 
 public class FilterByLocation implements IFilter {
+	private static final long serialVersionUID = 1L;
+	
 	private double	m_lon;
 	private double	m_lat;
 	private double	m_radius;
@@ -32,7 +34,7 @@ public class FilterByLocation implements IFilter {
 	 */
 
 	@Override
-	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
+	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records,boolean isNot) throws Exception {
 		if(m_radius<0){
 			throw new Exception("radius must be positive");
 		}
@@ -46,6 +48,13 @@ public class FilterByLocation implements IFilter {
 			dist=Math.sqrt(Math.pow(currentLon-m_lon, 2)+Math.pow(currentLat-m_lat, 2));
 			if(dist<=m_radius){
 				result.add(record);
+			}
+		}
+		if(isNot){
+			try {
+				result = FilterById.getNotFiltered((List<CSVRecord>)records ,result);
+			} catch (Exception e) {
+				throw new Exception("Not Filter failed: "+e.getMessage());
 			}
 		}
 		return result;

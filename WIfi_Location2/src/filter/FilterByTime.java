@@ -13,6 +13,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 
 public class FilterByTime implements IFilter {
+	private static final long serialVersionUID = 1L;
+	
 	private Date m_minTime;
 	private Date m_maxTime;
 
@@ -39,7 +41,7 @@ public class FilterByTime implements IFilter {
 	 */
 
 	@Override
-	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records) throws Exception {
+	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records,boolean isNot) throws Exception {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
 		SimpleDateFormat currentDateFormat;		
 		Date currentTime;
@@ -58,6 +60,13 @@ public class FilterByTime implements IFilter {
 				}
 			} catch (ParseException e) {
 				throw new Exception("time format is invalid");
+			}
+		}
+		if(isNot){
+			try {
+				result = FilterById.getNotFiltered((List<CSVRecord>)records ,result);
+			} catch (Exception e) {
+				throw new Exception("Not Filter failed: "+e.getMessage());
 			}
 		}
 		return result;

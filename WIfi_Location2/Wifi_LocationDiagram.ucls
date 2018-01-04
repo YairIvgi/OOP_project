@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="filter.IOperationWithOneFilter" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/IOperationWithOneFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="281" x="3351" y="545"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="2" language="java" name="filter.AndFilters" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/AndFilters.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="136" width="322" x="2627" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="3" language="java" name="filter" project="WiFi_Location" file="/WiFi_Location/src/filter" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="113" y="269"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="4" language="java" name="filter.FilterById" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/FilterById.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="397" x="503" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="filter.FilterByLocation" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/FilterByLocation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="397" x="940" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="filter.FilterByTime" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/FilterByTime.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="397" x="1377" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="7" language="java" name="filter.IOperationFilter" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/IOperationFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="322" x="2808" y="545"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="8" language="java" name="filter.NotFilter" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/NotFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="136" width="281" x="3351" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="filter.OrFilters" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/OrFilters.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="136" width="322" x="2989" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="filter.IFilter" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/IFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="397" x="940" y="545"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <component id="11" language="java" name="src" project="WiFi_Location" file="/WiFi_Location/src" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="48" width="164" x="299" y="269"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </component>  
+  <package id="12" language="java" name="genral" project="WiFi_Location" file="/WiFi_Location/src/genral" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="1814" y="269"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="13" language="java" name="readAndWrite" project="WiFi_Location" file="/WiFi_Location/src/readAndWrite" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="2000" y="269"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="14" language="java" name="filter.FilterData" project="WiFi_Location" 
+    file="/WiFi_Location/src/filter/FilterData.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="401" x="2186" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="15">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="16">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <realization id="17">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <realization id="18">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="19">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
