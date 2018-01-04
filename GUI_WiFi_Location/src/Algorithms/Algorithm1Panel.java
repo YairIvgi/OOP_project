@@ -59,9 +59,13 @@ public class Algorithm1Panel extends JFrame {
 				try {
 					Reader in =new FileReader(file);
 					Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-					
+					boolean existMac =false;
 					for(CSVRecord record: records) {
+						existMac=true;
 						lblNewLabel.setText("Mac place is "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
+					}
+					if(!existMac) {
+						lblNewLabel.setText("no macs like this in the database");
 					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
