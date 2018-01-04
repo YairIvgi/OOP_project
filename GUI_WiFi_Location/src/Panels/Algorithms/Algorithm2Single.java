@@ -51,8 +51,8 @@ public class Algorithm2Single extends JFrame {
 					return;
 				}
 				String folder = System.getProperty("user.dir");
-				String path=folder+"\\Algorithm2.csv";
-				File file = new File(path);
+				String output=folder+"\\Algorithm2Estimated_Location.csv";
+				File file = new File(output);
 				Reader in;
 				try {
 					in = new FileReader(file);
