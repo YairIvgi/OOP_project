@@ -1,7 +1,6 @@
 package genral;
 
 
-import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileReader;
@@ -62,13 +61,18 @@ public class FindMacLoc {
 		WifiSpot point = null;
 		AveragingElaborateCoordinate AE = new AveragingElaborateCoordinate();
 		points = findMacsInDB(mac);
-		if(points.size()==0) {
-			fail("no macs like this in the database");
-			return;
-		}
-		point = AE.centerOfPoints(points);
 		List<WifiSpot> allPoints=new ArrayList<WifiSpot>();
+		//if(points.size()==0) {
+		//	System.out.println("no macs like this in the database");
+		//	return;
+		//}
+		try {
+		point = AE.centerOfPoints(points);
 		allPoints.add(point);
+		}
+		catch(IndexOutOfBoundsException e) {
+			System.out.println("no macs like this in the database");
+		}
 		WriteCsv w= new WriteCsv(m_folderPath+"Mac_estimated_Loc.csv", allPoints);
 		w.ListOfpointsFormat();
 		w.close();

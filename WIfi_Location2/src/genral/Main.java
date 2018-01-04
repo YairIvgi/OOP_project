@@ -65,7 +65,7 @@ public class Main {
 
 		//FindMacLoc fM2 = new FindMacLoc();
 		FindMacLoc fM2 = new FindMacLoc("C:\\temp\\scanes\\BM3.csv",4);
-		fM2.locateMac_FromExistingMac("1c:b9:c4:15:ec:3c");
+		fM2.locateMac_FromExistingMac("1c:b9:c4:15:e");
 		//fM2.locateMac_FromFolder("C:\\temp\\scanes\\BM3",5);
 		
 
