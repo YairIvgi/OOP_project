@@ -46,6 +46,8 @@ import readAndWrite.RawCsvReader;
 import readAndWrite.UnionRecords;
 import util.AddData;
 import util.ExportData;
+import util.NumberOfDiffMac;
+
 import javax.swing.JTextArea;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
@@ -515,6 +517,7 @@ public class WiFi_App implements IFiltersSelect{
 				records.clear();
 				resetFilter1();
 				resetFilter2();
+				updateDataLabel();
 			}
 		});
 
@@ -714,8 +717,9 @@ public class WiFi_App implements IFiltersSelect{
 		radioButtonNone.setSelected(true);
 	}
 	public void updateDataLabel(){
-		lblSampelsLabel.setText(String.valueOf((selections.getRecords().size()+1)));
-		//lblDifferentMacSamples
+		lblSampelsLabel.setText(String.valueOf((selections.getRecords().size())));
+		NumberOfDiffMac nod = new NumberOfDiffMac(selections.getRecords());
+		lblDifferentMacSamples.setText(String.valueOf(nod.getNum()));
 	}
 
 	@Override
