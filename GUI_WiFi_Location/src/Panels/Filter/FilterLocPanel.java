@@ -1,4 +1,4 @@
-package Panels;
+package Panels.Filter;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import Filter.FilterSelectionLocation;
 import Filter.FilterType;
 import Filter.IFiltersSelect;
+import Panels.WiFi_App;
 
 public class FilterLocPanel extends JFrame {
 
@@ -58,7 +59,6 @@ public class FilterLocPanel extends JFrame {
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WiFi_App.selections.getM_location().setNot(checkBoxNot.isSelected());
-
 			}
 		});
 		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 20));

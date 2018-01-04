@@ -24,34 +24,19 @@ import readAndWrite.WriteCsv;
 
 public class FindMacLoc {
 
-	private  String m_filePath = null;
-	private	 String m_folderPath = null;
 	private int m_Accuracy;
-
+	private List<CSVRecord> m_records;
 	
-	public FindMacLoc(String filePath, int accuracy) {
-		this.m_filePath=filePath;
-		this.m_folderPath=filePath.replace(".csv", "");
+	public FindMacLoc( List<CSVRecord> records, int accuracy) {
+		m_records = new ArrayList<CSVRecord>();
+		m_records.addAll(records);
 		this.m_Accuracy=accuracy;
 	}
 	
-	public FindMacLoc() {
-		m_filePath = null;
-		m_folderPath = null;
-		m_Accuracy = 0;
-	}
-	
 	/**
-	 * Receive organized data from file 
-	 * @author Yair Ivgi
+	 * Execute the algorithm for specific mac
+	 * @author Idan Hollander
 	 */
-	
-	public void locateMac_FromFile(String filePath,int accuracy) throws Exception{
-		m_filePath = filePath; 
-		m_folderPath = filePath.replace(".csv","");
-		m_Accuracy=accuracy;
-		locate();
-	}
 
 	public void locateMac_FromExistingMac(String mac) throws Exception {
 		List <WifiSpot> points = null;
@@ -66,80 +51,17 @@ public class FindMacLoc {
 		catch(IndexOutOfBoundsException e) {
 			System.out.println("no macs like this in the database");
 		}
-		WriteCsv w= new WriteCsv(m_folderPath+"Mac_estimated_Loc.csv", allPoints);
+		String folder = System.getProperty("user.dir");
+		String output=folder+"\\Algorithm1.csv";
+		WriteCsv w= new WriteCsv(output, allPoints);
 		w.ListOfpointsFormat();
 		w.close();
 	}
 	
-	/**
-	 * Receive raw data from folder 
-	 * @author Yair Ivgi
-	 */
-	
-	public void locateMac_FromFolder(String folderPath,int accuracy) throws Exception{
-		m_folderPath = folderPath;
-		m_Accuracy=accuracy;
-		RawCsvReader folder=new RawCsvReader();
-		try {
-			folder.readFolder(folderPath);
-		} catch (Exception e) {
-			System.err.println("faild: "+e.toString());
-		}
-		m_filePath = folder.getOutputFile();
-		m_folderPath+="//newData//";
-		locate();
-	}
-
-	private void locate() throws Exception{
-		List <WifiSpot> allPoints = new ArrayList<WifiSpot>();		
-		File file = new File(m_filePath);
-		Reader in = new FileReader(file);
-		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-		
-		//scan every line in the input
-		for(CSVRecord record : records){	
-			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
-			
-			//check all mac's in line
-			for (int i = 1; i <= numOfSamples ; i++) {
-				List <WifiSpot> points = null;
-				String mac = record.get("MAC"+String.valueOf(i));
-				WifiSpot point = null;
-				
-				//check if we already have that mac.
-				AveragingElaborateCoordinate AE = new AveragingElaborateCoordinate();
-				if(allPoints.size() == 0){
-					points = findMacsInDB(mac);
-					point = AE.centerOfPoints(points);
-					allPoints.add(point);
-				}
-				boolean flage=false;
-				for (int j=0; j < allPoints.size();j++) {
-					if(allPoints.get(j).getMac().equals(mac)){
-						flage=true;
-					}
-				}
-				if(!flage){
-					points = findMacsInDB(mac);
-					if (points.size() >= 0){
-						point = AE.centerOfPoints(points);
-						allPoints.add(point);			
-					}
-				}
-			}
-		}
-		WriteCsv W = new WriteCsv(m_folderPath+"Mac_estimated_Loc.csv", allPoints);
-		W.ListOfpointsFormat();
-		W.close();
-	}
-	
 //return the 3 strongest appearances of the mac in the DB
 	private List <WifiSpot> findMacsInDB(String mac) throws IOException{
-		File file = new File(m_filePath);
-		Reader in = new FileReader(file);
-		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		List <WifiSpot> points =new ArrayList<WifiSpot>();
-		for(CSVRecord record : records){
+		for(CSVRecord record : m_records){
 			int numOfSamples = Integer.parseInt(record.get("WiFi networks"));
 			for (int i = 1; i <= numOfSamples ; i++) {
 				String index = String.valueOf(i);

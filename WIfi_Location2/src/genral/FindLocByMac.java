@@ -23,9 +23,8 @@ import readAndWrite.WriteCsv;
 
 public class FindLocByMac {
 
-	private	String m_filePath;
-	private String m_DataBaseFilePath;
 	private int m_Accuracy;
+	private List<CSVRecord> m_records;
 	private static final double POWER = 2;
 	private static final double NORM = 10000;
 	private static final double SIG_DIF = 0.4;
@@ -38,17 +37,26 @@ public class FindLocByMac {
 	 * @author Yair Ivgi and Idan Hollander
 	 */
 	
-	public FindLocByMac(String DataBaseFilePath,int accuracy){
-		m_DataBaseFilePath = DataBaseFilePath;
+	public FindLocByMac(List<CSVRecord> records,int accuracy){	
 		m_Accuracy = accuracy;
+		m_records = new ArrayList<CSVRecord>();
+		m_records.addAll(records);
 	}
 	
 	public void estimatedLoc_FromString(String line) throws Exception {
-		String output="C:\\Users\\user\\Desktop\\try\\newData\\OneStringForAlgorithm2.csv";
-		WriteCsv w=new WriteCsv(output);
-		w.writeLine(line);
-		w.close();
-		estimatedLoc_FromFile(output);
+		String folder = System.getProperty("user.dir");
+		String output=folder+"\\OneStringForAlgorithm2.csv";
+		WriteCsv wc = new WriteCsv(output);
+		wc.writeLine(line);
+		wc.close();
+		File file = new File(output);
+		Reader in = new FileReader(file);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		List<CSVRecord> oneLineRecord  = new ArrayList<CSVRecord>();
+		for(CSVRecord record: records){
+			oneLineRecord.add(record);
+		}
+		estimatedLoc(oneLineRecord);
 	}
 	
 	public void estimatedLoc_FromMacs(String mac1, String signal1, String mac2, String signal2, String mac3, String signal3) throws Exception {
@@ -61,32 +69,35 @@ public class FindLocByMac {
 		rd.add(wf3);
 		List<RawData> result = new ArrayList<RawData>();
 		result.add(rd);
-		String output="C:\\Users\\user\\Desktop\\try\\newData\\MacsForAlgorithm2.csv";
-		WriteCsv wc=new WriteCsv(output);
+		String folder = System.getProperty("user.dir");
+		String output=folder+"\\threeMacForAlgorithm2.csv";
+		WriteCsv wc =new WriteCsv(output);
 		wc.dataBaseFormat(result);
 		wc.close();
-		estimatedLoc_FromFile(output);
-	}
-
-	public void estimatedLoc_FromFile(String filePath) throws Exception{
-		m_filePath = filePath;
-		File file = new File(m_filePath);
+		File file = new File(output);
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+		List<CSVRecord> records2  = new ArrayList<CSVRecord>();
+		for(CSVRecord record: records){
+			records2.add(record);
+		}
+		estimatedLoc(records2);
+	}
+
+	public void estimatedLoc(List<CSVRecord> noGps) throws Exception{
 		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
-		for(CSVRecord record : records){					
-			WifiSpot point = findInDataBase(record);
+		for(CSVRecord record : m_records){					
+			WifiSpot point = findInDataBase(m_records,record);
 			CsvRecordPoint crp = new CsvRecordPoint(record, point);
 			dataList.add(crp);		
 		}
-		printCsv(dataList);
+		String folder = System.getProperty("user.dir");
+		String output=folder+"\\Algorithm2.csv";
+		printCsv(dataList,output);			
 	}
 	
 //searching in database file
-	private WifiSpot findInDataBase(CSVRecord record) throws IOException{
-		File file = new File(m_DataBaseFilePath);
-		Reader in = new FileReader(file);
-		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+	private WifiSpot findInDataBase(List<CSVRecord> records,CSVRecord record) throws IOException{
 		List <WifiSpot> points = new ArrayList<WifiSpot>();
 		for(CSVRecord DBrecord : records){				//Data Base Records
 			double PI	=	lineResemblance(DBrecord,record);
@@ -169,8 +180,8 @@ public class FindLocByMac {
 			return resemblance;
 	}
 	//writing csv
-	private void printCsv(List<CsvRecordPoint> dataList) throws Exception{
-		String outputPath = m_filePath.replace(".csv", "Estimated_Location.csv");
+	private void printCsv(List<CsvRecordPoint> dataList,String filePath) throws Exception{
+		String outputPath = filePath.replace(".csv", "Estimated_Location.csv");
 		WriteCsv wc = new WriteCsv(outputPath);
 		wc.estimatedLocationFormat(dataList);
 		wc.close();

@@ -14,7 +14,6 @@ import filter.IOperationFilter;
 import filter.OrFilters;
 import readAndWrite.DataBaseIO;
 import readAndWrite.RawCsvReader;
-import readAndWrite.UnionRecords;
 
 public class Main {
 

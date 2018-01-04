@@ -784,7 +784,6 @@ public class WiFi_App implements IFiltersSelect{
 					String message = "Error can't save filters";			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 				}
-				
 			}
 		});
 		mntmSaveFilters.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -931,6 +930,7 @@ public class WiFi_App implements IFiltersSelect{
 		type1 = null;
 		labelFilter1.setText("Filter 1");
 		radioButtonNone.setSelected(true);
+		resetFilter2() ;
 	}
 
 	@Override

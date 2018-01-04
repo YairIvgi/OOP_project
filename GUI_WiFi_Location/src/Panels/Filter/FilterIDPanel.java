@@ -1,4 +1,4 @@
-package Panels;
+package Panels.Filter;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import Filter.FilterSelectionID;
 import Filter.FilterType;
 import Filter.IFiltersSelect;
+import Panels.WiFi_App;
 
 public class FilterIDPanel extends JFrame {
 
@@ -53,11 +54,12 @@ public class FilterIDPanel extends JFrame {
 		contentPane.setLayout(null);
 		
 		textPaneID = new JTextPane();
+		textPaneID.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textPaneID.setBounds(151, 36, 297, 26);
 		contentPane.add(textPaneID);
 		
 		JLabel lblId = new JLabel("ID");
-		lblId.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblId.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblId.setBounds(67, 36, 69, 20);
 		contentPane.add(lblId);
 		
@@ -65,10 +67,9 @@ public class FilterIDPanel extends JFrame {
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WiFi_App.selections.getM_id().setNot(checkBoxNot.isSelected());
-				System.out.println("id isNot: "+checkBoxNot.isSelected());
 			}
 		});
-		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		checkBoxNot.setBounds(480, 36, 69, 29);
 		contentPane.add(checkBoxNot);
 		

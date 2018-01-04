@@ -1,4 +1,4 @@
-package Panels;
+package Panels.Filter;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import Filter.FilterSelectionTime;
 import Filter.FilterType;
 import Filter.IFiltersSelect;
+import Panels.WiFi_App;
 
 
 public class FilterTimePanel extends JFrame {
