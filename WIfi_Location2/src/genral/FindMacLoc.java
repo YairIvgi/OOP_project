@@ -62,10 +62,6 @@ public class FindMacLoc {
 		AveragingElaborateCoordinate AE = new AveragingElaborateCoordinate();
 		points = findMacsInDB(mac);
 		List<WifiSpot> allPoints=new ArrayList<WifiSpot>();
-		//if(points.size()==0) {
-		//	System.out.println("no macs like this in the database");
-		//	return;
-		//}
 		try {
 		point = AE.centerOfPoints(points);
 		allPoints.add(point);
