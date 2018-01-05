@@ -117,7 +117,7 @@ public class WiFi_App implements IFiltersSelect{
 	}
 
 	private void startCheckFileThread() {
-		runnable = new CheckModifyFiles(fileNames,folderNames);
+		runnable = new CheckModifyFiles(fileNames,folderNames,this);
 		t = new Thread(runnable);
 		t.start();
 	}
@@ -426,6 +426,8 @@ public class WiFi_App implements IFiltersSelect{
 				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
+				if(fileNames==null)
+					fileNames=new ArrayList<String>();
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Error- Please start new project", "Dialog",JOptionPane.ERROR_MESSAGE);
 					return;
@@ -439,7 +441,7 @@ public class WiFi_App implements IFiltersSelect{
 						result = ur.get_records();
 						records.clear();
 						records.addAll(result);
-						//update();
+
 						fileNames.add(filePath);
 					} catch (IOException e1) {
 						String message = "There was a problem reading the selected file";			
@@ -461,6 +463,9 @@ public class WiFi_App implements IFiltersSelect{
 				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
+				if(folderNames==null) {
+					folderNames=new ArrayList<String>();
+				}
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Error- Please start new project", "Dialog",JOptionPane.ERROR_MESSAGE);
 					return;
@@ -475,7 +480,6 @@ public class WiFi_App implements IFiltersSelect{
 						records.clear();
 						records.addAll(result);
 						folderNames.add(folderPath);
-						//update();
 					} catch (Exception e1) {
 						String message = "There was a problem reading the selected folder";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -859,16 +863,28 @@ public class WiFi_App implements IFiltersSelect{
 		labelFilter2.setEnabled(false);
 		radioButtonNone.setSelected(true);
 	}
-	public void updateDataNumOfMacLabel(){
-		lblSampelsLabel.setText(String.valueOf((selections.getRecords().size())));
-		NumberOfDiffMac nod = new NumberOfDiffMac(selections.getRecords());
-		lblDifferentMacSamples.setText(String.valueOf(nod.getNum()));
-	}
 
 	@Override
 	public void serializeFilter() {
 		// TODO Auto-generated method stub
 
 	}
+
+	private void changeJLabel(final JLabel label, final String text) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Set text: " + text);
+				label.setText(text);
+			}
+		});
+	}
+
+	public  void updateDataNumOfMacLabel() {
+		changeJLabel(lblSampelsLabel,String.valueOf((selections.getRecords().size())));
+		NumberOfDiffMac nod = new NumberOfDiffMac(selections.getRecords());
+		changeJLabel(lblDifferentMacSamples,String.valueOf(nod.getNum()));
+
+	}	
 
 }

@@ -25,17 +25,21 @@ import readAndWrite.UnionRecords;
 public class CheckModifyFiles implements Runnable {
 
 	private volatile boolean running = true;
+	
+	private WiFi_App m_ap;
 
 	private List<String> m_fileNames;
 	private List<String> m_folderNames;
 
-	public CheckModifyFiles(List<String> fileNames,List<String> folderNames) {
+	public CheckModifyFiles(List<String> fileNames,List<String> folderNames, WiFi_App ap) {
 		m_fileNames = new ArrayList<String>();
-		if(m_fileNames.size()>0)
+		if(fileNames!=null) {
 			m_fileNames.addAll(fileNames);
+		}
 		m_folderNames = new ArrayList<String>();
-		if(m_folderNames.size()>0)
+		if(folderNames!=null)
 			m_folderNames.addAll(folderNames);
+		m_ap=ap;
 	}
 	public void terminate() {
 		running = false;
@@ -44,11 +48,12 @@ public class CheckModifyFiles implements Runnable {
 	@Override
 	public void run() {
 		long lastAddTime = System.currentTimeMillis();
-		List<File> files=covertFiles();
-		List<File> folders=coversFolders();
-
+		List<File> files;
+		List<File> folders;
 
 		while (running) {
+			files=covertFiles();
+			folders=coversFolders();
 			boolean update = false;
 			for(int i=0;i<files.size()&&!update;i++) {
 				if(files.get(i).lastModified()>lastAddTime) {
@@ -61,11 +66,10 @@ public class CheckModifyFiles implements Runnable {
 				}
 			}
 			if(update) {
-				List<CSVRecord> records = WiFi_App.selections.getRecords();
-				records.clear();
+				reloadFiles();
+				lastAddTime = System.currentTimeMillis();
 			}
 			try {
-
 
 
 
@@ -96,6 +100,7 @@ public class CheckModifyFiles implements Runnable {
 	}
 	private void reloadFiles() {
 		List<CSVRecord> records = WiFi_App.selections.getRecords();
+		//WiFi_App wa=new WiFi_App();
 		records.clear();
 		for(int i=0;i<m_fileNames.size();i++) {
 			List<CSVRecord> result;
@@ -114,6 +119,7 @@ public class CheckModifyFiles implements Runnable {
 		}
 		for(int i=0;i<m_folderNames.size();i++) {
 			List<CSVRecord> result;
+			
 			if(m_folderNames.get(i) !=null){
 				UnionRecords ur =new UnionRecords(records);
 				try {
@@ -127,9 +133,9 @@ public class CheckModifyFiles implements Runnable {
 				}
 			}
 
-		}
-		WiFi_App wa=new WiFi_App();
-		wa.updateDataNumOfMacLabel();
+		}		
+		WiFi_App.selections.setRecords(records);
+		m_ap.updateDataNumOfMacLabel();
 	}
 
 }
