@@ -25,20 +25,24 @@ import javax.swing.JPanel;
 public class Algorithm2Single extends JFrame {
 	
 	private JTextField txtEnterRowFrom;
-	private JLabel lblResult;
+	private JLabel lblResultLat;
+	private JLabel lblResultLon;
+	private JLabel lblResultAlt;
+	
 
 	public Algorithm2Single() {
 		setTitle("Algorithm 2 single scan");
-		setBounds(100, 100, 1024, 768);
+		setBounds(100, 100, 800, 600);
 		txtEnterRowFrom = new JTextField();
-		txtEnterRowFrom.setBounds(0, 64, 987, 43);
+		txtEnterRowFrom.setText("CSV Line");
+		txtEnterRowFrom.setBounds(10, 64, 977, 43);
 		txtEnterRowFrom.setBackground(Color.LIGHT_GRAY);
 		txtEnterRowFrom.setForeground(Color.BLACK);
-		txtEnterRowFrom.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		txtEnterRowFrom.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		txtEnterRowFrom.setColumns(10);
 		
 		JButton btnOk = new JButton("Locate");
-		btnOk.setBounds(190, 123, 137, 33);
+		btnOk.setBounds(273, 123, 140, 33);
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -57,9 +61,10 @@ public class Algorithm2Single extends JFrame {
 				try {
 					in = new FileReader(file);
 					Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-					for(CSVRecord record: records) {
-						lblResult.setText("Estimated position "+record.get("Lat")+", "+record.get("Lon")+", "+record.get("Alt"));
-					}
+					CSVRecord record = records.iterator().next();
+						lblResultLat.setText(record.get("Lat"));
+						lblResultLon.setText(record.get("Lon"));
+						lblResultAlt.setText(record.get("Alt"));		
 				} catch (IOException e1) {
 					String message = "Error "+e1.getMessage();			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -67,17 +72,17 @@ public class Algorithm2Single extends JFrame {
 			}
 		});
 		
-		lblResult = new JLabel("");
-		lblResult.setBounds(96, 175, 467, 113);
-		lblResult.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblResultLat = new JLabel("");
+		lblResultLat.setBounds(77, 256, 177, 25);
+		lblResultLat.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		getContentPane().setLayout(null);
 		getContentPane().add(txtEnterRowFrom);
 		getContentPane().add(btnOk);
-		getContentPane().add(lblResult);
+		getContentPane().add(lblResultLat);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBounds(0, 293, 578, 51);
+		panel.setBounds(77, 386, 578, 51);
 		getContentPane().add(panel);
 		
 		JButton button = new JButton("Return");
@@ -88,15 +93,42 @@ public class Algorithm2Single extends JFrame {
 		});
 		button.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		button.setActionCommand("Cancel");
-		button.setBounds(201, 0, 113, 35);
+		button.setBounds(201, 0, 140, 35);
 		panel.add(button);
 		
-		JLabel lblNewLabel = new JLabel("result");
-		lblNewLabel.setBounds(15, 223, 69, 20);
+		JLabel lblNewLabel = new JLabel("Estimated position");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(15, 220, 184, 20);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Enter row from NO GPS CSV file:");
-		lblNewLabel_1.setBounds(0, 16, 266, 32);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(10, 16, 296, 32);
 		getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Lat");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(15, 256, 69, 20);
+		getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblLon = new JLabel("Lon");
+		lblLon.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblLon.setBounds(15, 292, 69, 20);
+		getContentPane().add(lblLon);
+		
+		JLabel lblAlt = new JLabel("Alt");
+		lblAlt.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAlt.setBounds(15, 328, 69, 20);
+		getContentPane().add(lblAlt);
+		
+		lblResultLon = new JLabel("");
+		lblResultLon.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblResultLon.setBounds(77, 291, 177, 25);
+		getContentPane().add(lblResultLon);
+		
+		lblResultAlt = new JLabel("");
+		lblResultAlt.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblResultAlt.setBounds(77, 328, 177, 25);
+		getContentPane().add(lblResultAlt);
 	}
 }
