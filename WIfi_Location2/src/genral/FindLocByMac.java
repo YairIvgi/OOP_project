@@ -86,10 +86,10 @@ public class FindLocByMac {
 
 	public void estimatedLoc(List<CSVRecord> noGps) throws Exception{
 		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
-		for(CSVRecord record : m_records){					
-			WifiSpot point = findInDataBase(m_records,record);
-			CsvRecordPoint crp = new CsvRecordPoint(record, point);
-			dataList.add(crp);		
+		for(int i=0;i<noGps.size();i++){					
+			WifiSpot point = findInDataBase(m_records,noGps.get(i));
+			CsvRecordPoint crp = new CsvRecordPoint(noGps.get(i), point);
+			dataList.add(crp);
 		}
 		String folder = System.getProperty("user.dir");
 		String output=folder+"\\Algorithm2.csv";
