@@ -26,7 +26,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		//// part 0- write the csv file////
 
-				String folderPath = "C:\\Users\\user\\desktop\\new\\try";	
+				String folderPath = "C:\\Users\\יאיר\\desktop\\new\\try";	
 				RawCsvReader folder=new RawCsvReader();
 				try {
 					folder.readFolder(folderPath);
