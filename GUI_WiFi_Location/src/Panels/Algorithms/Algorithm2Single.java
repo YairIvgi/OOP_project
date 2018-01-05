@@ -81,6 +81,7 @@ public class Algorithm2Single extends JFrame {
 					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
+					System.out.println("Error reading file");
 				}
 			}
 		});
