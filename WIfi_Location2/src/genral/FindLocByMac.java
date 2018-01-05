@@ -36,13 +36,13 @@ public class FindLocByMac {
 	 * Contractor receive filePath and the accuracy required
 	 * @author Yair Ivgi and Idan Hollander
 	 */
-	
+
 	public FindLocByMac(List<CSVRecord> records,int accuracy){	
 		m_Accuracy = accuracy;
 		m_records = new ArrayList<CSVRecord>();
 		m_records.addAll(records);
 	}
-	
+
 	public void estimatedLoc_FromString(String line) throws Exception {
 		String folder = System.getProperty("user.dir");
 		String output=folder+"\\OneStringForAlgorithm2.csv";
@@ -53,12 +53,11 @@ public class FindLocByMac {
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		List<CSVRecord> oneLineRecord  = new ArrayList<CSVRecord>();
-		for(CSVRecord record: records){
-			oneLineRecord.add(record);
-		}
+		CSVRecord record = records.iterator().next();
+		oneLineRecord.add(record);
 		estimatedLoc(oneLineRecord);
 	}
-	
+
 	public void estimatedLoc_FromMacs(String mac1, String signal1, String mac2, String signal2, String mac3, String signal3) throws Exception {
 		WifiSpot wf1=new WifiSpot("user", mac1, "Ariel_University", "2018-01-02 17:42:08", "15", signal1, "?", "?", "?");
 		WifiSpot wf2=new WifiSpot("user", mac2, "Ariel_University", "2018-01-02 17:42:08", "11", signal2, "?", "?", "?");
@@ -87,7 +86,7 @@ public class FindLocByMac {
 	public void estimatedLoc(List<CSVRecord> noGps) throws Exception{
 		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
 		for(int i=0;i<noGps.size();i++){					
-			WifiSpot point = findInDataBase(m_records,noGps.get(i));
+			WifiSpot point = findInDataBase(noGps.get(i));
 			CsvRecordPoint crp = new CsvRecordPoint(noGps.get(i), point);
 			dataList.add(crp);
 		}
@@ -95,17 +94,17 @@ public class FindLocByMac {
 		String output=folder+"\\Algorithm2.csv";
 		printCsv(dataList,output);			
 	}
-	
-//searching in database file
-	private WifiSpot findInDataBase(List<CSVRecord> records,CSVRecord record) throws IOException{
-		List <WifiSpot> points = new ArrayList<WifiSpot>();
-		for(CSVRecord DBrecord : records){				//Data Base Records
+
+	//searching in database file
+	private WifiSpot findInDataBase(CSVRecord record) throws IOException{
+		List<WifiSpot> points = new ArrayList<WifiSpot>();
+		for(CSVRecord DBrecord : m_records){				//Data Base Records
 			double PI	=	lineResemblance(DBrecord,record);
 			WifiSpot point = new WifiSpot(String.valueOf(PI), DBrecord.get("Lat"), DBrecord.get("Lon"), DBrecord.get("Alt"));
 			points.add(point);
 		}
 		//if there is no mac in database that equals one mac in the row in the noGPS file
-		if(!ifAnyNoMacInDB(points)) {		
+		if(!ifNoMacInDB(points)) {		
 			String id = points.get(0).getId();
 			String ssid = points.get(0).getSsid();
 			String time = points.get(0).getTime();
@@ -130,7 +129,7 @@ public class FindLocByMac {
 			m_Accuracy = 5;
 		}
 		for (int i = 0; i < m_Accuracy; i++) {
-//			if we have  more regular numbers that not written with expo than than numbers we equals with
+			//			if we have  more regular numbers that not written with expo than the numbers we equals with
 			if(index> m_Accuracy) {
 				result.add(points.get(index-i));
 			}
@@ -140,9 +139,9 @@ public class FindLocByMac {
 		AveragingElaborateCoordinate AV = new AveragingElaborateCoordinate();
 		return AV.centerWeightOfPoints(result);
 	}
-	
+
 	//Check if there is a mac in database that equals one mac in the row in the noGPS file
-	private boolean ifAnyNoMacInDB(List<WifiSpot>	points) {
+	private boolean ifNoMacInDB(List<WifiSpot>	points) {
 		for(int i=1; i < points.size(); i++) {
 			if(!points.get(0).getRssi().equals(points.get(i).getRssi())) {
 				return true;
@@ -150,7 +149,7 @@ public class FindLocByMac {
 		}
 		return false;
 	}
-	
+
 	//line scanning
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
 		int rNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
@@ -177,7 +176,7 @@ public class FindLocByMac {
 		for (int i = 0; i < arr.length; i++) {
 			resemblance*=arr[i];
 		}
-			return resemblance;
+		return resemblance;
 	}
 	//writing csv
 	private void printCsv(List<CsvRecordPoint> dataList,String filePath) throws Exception{
@@ -197,7 +196,7 @@ public class FindLocByMac {
 		}else{
 			diff = DIFF_NO_SIG;
 		}
-		
+
 		if(diff < MIN_DIF){
 			diff = MIN_DIF;
 		}

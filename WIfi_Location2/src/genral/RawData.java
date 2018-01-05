@@ -10,7 +10,7 @@ import java.util.List;
  * @author Yair Ivgi 
  */
 
-public class RawData {
+public class RawData{
 	private List<WifiSpot> samples;
 
 	/** 
