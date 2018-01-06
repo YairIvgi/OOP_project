@@ -13,8 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.csv.CSVRecord;
-import org.boehn.kmlframework.kml.Folder;
-
 import Panels.WiFi_App;
 import readAndWrite.UnionRecords;
 
@@ -61,8 +59,13 @@ public class CheckModifyFiles implements Runnable {
 				}
 			}
 			for(int i=0;i<folders.size()&&!update;i++) {
-				if(folders.get(i).lastModified()>lastAddTime) {
-					update=true;
+				try {
+					if(folders.get(i).lastModified()>lastAddTime||ifModifiedFolder(folders.get(i), lastAddTime)) {
+						update=true;
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 			if(update) {
@@ -97,6 +100,22 @@ public class CheckModifyFiles implements Runnable {
 			folders.add(new File(m_folderNames.get(i)));
 		}
 		return folders;
+	}
+	private boolean ifModifiedFolder(File folder,long lastAddTime) throws Exception {
+		File[] listOfFiles = folder.listFiles(new FilenameFilter(){
+			public boolean accept(File dir, String filename){
+				return filename.endsWith(".csv"); 
+			}
+		});
+		if( listOfFiles == null ){
+			throw new Exception("The folder "+folder+" does not exist");
+		}
+		for(int i=0;i<listOfFiles.length;i++) {
+			if(listOfFiles[i].lastModified()>lastAddTime) {
+				return true;
+			}
+		}
+		return false;
 	}
 	private void reloadFiles() {
 		List<CSVRecord> records = WiFi_App.selections.getRecords();
