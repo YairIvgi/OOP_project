@@ -1,10 +1,15 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import genral.RawData;
+import readAndWrite.RawCsvReader;
 
 /**
  * Test the readCsv and the readFolder methods.

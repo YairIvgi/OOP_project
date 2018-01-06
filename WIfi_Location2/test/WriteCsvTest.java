@@ -8,6 +8,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
+import readAndWrite.RawCsvReader;
+
 /**
  * Test the WriteCsv method.
  * @author Yair Ivgi and Idan Holander  
@@ -28,6 +30,7 @@ public class WriteCsvTest {
 				countRecord++;
 			}
 			assertTrue(countRecord>1);
+			in.close();
 		} catch (Exception e) {
 			fail("file canot be read: "+e.getMessage());		
 		}

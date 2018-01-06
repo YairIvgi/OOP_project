@@ -40,6 +40,7 @@ public class DataBaseIO {
 			for (CSVRecord record : records) {
 				result.add(record);
 			}
+			in.close();
 			return	result;
 		} catch (Exception e) {
 			throw new Exception("Error reading file\n" + e);		

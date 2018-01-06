@@ -1,4 +1,4 @@
-package filter;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -12,6 +12,9 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
+
+import filter.FilterByTime;
+import readAndWrite.RawCsvReader;
 
 /**
  * Test the getFiltered method.
@@ -32,7 +35,7 @@ public class FilterByTimeTest {
 
 			FilterByTime time=new FilterByTime("2017-10-31 07:00:00", "2020-10-27  16:19:14");
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-			List<CSVRecord> filteredRecords = time.getFiltered(records);
+			List<CSVRecord> filteredRecords = time.getFiltered(records, false);
 			SimpleDateFormat currentDateFormat;
 			Date currentTime;
 			for(CSVRecord record:records) {
@@ -50,6 +53,7 @@ public class FilterByTimeTest {
 				else
 					assertFalse(filteredRecords.contains(record));
 			}
+			in.close();
 		} catch (Exception e) {
 			throw new Exception("fail : "+e.toString());
 		}

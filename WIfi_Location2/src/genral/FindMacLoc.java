@@ -1,19 +1,14 @@
 package genral;
 
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import readAndWrite.RawCsvReader;
 import readAndWrite.WriteCsv;
 
 /**
@@ -49,7 +44,7 @@ public class FindMacLoc {
 		allPoints.add(point);
 		}
 		catch(IndexOutOfBoundsException e) {
-			System.out.println("no macs like this in the database");
+			throw new Exception("error: "+e.getMessage());
 		}
 		String folder = System.getProperty("user.dir");
 		String output=folder+"\\Algorithm1.csv";

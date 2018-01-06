@@ -35,9 +35,7 @@ public class RawCsvReader {
 		 dir.mkdir();
 		outputFile= dir.getPath()+"\\DATA.csv";
 		List<RawData> data;
-		File folder = new File(folderPath);
-		System.out.println("output file " + folder.getAbsolutePath());			
-
+		File folder = new File(folderPath);	
 		File[] listOfFiles = folder.listFiles(new FilenameFilter(){
 			public boolean accept(File dir, String filename){
 				return filename.endsWith(".csv"); 
@@ -93,6 +91,7 @@ public class RawCsvReader {
 				WifiSpot point=new WifiSpot(value , record.get("MAC"), record.get("SSID"), currentTime, record.get("Channel"), record.get("RSSI"), record.get("CurrentLatitude"), record.get("CurrentLongitude"), record.get("AltitudeMeters"));
 				r.add(point);
 			}
+			br.close();
 		} catch (FileNotFoundException e) {
 			throw new Exception("Error reading file\n" + e);
 		} catch (IOException ex) {
