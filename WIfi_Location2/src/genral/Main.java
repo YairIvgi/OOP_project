@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
+import filter.AndFilters;
 import filter.FilterById;
 import filter.FilterByLocation;
 import filter.FilterByTime;
 import filter.FilterData;
 import filter.IFilter;
+import filter.IOperationFilter;
+import filter.OrFilters;
 import readAndWrite.DataBaseIO;
 import readAndWrite.RawCsvReader;
 
