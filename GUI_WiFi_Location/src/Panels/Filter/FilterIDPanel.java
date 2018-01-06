@@ -20,6 +20,7 @@ import Filter.IFiltersSelect;
 import Panels.WiFi_App;
 
 public class FilterIDPanel extends JFrame {
+	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
 	private JTextPane textPaneID;

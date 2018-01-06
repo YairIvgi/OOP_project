@@ -21,7 +21,8 @@ import Panels.WiFi_App;
 
 
 public class FilterTimePanel extends JFrame {
-
+	private static final long serialVersionUID = 1L;
+	
 	private  JPanel contentPanel;
 	private JTextPane textPaneFrom;
 	private JTextPane textPaneTo;

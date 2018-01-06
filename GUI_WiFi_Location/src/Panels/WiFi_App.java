@@ -110,7 +110,6 @@ public class WiFi_App implements IFiltersSelect{
 		try {
 			initialize(t);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -120,6 +119,7 @@ public class WiFi_App implements IFiltersSelect{
 		t = new Thread(runnable);
 		t.start();
 	}
+	
 	private void stopCheckFileThread() {
 		if (t != null) {
 			runnable.terminate();
@@ -131,6 +131,7 @@ public class WiFi_App implements IFiltersSelect{
 			}	
 		}
 	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -425,8 +426,6 @@ public class WiFi_App implements IFiltersSelect{
 				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
-				if(fileNames==null)
-					fileNames=new ArrayList<String>();
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
@@ -462,9 +461,6 @@ public class WiFi_App implements IFiltersSelect{
 				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
-				if(folderNames==null) {
-					folderNames=new ArrayList<String>();
-				}
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
@@ -850,17 +846,10 @@ public class WiFi_App implements IFiltersSelect{
 		radioButtonNone.setSelected(true);
 	}
 
-	@Override
-	public void serializeFilter() {
-		// TODO Auto-generated method stub
-
-	}
-
 	private void changeJLabel(final JLabel label, final String text) {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				System.out.println("Set text: " + text);
 				label.setText(text);
 			}
 		});
@@ -870,7 +859,13 @@ public class WiFi_App implements IFiltersSelect{
 		changeJLabel(lblSampelsLabel,String.valueOf((selections.getRecords().size())));
 		NumberOfDiffMac nod = new NumberOfDiffMac(selections.getRecords());
 		changeJLabel(lblDifferentMacSamples,String.valueOf(nod.getNum()));
+	}
 
+
+	@Override
+	public void serializeFilter() {
+		// TODO Auto-generated method stub
+		
 	}	
 
 }

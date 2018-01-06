@@ -4,7 +4,6 @@
 package util;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.csv.CSVRecord;
-import org.boehn.kmlframework.kml.Folder;
 
 import Panels.WiFi_App;
 import readAndWrite.UnionRecords;
@@ -41,6 +39,7 @@ public class CheckModifyFiles implements Runnable {
 			m_folderNames.addAll(folderNames);
 		m_ap=ap;
 	}
+	
 	public void terminate() {
 		running = false;
 	}
@@ -70,18 +69,11 @@ public class CheckModifyFiles implements Runnable {
 				lastAddTime = System.currentTimeMillis();
 			}
 			try {
-
-
-
 				Thread.sleep((long) 1000);
-
-
 			} catch (InterruptedException e) {
-
 				running = false;
 			}
 		}
-
 	}
 
 	private List<File> covertFiles() {
