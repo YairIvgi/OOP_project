@@ -31,6 +31,7 @@ public class FilterTimePanel extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		try {
 			FilterTimePanel dialog = new FilterTimePanel(null);
