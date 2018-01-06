@@ -1,5 +1,6 @@
 package Panels.Filter;
 
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,23 @@ public class FilterIDPanel extends JFrame {
 	private JPanel contentPane;
 	private JTextPane textPaneID;
 	private JButton buttonOk;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FilterIDPanel frame = new FilterIDPanel(null);
+					frame.setVisible(true);
+					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.

@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -51,6 +52,7 @@ import readAndWrite.DataBaseIO;
 import readAndWrite.RawCsvReader;
 import readAndWrite.UnionRecords;
 import util.AddData;
+import util.CheckModifyFiles;
 import util.ExportData;
 import util.NumberOfDiffMac;
 
@@ -73,6 +75,13 @@ public class WiFi_App implements IFiltersSelect{
 	private FilterType type1;
 	private FilterType type2;
 
+	private List<String> fileNames;
+	private List<String> folderNames;
+
+
+	private Thread t = null;
+	private CheckModifyFiles runnable = null;
+
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	public static FiltersSelections selections = new FiltersSelections();
 
@@ -93,143 +102,39 @@ public class WiFi_App implements IFiltersSelect{
 		});
 	}
 
-	class Task1 implements Runnable{
-		public void run(){
-			//update filters
-			{
-				FiltersSelections obj = new FiltersSelections();
 
-				String folder = System.getProperty("user.dir");
-				File file = new File(folder,"dataSelections.obj");
-				try {
-					FileOutputStream fos = new FileOutputStream(file);
-					ObjectOutputStream oos = new ObjectOutputStream(fos);
-					obj = selections;
-					oos.writeObject(obj);
-					oos.close();
-					fos.close();
-				} catch (Exception e3) {
-					e3.printStackTrace();
-				}
-			}
-			List<CSVRecord> records = selections.getRecords();
-			if(records.size() ==0){			
-				JOptionPane.showMessageDialog(new JFrame(),"Error- No Data\n"+"Please enter data", "Dialog",JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-			IFilter filter1 = null;
-			IFilter filter2 = null;
-			boolean isNot1 = false;
-			boolean isNot2 = false;
-			FilterData dataFilter = new FilterData();
-			IOperationFilter oppFilter1 = null;
-			if(labelFilter1.isEnabled()){			
-				switch (WiFi_App.selections.getM_type1()){
-				case ById:
-					filter1 = new FilterById(selections.getM_id().getId());		
-					isNot1 = selections.getM_id().isNot();
-					break;
-				case ByLocation:
-					double lat,lon,radius;
-					lat = Double.parseDouble(selections.getM_location().getLat());
-					lon = Double.parseDouble(selections.getM_location().getLon());
-					radius = Double.parseDouble(selections.getM_location().getRadius());
-					filter1 = new FilterByLocation(lon,lat,radius);
-					isNot1 = selections.getM_location().isNot();
-					break;
-				case ByTime:
-					try {
-						filter1 = new FilterByTime(selections.getM_time().getFrom(), selections.getM_time().getTo());
-						isNot1 = selections.getM_time().isNot();
-					} catch (Exception e2) {
-						String message = "oops error: "+e2.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-					break;
-				}
-			}
-			if(labelFilter2.isEnabled()){
-				switch (WiFi_App.selections.getM_type2()){
-				case ById:
-					filter2 = new FilterById(selections.getM_id().getId());
-					isNot2 = selections.getM_id().isNot();
-					break;
-				case ByLocation:
-					double lat,lon,radius;
-					lat = Double.parseDouble(selections.getM_location().getLat());
-					lon = Double.parseDouble(selections.getM_location().getLon());
-					radius = Double.parseDouble(selections.getM_location().getRadius());
-					filter2 = new FilterByLocation(lat,lon,radius);
-					isNot2 = selections.getM_location().isNot();
-					break;
-				case ByTime:
-					try {
-						filter2 = new FilterByTime(selections.getM_time().getFrom(), selections.getM_time().getTo());
-						isNot2 = selections.getM_time().isNot();
-					} catch (Exception e1) {
-						String message = "oops error: "+e1.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
-					}			
-					break;
-				}
-				if(selections.getM_operation() == FilterOperation.or){
-					oppFilter1 = new OrFilters();
-
-				}else{
-					oppFilter1 = new AndFilters();
-				}
-
-			}
-			List<CSVRecord> filterRecords;
-			if(labelFilter1.isEnabled() && labelFilter2.isEnabled()){
-				try {
-					filterRecords = oppFilter1.getFiltered(records, filter1,isNot1, filter2,isNot2);
-				} catch (Exception e1) {
-					String message = "oops error: "+e1.getMessage();			
-					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-			}else if(labelFilter1.isEnabled() && !labelFilter2.isEnabled()){
-				try {
-					filterRecords = dataFilter.filterData(records, filter1,isNot1);
-				} catch (Exception e1) {
-					String message = "oops error: "+e1.getMessage();			
-					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-			}else{
-				try {
-					filterRecords = dataFilter.filterData(records, filter2,isNot2);
-				} catch (Exception e1) {
-					String message = "oops error: "+e1.getMessage();			
-					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-			}
-			records.clear();
-			records.addAll(filterRecords);
-			updateDataNumOfMacLabel();
-		}
-	}
-	
 	/**
 	 * Create the application.
 	 */
 	public WiFi_App() {
 		try {
-			initialize();
+			initialize(t);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	private void startCheckFileThread() {
+		runnable = new CheckModifyFiles(fileNames,folderNames,this);
+		t = new Thread(runnable);
+		t.start();
+	}
+	private void stopCheckFileThread() {
+		if (t != null) {
+			runnable.terminate();
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Thread t) {
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frame.setBounds(100, 100, 800, 600);  
@@ -290,21 +195,21 @@ public class WiFi_App implements IFiltersSelect{
 		btnNewButtonExecute.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnNewButtonExecute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					FiltersSelections obj = new FiltersSelections();
+				FiltersSelections obj = new FiltersSelections();
 
-					String folder = System.getProperty("user.dir");
-					File file = new File(folder,"dataSelections.obj");
-					try {
-						FileOutputStream fos = new FileOutputStream(file);
-						ObjectOutputStream oos = new ObjectOutputStream(fos);
-						obj.setRecords(selections.getRecords()); 
-						obj.setDiffrentMac(selections.getDiffrentMac());
-						oos.writeObject(obj);
-						oos.close();
-						fos.close();
-					} catch (Exception e3) {
-						JOptionPane.showMessageDialog(new JFrame(),"Error-"+e3.getMessage(), "Dialog",JOptionPane.ERROR_MESSAGE);
-					}
+				String folder = System.getProperty("user.dir");
+				File file = new File(folder,"dataSelections.obj");
+				try {
+					FileOutputStream fos = new FileOutputStream(file);
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					obj.setRecords(selections.getRecords()); 
+					obj.setDiffrentMac(selections.getDiffrentMac());
+					oos.writeObject(obj);
+					oos.close();
+					fos.close();
+				} catch (Exception e3) {
+					JOptionPane.showMessageDialog(new JFrame(),"Error-"+e3.getMessage(), "Dialog",JOptionPane.ERROR_MESSAGE);
+				}
 				List<CSVRecord> records = selections.getRecords();
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Error- No Data\n"+"Please enter data", "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -449,20 +354,24 @@ public class WiFi_App implements IFiltersSelect{
 		mnNew.add(mntmAddFile1);
 		mntmAddFile1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				records.clear();
+				fileNames=new ArrayList<String>();
 				AddData ad = new AddData(mntmAddFile1);
 				String filePath = ad.addFromFile();
 				DataBaseIO db =new DataBaseIO();
 				if(filePath !=null){
 					try {
 						records.addAll(db.readData(filePath));
+						fileNames.add(filePath);
 					} catch (Exception e1) {
 						String message = "There was a problem reading the selected file";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				updateDataNumOfMacLabel();
+				startCheckFileThread();
 			}
 		});
 
@@ -474,8 +383,10 @@ public class WiFi_App implements IFiltersSelect{
 		mnNew.add(mntmAddFolder1);
 		mntmAddFolder1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				records.clear();
+				folderNames = new ArrayList<String>();
 				AddData ad = new AddData(mntmAddFolder1);
 				String folderPath = ad.addFromFolder();
 				if(folderPath !=null){
@@ -489,12 +400,14 @@ public class WiFi_App implements IFiltersSelect{
 					}
 					try {
 						records.addAll(db.readData(folder.getOutputFile()));
+						folderNames.add(folderPath);
 					} catch (Exception e1) {
 						String message = "An error occurred";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				updateDataNumOfMacLabel();
+				startCheckFileThread();
 			}
 		});
 
@@ -509,8 +422,11 @@ public class WiFi_App implements IFiltersSelect{
 		mnAddData.add(mntmAddFile2);
 		mntmAddFile2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
+				if(fileNames==null)
+					fileNames=new ArrayList<String>();
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
@@ -524,13 +440,15 @@ public class WiFi_App implements IFiltersSelect{
 						result = ur.get_records();
 						records.clear();
 						records.addAll(result);
-						updateFilter();
+
+						fileNames.add(filePath);
 					} catch (IOException e1) {
 						String message = "There was a problem reading the selected file";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				updateDataNumOfMacLabel();
+				startCheckFileThread();
 			}
 		});
 
@@ -541,8 +459,12 @@ public class WiFi_App implements IFiltersSelect{
 		mnAddData.add(mntmAddFolder2);
 		mntmAddFolder2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stopCheckFileThread();
 				List<CSVRecord> records = selections.getRecords();
 				List<CSVRecord> result;
+				if(folderNames==null) {
+					folderNames=new ArrayList<String>();
+				}
 				if(records.size() ==0){			
 					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
@@ -556,13 +478,14 @@ public class WiFi_App implements IFiltersSelect{
 						result = ur.get_records();
 						records.clear();
 						records.addAll(result);
-						updateFilter();
+						folderNames.add(folderPath);
 					} catch (Exception e1) {
 						String message = "There was a problem reading the selected folder";			
 						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				updateDataNumOfMacLabel();
+				startCheckFileThread();
 			}
 		});
 
@@ -639,13 +562,13 @@ public class WiFi_App implements IFiltersSelect{
 		mntmDelete.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mntmDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stopCheckFileThread();
 				selections = new FiltersSelections();
 				List<CSVRecord> records = selections.getRecords();
 				records.clear();
 				resetFilter1();
 				resetFilter2();
 				updateDataNumOfMacLabel();
-				updateFilter();
 			}
 		});
 
@@ -926,21 +849,28 @@ public class WiFi_App implements IFiltersSelect{
 		labelFilter2.setEnabled(false);
 		radioButtonNone.setSelected(true);
 	}
-	public void updateDataNumOfMacLabel(){
-		lblSampelsLabel.setText(String.valueOf((selections.getRecords().size())));
-		NumberOfDiffMac nod = new NumberOfDiffMac(selections.getRecords());
-		lblDifferentMacSamples.setText(String.valueOf(nod.getNum()));
-	}
 
 	@Override
 	public void serializeFilter() {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void updateFilter() {
-		Task1 bl = new Task1();
-		Thread t = new Thread(bl);
-		t.start();
+
+	private void changeJLabel(final JLabel label, final String text) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Set text: " + text);
+				label.setText(text);
+			}
+		});
 	}
+
+	public  void updateDataNumOfMacLabel() {
+		changeJLabel(lblSampelsLabel,String.valueOf((selections.getRecords().size())));
+		NumberOfDiffMac nod = new NumberOfDiffMac(selections.getRecords());
+		changeJLabel(lblDifferentMacSamples,String.valueOf(nod.getNum()));
+
+	}	
+
 }
