@@ -216,97 +216,7 @@ public class WiFi_App implements IFiltersSelect{
 					JOptionPane.showMessageDialog(new JFrame(),"Error- No Data\n"+"Please enter data", "Dialog",JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				IFilter filter1 = null;
-				IFilter filter2 = null;
-				boolean isNot1 = false;
-				boolean isNot2 = false;
-				FilterData dataFilter = new FilterData();
-				IOperationFilter oppFilter1 = null;
-				if(labelFilter1.isEnabled()){			
-					switch (WiFi_App.selections.getM_type1()){
-					case ById:
-						filter1 = new FilterById(selections.getM_id().getId());		
-						isNot1 = selections.getM_id().isNot();
-						break;
-					case ByLocation:
-						double lat,lon,radius;
-						lat = Double.parseDouble(selections.getM_location().getLat());
-						lon = Double.parseDouble(selections.getM_location().getLon());
-						radius = Double.parseDouble(selections.getM_location().getRadius());
-						filter1 = new FilterByLocation(lon,lat,radius);
-						isNot1 = selections.getM_location().isNot();
-						break;
-					case ByTime:
-						try {
-							filter1 = new FilterByTime(selections.getM_time().getFrom(), selections.getM_time().getTo());
-							isNot1 = selections.getM_time().isNot();
-						} catch (Exception e2) {
-							String message = "oops error: "+e2.getMessage();			
-							JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-							return;
-						}
-						break;
-					}
-				}
-				if(labelFilter2.isEnabled()){
-					switch (WiFi_App.selections.getM_type2()){
-					case ById:
-						filter2 = new FilterById(selections.getM_id().getId());
-						isNot2 = selections.getM_id().isNot();
-						break;
-					case ByLocation:
-						double lat,lon,radius;
-						lat = Double.parseDouble(selections.getM_location().getLat());
-						lon = Double.parseDouble(selections.getM_location().getLon());
-						radius = Double.parseDouble(selections.getM_location().getRadius());
-						filter2 = new FilterByLocation(lat,lon,radius);
-						isNot2 = selections.getM_location().isNot();
-						break;
-					case ByTime:
-						try {
-							filter2 = new FilterByTime(selections.getM_time().getFrom(), selections.getM_time().getTo());
-							isNot2 = selections.getM_time().isNot();
-						} catch (Exception e1) {
-							String message = "oops error: "+e1.getMessage();			
-							JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-							return;
-						}			
-						break;
-					}
-					if(selections.getM_operation() == FilterOperation.or){
-						oppFilter1 = new OrFilters();
-
-					}else{
-						oppFilter1 = new AndFilters();
-					}
-
-				}
-				List<CSVRecord> filterRecords;
-				if(labelFilter1.isEnabled() && labelFilter2.isEnabled()){
-					try {
-						filterRecords = oppFilter1.getFiltered(records, filter1,isNot1, filter2,isNot2);
-					} catch (Exception e1) {
-						String message = "oops error: "+e1.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-				}else if(labelFilter1.isEnabled() && !labelFilter2.isEnabled()){
-					try {
-						filterRecords = dataFilter.filterData(records, filter1,isNot1);
-					} catch (Exception e1) {
-						String message = "oops error: "+e1.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-				}else{
-					try {
-						filterRecords = dataFilter.filterData(records, filter2,isNot2);
-					} catch (Exception e1) {
-						String message = "oops error: "+e1.getMessage();			
-						JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-				}
+				List<CSVRecord> filterRecords = executFilter(records);
 				records.clear();
 				records.addAll(filterRecords);
 				updateDataNumOfMacLabel();
@@ -679,25 +589,28 @@ public class WiFi_App implements IFiltersSelect{
 		JMenuItem mntmSaveFilters = new JMenuItem("Save Filters ");
 		mntmSaveFilters.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				FiltersSelections obj = new FiltersSelections();	
-//				String folder = System.getProperty("user.dir");
-//				File file = new File(folder,"SaveFilters.obj");
-//				try {
-//					FileOutputStream fos = new FileOutputStream(file);
-//					ObjectOutputStream oos = new ObjectOutputStream(fos);
-//					obj.setM_id(selections.getM_id());
-//					obj.setM_location(selections.getM_location());
-//					obj.setM_time(selections.getM_time());
-//					obj.setM_type1(selections.getM_type1());
-//					obj.setM_type2(selections.getM_type2());
-//					obj.setM_operation(selections.getM_operation());
-//					oos.writeObject(obj);
-//					oos.close();
-//					fos.close();
-//				} catch (Exception e3) {
-//					String message = "Error can't save filters";			
-//					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-//				}
+				FiltersSelections obj = new FiltersSelections();	
+				String folder = System.getProperty("user.dir");
+				File file = new File(folder,"SaveFilters.obj");
+				try {
+					FileOutputStream fos = new FileOutputStream(file);
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					obj.setM_id(selections.getM_id());
+					obj.setM_location(selections.getM_location());
+					obj.setM_time(selections.getM_time());
+					obj.setM_type1(selections.getM_type1());
+					obj.setM_type2(selections.getM_type2());
+					obj.setM_operation(selections.getM_operation());
+					obj.setM_stringLabelFilter1(selections.getM_stringLabelFilter1());
+					obj.setM_stringLabelFilter2(selections.getM_stringLabelFilter2());
+					obj.setM_bollLabelFilter2(selections.isM_bollLabelFilter2());
+					oos.writeObject(obj);
+					oos.close();
+					fos.close();
+				} catch (Exception e3) {
+					String message = "Error can't save filters";			
+					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		mntmSaveFilters.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -706,26 +619,40 @@ public class WiFi_App implements IFiltersSelect{
 		JMenuItem UploadSavedFilter = new JMenuItem("Upload Saved Filter");
 		UploadSavedFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				FiltersSelections obj2 = null;
-//				try {
-//					String folder = System.getProperty("user.dir");
-//					File file = new File(folder,"SaveFilters.obj");
-//					FileInputStream fis = new FileInputStream(file);
-//					ObjectInputStream ois = new ObjectInputStream(fis);
-//					obj2 = (FiltersSelections)ois.readObject();
-//					selections.setM_id(obj2.getM_id());
-//					selections.setM_location(obj2.getM_location());
-//					selections.setM_time(obj2.getM_time());
-//					selections.setM_type1(obj2.getM_type1());
-//					selections.setM_type2(obj2.getM_type2());
-//					selections.setM_operation(obj2.getM_operation());
-//					ois.close();
-//					fis.close();
-//					
-//				} catch (Exception e4) {
-//					String message = "Error can't upload filters";			
-//					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
-//				}
+				FiltersSelections obj2 = null;
+				try {
+					String folder = System.getProperty("user.dir");
+					File file = new File(folder,"SaveFilters.obj");
+					FileInputStream fis = new FileInputStream(file);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					obj2 = (FiltersSelections)ois.readObject();
+					selections.setM_id(obj2.getM_id());
+					selections.setM_location(obj2.getM_location());
+					selections.setM_time(obj2.getM_time());
+					selections.setM_type1(obj2.getM_type1());
+					selections.setM_type2(obj2.getM_type2());
+					selections.setM_operation(obj2.getM_operation());
+					selections.setM_stringLabelFilter1(obj2.getM_stringLabelFilter1());
+					selections.setM_stringLabelFilter2(obj2.getM_stringLabelFilter2());
+					selections.setM_bollLabelFilter2(obj2.isM_bollLabelFilter2());
+					if(selections.getM_operation()== FilterOperation.none){
+						radioButtonNone.setSelected(true);
+					}else if(selections.getM_operation() == FilterOperation.and){
+						radioButtonAnd.setSelected(true);
+					}else{
+						radioButtonOr.setSelected(true);
+					}
+					ois.close();
+					fis.close();
+					
+				} catch (Exception e4) {
+					String message = "Error can't upload filters";			
+					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+				}
+				setFilter1(selections.getM_stringLabelFilter1());
+				if(selections.isM_bollLabelFilter2()){
+					setFilter2(selections.getM_stringLabelFilter2());
+				}
 			}
 		});
 		UploadSavedFilter.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -799,7 +726,8 @@ public class WiFi_App implements IFiltersSelect{
 	@Override
 	public void setFilter1(String filter1) {
 		labelFilter1.setEnabled(true);
-		labelFilter1.setText(filter1);			
+		labelFilter1.setText(filter1);	
+		selections.setM_stringLabelFilter1(filter1);
 	}
 
 	@Override
@@ -807,6 +735,8 @@ public class WiFi_App implements IFiltersSelect{
 		if(radioButtonAnd.isSelected() || radioButtonOr.isSelected()){
 			labelFilter2.setEnabled(true);
 			labelFilter2.setText(filter2);	
+			selections.setM_stringLabelFilter2(filter2);
+			selections.setM_bollLabelFilter2(true);
 		}
 	}
 
@@ -861,11 +791,99 @@ public class WiFi_App implements IFiltersSelect{
 		changeJLabel(lblDifferentMacSamples,String.valueOf(nod.getNum()));
 	}
 
+	private List<CSVRecord> executFilter(List<CSVRecord> records){
+		IFilter filter1 = null;
+		IFilter filter2 = null;
+		boolean isNot1 = false;
+		boolean isNot2 = false;
+		FilterData dataFilter = new FilterData();
+		IOperationFilter oppFilter1 = null;
+		if(labelFilter1.isEnabled()){			
+			switch (WiFi_App.selections.getM_type1()){
+			case ById:
+				filter1 = new FilterById(selections.getM_id().getId());		
+				isNot1 = selections.getM_id().isNot();
+				break;
+			case ByLocation:
+				double lat,lon,radius;
+				lat = Double.parseDouble(selections.getM_location().getLat());
+				lon = Double.parseDouble(selections.getM_location().getLon());
+				radius = Double.parseDouble(selections.getM_location().getRadius());
+				filter1 = new FilterByLocation(lon,lat,radius);
+				isNot1 = selections.getM_location().isNot();
+				break;
+			case ByTime:
+				try {
+					filter1 = new FilterByTime(selections.getM_time().getFrom(), selections.getM_time().getTo());
+					isNot1 = selections.getM_time().isNot();
+				} catch (Exception e2) {
+					String message = "oops error: "+e2.getMessage();			
+					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+					return null;
+				}
+				break;
+			}
+		}
+		if(labelFilter2.isEnabled()){
+			switch (WiFi_App.selections.getM_type2()){
+			case ById:
+				filter2 = new FilterById(selections.getM_id().getId());
+				isNot2 = selections.getM_id().isNot();
+				break;
+			case ByLocation:
+				double lat,lon,radius;
+				lat = Double.parseDouble(selections.getM_location().getLat());
+				lon = Double.parseDouble(selections.getM_location().getLon());
+				radius = Double.parseDouble(selections.getM_location().getRadius());
+				filter2 = new FilterByLocation(lat,lon,radius);
+				isNot2 = selections.getM_location().isNot();
+				break;
+			case ByTime:
+				try {
+					filter2 = new FilterByTime(selections.getM_time().getFrom(), selections.getM_time().getTo());
+					isNot2 = selections.getM_time().isNot();
+				} catch (Exception e1) {
+					String message = "oops error: "+e1.getMessage();			
+					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+					return null;
+				}			
+				break;
+			}
+			if(selections.getM_operation() == FilterOperation.or){
+				oppFilter1 = new OrFilters();
 
-	@Override
-	public void serializeFilter() {
-		// TODO Auto-generated method stub
-		
-	}	
+			}else{
+				oppFilter1 = new AndFilters();
+			}
 
+		}
+		List<CSVRecord> filterRecords;
+		if(labelFilter1.isEnabled() && labelFilter2.isEnabled()){
+			try {
+				filterRecords = oppFilter1.getFiltered(records, filter1,isNot1, filter2,isNot2);
+			} catch (Exception e1) {
+				String message = "oops error: "+e1.getMessage();			
+				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+				return null;
+			}
+		}else if(labelFilter1.isEnabled() && !labelFilter2.isEnabled()){
+			try {
+				filterRecords = dataFilter.filterData(records, filter1,isNot1);
+			} catch (Exception e1) {
+				String message = "oops error: "+e1.getMessage();			
+				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+				return null;
+			}
+		}else{
+			try {
+				filterRecords = dataFilter.filterData(records, filter2,isNot2);
+			} catch (Exception e1) {
+				String message = "oops error: "+e1.getMessage();			
+				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
+				return null;
+			}
+		}
+		return filterRecords;
+	}
+	
 }

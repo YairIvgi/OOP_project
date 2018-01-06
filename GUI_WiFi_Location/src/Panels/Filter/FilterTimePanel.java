@@ -57,11 +57,11 @@ public class FilterTimePanel extends JFrame {
 		
 			textPaneFrom = new JTextPane();
 			textPaneFrom.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			textPaneFrom.setBounds(81, 16, 340, 26);
+			textPaneFrom.setBounds(81, 47, 340, 26);
 			contentPanel.add(textPaneFrom);
 		
 		JLabel lblFrom = new JLabel("From");
-		lblFrom.setBounds(7, 16, 59, 20);
+		lblFrom.setBounds(15, 47, 59, 20);
 		lblFrom.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPanel.add(lblFrom);
 		
@@ -84,6 +84,11 @@ public class FilterTimePanel extends JFrame {
 		checkBoxNot.setBounds(477, 43, 90, 29);
 		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPanel.add(checkBoxNot);
+		
+		JLabel lblNewLabel = new JLabel("yyyy-mm-dd   hh:mm:ss");
+		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 16));
+		lblNewLabel.setBounds(80, 11, 341, 20);
+		contentPanel.add(lblNewLabel);
 		
 			JPanel buttonPane = new JPanel();
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

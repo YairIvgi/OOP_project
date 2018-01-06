@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
-
 import org.apache.commons.csv.CSVRecord;
 
 public class FiltersSelections implements Serializable{
@@ -21,8 +19,9 @@ public class FiltersSelections implements Serializable{
 	private FilterType m_type2;
 	private String m_folderPath;
 	private int m_diffrentMac;
-	private JLabel m_labelFilter1;
-	private JLabel m_labelFilter2;
+	private String m_stringLabelFilter1;
+	private String m_stringLabelFilter2;
+	private boolean m_bollLabelFilter2;
 
 	public FiltersSelections(){
 		m_id = new FilterSelectionID();
@@ -103,52 +102,28 @@ public class FiltersSelections implements Serializable{
 		this.m_diffrentMac = diffrentMac;
 	}
 
-	public JLabel getM_labelFilter1() {
-		return m_labelFilter1;
+	public String getM_stringLabelFilter1() {
+		return m_stringLabelFilter1;
 	}
 
-	public void setM_labelFilter1(JLabel m_labelFilter1) {
-		this.m_labelFilter1 = m_labelFilter1;
+	public void setM_stringLabelFilter1(String m_stringLabelFilter1) {
+		this.m_stringLabelFilter1 = m_stringLabelFilter1;
 	}
 
-	public JLabel getM_labelFilter2() {
-		return m_labelFilter2;
+	public String getM_stringLabelFilter2() {
+		return m_stringLabelFilter2;
 	}
 
-	public void setM_labelFilter2(JLabel m_labelFilter2) {
-		this.m_labelFilter2 = m_labelFilter2;
+	public void setM_stringLabelFilter2(String m_stringLabelFilter2) {
+		this.m_stringLabelFilter2 = m_stringLabelFilter2;
 	}
 
-	
-	
-//	public static void main(String[] args) {
-//		FiltersSelections obj = new FiltersSelections();
-//		
-//		String folder = System.getProperty("user.dir");
-//		File file = new File(folder,"FiltersSelections.obj");
-//		try {
-//			FileOutputStream fos = new FileOutputStream(file);
-//			ObjectOutputStream oos = new ObjectOutputStream(fos);
-//			oos.writeObject(obj);
-//			oos.close();
-//			fos.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		FiltersSelections obj2 = null;
-//		try {
-//			File file1 = new File(folder,"FiltersSelections.obj");
-//			FileInputStream fis = new FileInputStream(file1);
-//			ObjectInputStream ois = new ObjectInputStream(fis);
-//			obj2 = (FiltersSelections)ois.readObject();
-//			ois.close();
-//			fis.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		int k = 0;
-//	}
-	
-	
+	public boolean isM_bollLabelFilter2() {
+		return m_bollLabelFilter2;
+	}
+
+	public void setM_bollLabelFilter2(boolean m_bollLabelFilter2) {
+		this.m_bollLabelFilter2 = m_bollLabelFilter2;
+	}
+
 }

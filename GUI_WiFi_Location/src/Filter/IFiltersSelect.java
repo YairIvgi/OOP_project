@@ -22,6 +22,4 @@ public interface IFiltersSelect {
 	
 	public void resetFilter2();
 
-	public void serializeFilter();
-
 }
