@@ -1,4 +1,4 @@
-package filter;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -11,6 +11,9 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
+
+import filter.FilterByLocation;
+import readAndWrite.RawCsvReader;
 
 /**
  * Test the getFiltered method.
@@ -29,7 +32,7 @@ public class FilterByLocationTest {
 
 			FilterByLocation location=new FilterByLocation(34.806, 32.165, 0.022);
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-			List<CSVRecord> filteredRecords = location.getFiltered(records);
+			List<CSVRecord> filteredRecords = location.getFiltered(records, false);
 			double currentLon;
 			double currentLat;
 			double dist;
@@ -43,6 +46,7 @@ public class FilterByLocationTest {
 				else
 					assertFalse(filteredRecords.contains(record));
 			}
+			in.close();
 		} catch (Exception e) {
 			fail("file canot be read: "+e.getMessage());
 		}

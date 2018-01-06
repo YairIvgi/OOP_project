@@ -1,4 +1,4 @@
-package filter;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -12,6 +12,9 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
+
+import filter.FilterById;
+import readAndWrite.RawCsvReader;
 
 /**
  * Test the getFiltered method.
@@ -30,13 +33,14 @@ public class FilterByIdTest {
 
 			FilterById id=new FilterById("GT-N7100");
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-			List<CSVRecord> filteredRecords = id.getFiltered(records);
+			List<CSVRecord> filteredRecords = id.getFiltered(records, false);
 			for(CSVRecord record:records) {
 				if(record.get("ID").equals(id.getID()))
 					assertTrue(filteredRecords.contains(record));
 				else
 					assertFalse(filteredRecords.contains(record));
 			}
+			in.close();
 		} catch (Exception e) {
 			fail("file canot be read: "+e.getMessage());
 		}

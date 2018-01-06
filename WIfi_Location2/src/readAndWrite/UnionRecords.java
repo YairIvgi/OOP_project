@@ -35,6 +35,7 @@ public class UnionRecords {
 		Reader in = new FileReader(file);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		combainData(records);
+		in.close();
 	}
 
 	/**
@@ -56,7 +57,6 @@ public class UnionRecords {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
 		result.addAll(m_records);
 		boolean Contain;
-		int i,j;
 		for(CSVRecord record : records){
 			Contain = false;
 			for(CSVRecord record2: m_records){

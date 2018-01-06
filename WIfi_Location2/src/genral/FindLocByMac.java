@@ -56,6 +56,7 @@ public class FindLocByMac {
 		CSVRecord record = records.iterator().next();
 		oneLineRecord.add(record);
 		estimatedLoc(oneLineRecord);
+		in.close();
 	}
 
 	public void estimatedLoc_FromMacs(String mac1, String signal1, String mac2, String signal2, String mac3, String signal3) throws Exception {
@@ -81,6 +82,7 @@ public class FindLocByMac {
 			records2.add(record);
 		}
 		estimatedLoc(records2);
+		in.close();
 	}
 
 	public void estimatedLoc(List<CSVRecord> noGps) throws Exception{

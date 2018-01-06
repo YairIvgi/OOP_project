@@ -1,11 +1,7 @@
 package filter;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.Reader;
 import java.util.List;
 
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import readAndWrite.UnionRecords;
