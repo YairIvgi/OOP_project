@@ -23,6 +23,7 @@ import genral.FindLocByMac;
 import javax.swing.JPanel;
 
 public class Algorithm2Single extends JFrame {
+	private static final long serialVersionUID = 1L;
 	
 	private JTextField txtEnterRowFrom;
 	private JLabel lblResultLat;
@@ -65,6 +66,7 @@ public class Algorithm2Single extends JFrame {
 						lblResultLat.setText(record.get("Lat"));
 						lblResultLon.setText(record.get("Lon"));
 						lblResultAlt.setText(record.get("Alt"));		
+						in.close();
 				} catch (IOException e1) {
 					String message = "Error "+e1.getMessage();			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);

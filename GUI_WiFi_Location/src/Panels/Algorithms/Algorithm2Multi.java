@@ -1,7 +1,6 @@
 package Panels.Algorithms;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +22,8 @@ import Panels.WiFi_App;
 import genral.FindLocByMac;
 
 public class Algorithm2Multi extends JFrame {
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField txtMac_1;
 	private JTextField txtSignal_1;
 	private JTextField txtMac_2;
@@ -132,6 +133,7 @@ public class Algorithm2Multi extends JFrame {
 						lblResultLat.setText(record.get("Lat"));
 						lblResultLon.setText(record.get("Lon"));
 						lblResultAlt.setText(record.get("Alt"));
+						in.close();
 				} catch (IOException e1) {
 					String message = "Error "+e1.getMessage();			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
