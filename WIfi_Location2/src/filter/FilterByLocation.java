@@ -28,7 +28,7 @@ public class FilterByLocation implements IFilter {
 	}
 
 	/** 
-	 * Checks if the coordinates are valid.
+	 * Checks if the coordinates are valid and perform the filter.
 	 * @throws Exception
 	 * @author Yair Ivgi and Idan Hollander
 	 */

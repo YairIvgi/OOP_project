@@ -14,10 +14,20 @@ public class FilterById implements IFilter {
 
 	private String m_id;
 
+	/** 
+	 * The constructor gets the id specified by the user.
+	 * @author Yair Ivgi 
+	 */
+
 	public FilterById(String id) {
 		m_id=id;
 	}
 
+	/** 
+	 * Checks if the id are valid and perform the filter.
+	 * @throws Exception
+	 * @author Yair Ivgi and Idan Hollander
+	 */
 	@Override
 	public List<CSVRecord> getFiltered(Iterable<CSVRecord> records,boolean isNot) throws Exception {
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
@@ -40,6 +50,12 @@ public class FilterById implements IFilter {
 		return this.m_id;
 	}
 
+	/** 
+	 * This static method allow you to perform the NOT operation on the filter.
+	 * @throws Exception
+	 * @author Yair Ivgi 
+	 */
+	
 	public static List<CSVRecord> getNotFiltered(List<CSVRecord> records,List<CSVRecord> filterRecords) throws Exception {
 		System.out.println("getNot size = "+records.size()+" filtered size = "+filterRecords.size());
 		List<CSVRecord> result = new ArrayList<CSVRecord>();

@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
+/** 
+ * This class allows a combination of two filters.
+ * @author Yair Ivgi 
+ */
+
 public class AndFilters implements IOperationFilter {
 	
 	public AndFilters(){

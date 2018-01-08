@@ -35,7 +35,7 @@ public class FilterByTime implements IFilter {
 	}
 
 	/**
-	 * Filter the samples by time.
+	 * Filter the samples by time frame specified by the user.
 	 * @throws Exception
 	 * @author Yair Ivgi 
 	 */

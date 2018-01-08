@@ -14,7 +14,7 @@ import readAndWrite.WriteCsv;
 /**
  * @Description The class returns all the MAC location.
  * This is the first algorithm 
- * @author Yair Ivgi
+ * @author Yair Ivgi and Idan Hollander
  */
 
 public class FindMacLoc {
@@ -53,7 +53,12 @@ public class FindMacLoc {
 		w.close();
 	}
 	
-//return the 3 strongest appearances of the mac in the DB
+	/**
+	 * Return the 3 strongest appearances of the mac in the DB
+	 * @throws IOException
+	 * @author Yair Ivgi
+	 */
+	
 	private List <WifiSpot> findMacsInDB(String mac) throws IOException{
 		List <WifiSpot> points =new ArrayList<WifiSpot>();
 		for(CSVRecord record : m_records){
