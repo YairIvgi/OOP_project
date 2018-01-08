@@ -17,9 +17,11 @@ import Panels.WiFi_App;
 import readAndWrite.UnionRecords;
 
 /**
- * @author user
- *
+ * @Description This class checks if the source files or folders has changed and update the DataBase.
+ * Runs on a different Thread then the main project.
+ * @author Idan Hollander
  */
+
 public class CheckModifyFiles implements Runnable {
 
 	private volatile boolean running = true;

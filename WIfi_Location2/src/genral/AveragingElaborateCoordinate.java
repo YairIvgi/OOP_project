@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Description The class calculating center weight of points that the algorithms let
+ * @Description The class calculating center weight of points.
  * @author Yair Ivgi
  */
 
 public class AveragingElaborateCoordinate {
 
-	//for algo1
+	/**
+	 * @Description The method is for the first algorithm.
+	 * @author Yair Ivgi and Idan Hollander
+	 */
+	
 	public WifiSpot centerOfPoints(List <WifiSpot> points){
 		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
 		String id = points.get(0).getId();
@@ -32,7 +36,11 @@ public class AveragingElaborateCoordinate {
 		return sumWeights(wpoints, id, mac, ssid, time, channel, rssi);
 	}
 
-	//	for algo2
+	/**
+	 * @Description The method is for the second algorithm.
+	 * @author Yair Ivgi and Idan Hollander
+	 */
+	
 	public WifiSpot centerWeightOfPoints(List <WifiSpot> points){
 		List <WifiSpot> wpoints = new  ArrayList<WifiSpot>();
 		String id = points.get(0).getId();
@@ -53,6 +61,11 @@ public class AveragingElaborateCoordinate {
 	}
 
 
+	/**
+	 * @Description The Method adds the weights.
+	 * @author Yair Ivgi and Idan Hollander
+	 */
+	
 	private WifiSpot sumWeights(List <WifiSpot> wpoints,String id,String mac,String ssid,String time,String channel,String rssi){
 		double sigSWeight = 0, swLat = 0, swLon = 0, swAlt = 0;
 		for (int i = 0; i < wpoints.size(); i++) {

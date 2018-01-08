@@ -2,6 +2,11 @@ package Filter;
 
 import java.io.Serializable;
 
+/** 
+ * This class define the filter by location. 
+ * @author Yair Ivgi
+ */
+
 public class FilterSelectionLocation implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

@@ -43,6 +43,13 @@ public class FindLocByMac {
 		m_records.addAll(records);
 	}
 
+	
+	/**
+	 * This method allows to calculate position by receiving a line from the combo file.
+	 * @throws Exception
+	 * @author  Idan Hollander and  Yair Ivgi
+	 */
+	
 	public void estimatedLoc_FromString(String line) throws Exception {
 		String folder = System.getProperty("user.dir");
 		String output=folder+"\\OneStringForAlgorithm2.csv";
@@ -59,6 +66,12 @@ public class FindLocByMac {
 		in.close();
 	}
 
+	/**
+	 * This method allows to calculate position by receiving three pairs of mac and signal.
+	 * @throws Exception
+	 * @author  Idan Hollander
+	 */
+	
 	public void estimatedLoc_FromMacs(String mac1, String signal1, String mac2, String signal2, String mac3, String signal3) throws Exception {
 		WifiSpot wf1=new WifiSpot("user", mac1, "Ariel_University", "2018-01-02 17:42:08", "15", signal1, "?", "?", "?");
 		WifiSpot wf2=new WifiSpot("user", mac2, "Ariel_University", "2018-01-02 17:42:08", "11", signal2, "?", "?", "?");
@@ -84,8 +97,14 @@ public class FindLocByMac {
 		estimatedLoc(records2);
 		in.close();
 	}
+	
+	/**
+	 * This method calculate position.
+	 * @throws Exception
+	 * @author  Idan Hollander
+	 */
 
-	public void estimatedLoc(List<CSVRecord> noGps) throws Exception{
+	private void estimatedLoc(List<CSVRecord> noGps) throws Exception{
 		List<CsvRecordPoint> dataList = new ArrayList<CsvRecordPoint>(); 
 		for(int i=0;i<noGps.size();i++){					
 			WifiSpot point = findInDataBase(noGps.get(i));
@@ -142,7 +161,11 @@ public class FindLocByMac {
 		return AV.centerWeightOfPoints(result);
 	}
 
-	//Check if there is a mac in database that equals one mac in the row in the noGPS file
+	/**
+	 * This method Check if there is a mac in database that equals one mac in the row in the noGPS file
+	 * @author  Idan Hollander
+	 */
+	
 	private boolean ifNoMacInDB(List<WifiSpot>	points) {
 		for(int i=1; i < points.size(); i++) {
 			if(!points.get(0).getRssi().equals(points.get(i).getRssi())) {
@@ -152,7 +175,11 @@ public class FindLocByMac {
 		return false;
 	}
 
-	//line scanning
+	/**
+	 * This method Check the Resemblance between the records
+	 * @author  Yair Ivgi 
+	 */
+	
 	private Double lineResemblance(CSVRecord DBrecord,CSVRecord record){
 		int rNumOfSamples = Integer.parseInt(record.get("WiFi networks"));
 		int dbNumOfSamples = Integer.parseInt(DBrecord.get("WiFi networks"));
@@ -180,7 +207,12 @@ public class FindLocByMac {
 		}
 		return resemblance;
 	}
-	//writing csv
+	
+	/**
+	 * This method prints the result.
+	 * @author  Yair Ivgi and Idan Hollander
+	 */
+	
 	private void printCsv(List<CsvRecordPoint> dataList,String filePath) throws Exception{
 		String outputPath = filePath.replace(".csv", "Estimated_Location.csv");
 		WriteCsv wc = new WriteCsv(outputPath);
@@ -188,7 +220,10 @@ public class FindLocByMac {
 		wc.close();
 	}
 
-	//calculate weight
+	/**
+	 * This method calculate the percentage.
+	 * @author  Idan Hollander
+	 */
 	private static double clacPercentage(String strA,String strB){
 		double x = Double.parseDouble(strA);
 		double y = Double.parseDouble(strB);

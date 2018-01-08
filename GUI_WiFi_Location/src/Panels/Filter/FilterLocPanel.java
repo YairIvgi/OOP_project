@@ -19,6 +19,11 @@ import Filter.FilterType;
 import Filter.IFiltersSelect;
 import Panels.WiFi_App;
 
+/**
+ * @Description The is the GUI panel of filter by Location.
+ * @author Yair Ivgi
+ */
+
 public class FilterLocPanel extends JFrame {
 	private static final long serialVersionUID = 1L;
 	

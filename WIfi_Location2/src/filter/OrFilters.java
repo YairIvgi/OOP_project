@@ -6,6 +6,12 @@ import org.apache.commons.csv.CSVRecord;
 
 import readAndWrite.UnionRecords;
 
+/** 
+ * This class allow you to perform the OR operation on the filter.
+ * @throws Exception
+ * @author Yair Ivgi 
+ */
+
 public class OrFilters implements IOperationFilter {
 	
 	public OrFilters(){

@@ -6,6 +6,11 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
+/** 
+ * This class centralizes all the selections made by the user about the filters. 
+ * @author Yair Ivgi
+ */
+
 public class FiltersSelections implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

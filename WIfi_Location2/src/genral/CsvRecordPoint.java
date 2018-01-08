@@ -2,6 +2,11 @@ package genral;
 
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * This class combines record and point as an object.
+ * @author Yair Ivgi
+ */
+
 public class CsvRecordPoint {
 	
 	CSVRecord m_record;

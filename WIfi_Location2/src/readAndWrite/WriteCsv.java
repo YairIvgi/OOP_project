@@ -125,6 +125,11 @@ public class WriteCsv {
 		}
 	}
 	
+	/**
+	 * The method write all the points in .csv format of estimated Location Format 
+	 * @author Yair Ivgi
+	 */
+	
 	public void estimatedLocationFormat(List<CsvRecordPoint> dataList){
 		for(CsvRecordPoint record : dataList) {
 			int namberOfWifi=Integer.parseInt(record.getM_record().get("WiFi networks"));

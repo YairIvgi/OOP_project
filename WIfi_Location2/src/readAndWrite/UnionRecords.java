@@ -39,7 +39,7 @@ public class UnionRecords {
 	}
 
 	/**
-	 * enable to add raw data from folder to the data base 
+	 * Enable to add raw data from folder to the data base 
 	 * @author Yair Ivgi 
 	 */
 
@@ -53,6 +53,11 @@ public class UnionRecords {
 		addDataFromFile(folder.getOutputFile());
 	}
 
+	/**
+	 * Allows to integrate data with no rehearsal.  
+	 * @author Yair Ivgi 
+	 */
+	
 	public void combainData(Iterable<CSVRecord> records){
 		List<CSVRecord> result = new ArrayList<CSVRecord>();
 		result.addAll(m_records);

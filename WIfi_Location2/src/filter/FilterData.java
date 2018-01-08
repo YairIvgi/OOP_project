@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
-public class FilterData {
+/** 
+ * This class execute the filter.
+ * @throws Exception
+ * @author Yair Ivgi
+ */
 
-	/** 
-	 * 
-	 * @throws Exception
-	 * @author Yair Ivgi
-	 */
+public class FilterData {
 
 	public List<CSVRecord> filterData(List<CSVRecord> records, IFilter filter,boolean isNot) throws Exception{
 		try {

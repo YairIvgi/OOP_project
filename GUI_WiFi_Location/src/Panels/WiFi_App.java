@@ -51,16 +51,16 @@ import filter.OrFilters;
 import readAndWrite.DataBaseIO;
 import readAndWrite.RawCsvReader;
 import readAndWrite.UnionRecords;
-import util.AddData;
 import util.CheckModifyFiles;
-import util.ExportData;
 import util.NumberOfDiffMac;
+import util.SelectFileDirectory;
+
+/**
+ * @Description The is the main GUI panel of WiFi_Location. 
+ * @author Yair Ivgi and Idan Hollander
+ */
 
 public class WiFi_App implements IFiltersSelect{
-	/**
-	 * @Description The is the main panel of the GUI of WiFi_Location. 
-	 * @author Yair Ivgi
-	 */
 
 	private JFrame frame;
 	private JLabel labelFilter1;
@@ -269,7 +269,7 @@ public class WiFi_App implements IFiltersSelect{
 				List<CSVRecord> records = selections.getRecords();
 				records.clear();
 				fileNames=new ArrayList<String>();
-				AddData ad = new AddData(mntmAddFile1);
+				SelectFileDirectory ad = new SelectFileDirectory(mntmAddFile1);
 				String filePath = ad.addFromFile();
 				DataBaseIO db =new DataBaseIO();
 				if(filePath !=null){
@@ -298,8 +298,8 @@ public class WiFi_App implements IFiltersSelect{
 				List<CSVRecord> records = selections.getRecords();
 				records.clear();
 				folderNames = new ArrayList<String>();
-				AddData ad = new AddData(mntmAddFolder1);
-				String folderPath = ad.addFromFolder();
+				SelectFileDirectory ad = new SelectFileDirectory(mntmAddFolder1);
+				String folderPath = ad.FromFolder(true);
 				if(folderPath !=null){
 					RawCsvReader folder=new RawCsvReader();
 					DataBaseIO db =new DataBaseIO();
@@ -340,7 +340,7 @@ public class WiFi_App implements IFiltersSelect{
 					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
-				AddData ad = new AddData(mntmAddFile2);
+				SelectFileDirectory ad = new SelectFileDirectory(mntmAddFile2);
 				String filePath = ad.addFromFile();
 				if(filePath !=null){
 					UnionRecords ur =new UnionRecords(records);
@@ -375,8 +375,8 @@ public class WiFi_App implements IFiltersSelect{
 					JOptionPane.showMessageDialog(new JFrame(),"Please start new project", "Dialog",JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
-				AddData ad = new AddData(mntmAddFolder2);
-				String folderPath = ad.addFromFolder();
+				SelectFileDirectory ad = new SelectFileDirectory(mntmAddFolder2);
+				String folderPath = ad.FromFolder(true);
 				if(folderPath !=null){
 					UnionRecords ur =new UnionRecords(records);
 					try {
@@ -416,8 +416,8 @@ public class WiFi_App implements IFiltersSelect{
 					JOptionPane.showMessageDialog(new JFrame(),"Error- No Data\n"+"Please enter data", "Dialog",JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				ExportData dv = new ExportData(mntmCsvFormat);
-				String folderPath = dv.WriteToFolder();
+				SelectFileDirectory dv = new SelectFileDirectory(mntmCsvFormat);
+				String folderPath = dv.FromFolder(false);
 				WiFi_App.selections.setM_folderPath(folderPath);
 				if(folderPath !=null){
 					try {
@@ -441,8 +441,8 @@ public class WiFi_App implements IFiltersSelect{
 					JOptionPane.showMessageDialog(new JFrame(),"Error- No Data\n"+"Please enter data", "Dialog",JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				ExportData dv = new ExportData(mntmKmlFormat);
-				String FolderPath = dv.WriteToFolder();
+				SelectFileDirectory dv = new SelectFileDirectory(mntmKmlFormat);
+				String FolderPath = dv.FromFolder(false);
 				if(FolderPath !=null){
 					DataBaseIO io = new DataBaseIO();
 					try {

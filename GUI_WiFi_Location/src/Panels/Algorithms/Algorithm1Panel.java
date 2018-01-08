@@ -24,6 +24,11 @@ import org.apache.commons.csv.CSVRecord;
 import Panels.WiFi_App;
 import genral.FindMacLoc;
 
+/**
+ * @Description The is the GUI panel of algorithm 1. 
+ * @author Idan Hollander and Yair Ivgi
+ */
+
 public class Algorithm1Panel extends JFrame {
 	private static final long serialVersionUID = 1L;
 	

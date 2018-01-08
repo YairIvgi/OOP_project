@@ -22,6 +22,11 @@ import Panels.WiFi_App;
 import genral.FindLocByMac;
 import javax.swing.JPanel;
 
+/**
+ * @Description The is the GUI panel of algorithm 2 with a single line from the combo file format. 
+ * @author Idan Hollander and Yair Ivgi
+ */
+
 public class Algorithm2Single extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
