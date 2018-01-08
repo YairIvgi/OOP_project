@@ -1,5 +1,11 @@
 package Filter;
 
+/** 
+ * This is a Interface that is responsible to the filters select in the program.
+ * @author Yair Ivgi
+ */
+
+
 public interface IFiltersSelect {
 
 	public FilterType getType1();

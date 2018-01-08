@@ -7,6 +7,11 @@ import java.util.Set;
 
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * @Description This class checks update the number of different mac in the Data Base.
+ * @author Yair Ivgi
+ */
+
 public class NumberOfDiffMac {
 
 	private List<CSVRecord> m_records;

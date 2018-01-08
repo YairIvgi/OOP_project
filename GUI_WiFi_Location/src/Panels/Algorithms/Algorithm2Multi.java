@@ -21,6 +21,11 @@ import org.apache.commons.csv.CSVRecord;
 import Panels.WiFi_App;
 import genral.FindLocByMac;
 
+/**
+ * @Description The is the GUI panel of algorithm 2 with 3 pairs of mac and signal. 
+ * @author Idan Hollander and Yair Ivgi
+ */
+
 public class Algorithm2Multi extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
