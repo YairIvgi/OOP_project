@@ -3,15 +3,26 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class AddData {
+/**
+ * @Description This class opens a file directory and allows the user to choose a file or folder path.
+ * @author Yair Ivgi
+ */
+
+public class SelectFileDirectory {
+
 	private JMenuItem m_item;
-	public AddData(JMenuItem item){
+
+	public SelectFileDirectory(JMenuItem item){
 		m_item = item;
 	}
-	public String  addFromFolder(){
+	public String  FromFolder(boolean addData){
 		String folderPath;
 		JFileChooser fc = new JFileChooser();
-		fc.setDialogTitle("WiFi_App- Add Folder");
+		if(addData){
+			fc.setDialogTitle("WiFi_App- Add Folder");
+		}else{
+			fc.setDialogTitle("WiFi_App- select Folder");
+		}
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		if(fc.showOpenDialog(m_item) == JFileChooser.APPROVE_OPTION){
 			folderPath = fc.getSelectedFile().getAbsolutePath();
@@ -19,7 +30,7 @@ public class AddData {
 		}
 		return null;
 	}
-	
+
 	public String  addFromFile(){
 		String folderPath;
 		JFileChooser fc = new JFileChooser();
