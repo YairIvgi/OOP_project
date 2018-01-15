@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.csv.CSVRecord;
-import Panels.WiFi_App;
+import Panels.main;
 import readAndWrite.UnionRecords;
 
 /**
@@ -26,12 +26,12 @@ public class CheckModifyFiles implements Runnable {
 
 	private volatile boolean running = true;
 	
-	private WiFi_App m_ap;
+	private main m_ap;
 
 	private List<String> m_fileNames;
 	private List<String> m_folderNames;
 
-	public CheckModifyFiles(List<String> fileNames,List<String> folderNames, WiFi_App ap) {
+	public CheckModifyFiles(List<String> fileNames,List<String> folderNames, main ap) {
 		m_fileNames = new ArrayList<String>();
 		if(fileNames!=null) {
 			m_fileNames.addAll(fileNames);
@@ -120,7 +120,7 @@ public class CheckModifyFiles implements Runnable {
 		return false;
 	}
 	private void reloadFiles() {
-		List<CSVRecord> records = WiFi_App.selections.getRecords();
+		List<CSVRecord> records = main.selections.getRecords();
 		//WiFi_App wa=new WiFi_App();
 		records.clear();
 		for(int i=0;i<m_fileNames.size();i++) {
@@ -155,7 +155,7 @@ public class CheckModifyFiles implements Runnable {
 			}
 
 		}		
-		WiFi_App.selections.setRecords(records);
+		main.selections.setRecords(records);
 		m_ap.updateDataNumOfMacLabel();
 	}
 

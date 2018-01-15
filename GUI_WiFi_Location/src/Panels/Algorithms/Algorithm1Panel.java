@@ -21,7 +21,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import Panels.WiFi_App;
+import Panels.main;
 import genral.FindMacLoc;
 
 /**
@@ -50,7 +50,7 @@ public class Algorithm1Panel extends JFrame {
 		btnLocate.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnLocate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				FindMacLoc alg1=new FindMacLoc(WiFi_App.selections.getRecords(), 4);
+				FindMacLoc alg1=new FindMacLoc(main.selections.getRecords(), 4);
 				try {
 					alg1.locateMac_FromExistingMac(txtEnterMac.getText());
 				} catch (Exception e1) {

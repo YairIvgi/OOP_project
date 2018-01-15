@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import Filter.FilterSelectionTime;
 import Filter.FilterType;
 import Filter.IFiltersSelect;
-import Panels.WiFi_App;
+import Panels.main;
 
 /**
  * @Description The is the GUI panel of filter by Time.
@@ -79,7 +79,7 @@ public class FilterTimePanel extends JFrame {
 		JCheckBox checkBoxNot = new JCheckBox("Not");
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WiFi_App.selections.getM_time().setNot(checkBoxNot.isSelected());
+				main.selections.getM_time().setNot(checkBoxNot.isSelected());
 			}
 		});
 		checkBoxNot.setBounds(477, 43, 90, 29);
@@ -98,19 +98,19 @@ public class FilterTimePanel extends JFrame {
 		okButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				WiFi_App.selections.getM_time().setNot(checkBoxNot.isSelected());		
-				FilterSelectionTime time= WiFi_App.selections.getM_time();
+				main.selections.getM_time().setNot(checkBoxNot.isSelected());		
+				FilterSelectionTime time= main.selections.getM_time();
 				time.setType(FilterType.ByTime);
 				time.setFrom(textPaneFrom.getText());
 				time.setTo(textPaneTo.getText());
 				time.setNot(checkBoxNot.isSelected());	
 
 				if(iSelect.getType1() == null){
-					WiFi_App.selections.setM_type1(FilterType.ByTime);
+					main.selections.setM_type1(FilterType.ByTime);
 					iSelect.setType1(FilterType.ByTime);
 					iSelect.setFilter1(time.toString());
 				}else{
-					WiFi_App.selections.setM_type2(FilterType.ByTime);
+					main.selections.setM_type2(FilterType.ByTime);
 					iSelect.setType2(FilterType.ByTime);
 					iSelect.setFilter2(time.toString());
 				}

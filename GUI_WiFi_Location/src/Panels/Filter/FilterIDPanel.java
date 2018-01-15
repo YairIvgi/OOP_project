@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import Filter.FilterSelectionID;
 import Filter.FilterType;
 import Filter.IFiltersSelect;
-import Panels.WiFi_App;
+import Panels.main;
 
 /**
  * @Description The is the GUI panel of filter by ID.
@@ -72,7 +72,7 @@ public class FilterIDPanel extends JFrame {
 		JCheckBox checkBoxNot = new JCheckBox("Not");
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WiFi_App.selections.getM_id().setNot(checkBoxNot.isSelected());
+				main.selections.getM_id().setNot(checkBoxNot.isSelected());
 			}
 		});
 		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -87,17 +87,17 @@ public class FilterIDPanel extends JFrame {
 		buttonOk = new JButton("OK");
 		buttonOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FilterSelectionID id= WiFi_App.selections.getM_id();
+				FilterSelectionID id= main.selections.getM_id();
 				id.setType(FilterType.ById);
 				id.setNot(checkBoxNot.isSelected());		
 				id.setId(textPaneID.getText());
 				
 				if(iSelect.getType1() == null){
-					WiFi_App.selections.setM_type1(FilterType.ById);
+					main.selections.setM_type1(FilterType.ById);
 					iSelect.setType1(FilterType.ById);
 					iSelect.setFilter1(id.toString());
 				}else{
-					WiFi_App.selections.setM_type2(FilterType.ById);
+					main.selections.setM_type2(FilterType.ById);
 					iSelect.setType2(FilterType.ById);
 					iSelect.setFilter2(id.toString());
 				}

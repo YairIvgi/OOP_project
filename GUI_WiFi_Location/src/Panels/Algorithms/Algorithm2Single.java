@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import Panels.WiFi_App;
+import Panels.main;
 import genral.FindLocByMac;
 import javax.swing.JPanel;
 
@@ -52,7 +52,7 @@ public class Algorithm2Single extends JFrame {
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FindLocByMac alg2=new FindLocByMac(WiFi_App.selections.getRecords(), 3);
+				FindLocByMac alg2=new FindLocByMac(main.selections.getRecords(), 3);
 				try {
 					alg2.estimatedLoc_FromString(txtEnterRowFrom.getText());
 				} catch (Exception e1) {
