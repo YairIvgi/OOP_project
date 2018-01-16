@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'GradleSupport'
+rootProject.name = 'Gradle_WiFi_Location'
