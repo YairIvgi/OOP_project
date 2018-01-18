@@ -126,6 +126,17 @@ public class WriteCsv {
 	}
 	
 	/**
+	 * The method write all the points in .csv format of 46 columns.
+	 * @author Yair Ivgi
+	 */
+
+	public void dBFormatFromLine(List<String> data){
+		for(int i=0; i< data.size(); i++){
+			writeLine(data.get(i));
+		}
+	}
+	
+	/**
 	 * The method write all the points in .csv format of estimated Location Format 
 	 * @author Yair Ivgi
 	 */

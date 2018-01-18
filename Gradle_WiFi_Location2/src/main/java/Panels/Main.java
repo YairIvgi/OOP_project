@@ -30,6 +30,10 @@ import javax.swing.JSeparator;
 import org.apache.commons.csv.CSVRecord;
 import org.boehn.kmlframework.kml.KmlException;
 
+import guiFilter.FilterOperation;
+import guiFilter.FilterType;
+import guiFilter.FiltersSelections;
+import guiFilter.IFiltersSelect;
 import Panels.Algorithms.Algorithm1Panel;
 import Panels.Algorithms.Algorithm2Multi;
 import Panels.Algorithms.Algorithm2Single;
@@ -44,23 +48,20 @@ import filter.FilterData;
 import filter.IFilter;
 import filter.IOperationFilter;
 import filter.OrFilters;
-import guiFilter.FilterOperation;
-import guiFilter.FilterType;
-import guiFilter.FiltersSelections;
-import guiFilter.IFiltersSelect;
 import readAndWrite.DataBaseIO;
 import readAndWrite.RawCsvReader;
 import readAndWrite.UnionRecords;
 import util.CheckModifyFiles;
 import util.NumberOfDiffMac;
 import util.SelectFileDirectory;
+import util.Sql;
 
 /**
  * @Description The is the main GUI panel of WiFi_Location. 
  * @author Yair Ivgi and Idan Hollander
  */
 
-public class main implements IFiltersSelect{
+public class Main implements IFiltersSelect{
 
 	private JFrame frame;
 	private JLabel labelFilter1;
@@ -77,14 +78,14 @@ public class main implements IFiltersSelect{
 
 	private List<String> fileNames;
 	private List<String> folderNames;
-
+	List<Sql> SqlLogList = new ArrayList<Sql>();
 
 	private Thread t = null;
 	private CheckModifyFiles runnable = null;
 
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	public static FiltersSelections selections = new FiltersSelections();
-
+	public static Sql sqlSelections;
 
 	/**
 	 * Launch the application.
@@ -93,7 +94,7 @@ public class main implements IFiltersSelect{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main window = new main();
+					Main window = new Main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -106,7 +107,7 @@ public class main implements IFiltersSelect{
 	/**
 	 * Create the application.
 	 */
-	public main() {
+	public Main() {
 		try {
 			initialize(t);
 		} catch (Exception e) {
@@ -114,13 +115,13 @@ public class main implements IFiltersSelect{
 		}
 	}
 
-	private void startCheckFileThread() {
+	void startCheckFileThread() {
 		runnable = new CheckModifyFiles(fileNames,folderNames,this);
 		t = new Thread(runnable);
 		t.start();
 	}
-	
-	private void stopCheckFileThread() {
+
+	void stopCheckFileThread() {
 		if (t != null) {
 			runnable.terminate();
 			try {
@@ -131,7 +132,7 @@ public class main implements IFiltersSelect{
 			}	
 		}
 	}
-	
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -157,7 +158,7 @@ public class main implements IFiltersSelect{
 		radioButtonNone = new JRadioButton("None");
 		radioButtonNone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.selections.setM_operation(FilterOperation.none);
+				Main.selections.setM_operation(FilterOperation.none);
 				labelFilter2.setText("Filter 2");
 				labelFilter2.setEnabled(false);
 			}
@@ -171,7 +172,7 @@ public class main implements IFiltersSelect{
 		radioButtonAnd = new JRadioButton("And");
 		radioButtonAnd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.selections.setM_operation(FilterOperation.and);
+				Main.selections.setM_operation(FilterOperation.and);
 				labelFilter2.setEnabled(true);
 			}
 		});
@@ -183,7 +184,7 @@ public class main implements IFiltersSelect{
 		radioButtonOr = new JRadioButton("Or");
 		radioButtonOr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.selections.setM_operation(FilterOperation.or);
+				Main.selections.setM_operation(FilterOperation.or);
 				labelFilter2.setEnabled(true);
 			}
 		});
@@ -286,12 +287,22 @@ public class main implements IFiltersSelect{
 			}
 		});
 
-		///new program- data from folder- menu button
+		///new program- data from SQL- menu button
 		Image folder = new ImageIcon(this.getClass().getResource("/folder.png")).getImage();
 		JMenuItem mntmAddFolder1 = new JMenuItem("Add Folder");
 		mntmAddFolder1.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mntmAddFolder1.setIcon(new ImageIcon(folder));
 		mnNew.add(mntmAddFolder1);
+
+		JMenuItem mntmAddSqlSource = new JMenuItem("Add SQL source");
+		mntmAddSqlSource.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SqlPanel sq = new SqlPanel(Main.this);
+				sq.setVisible(true);
+			}
+		});
+		mntmAddSqlSource.setFont(new Font("Segoe UI", Font.PLAIN, 22));
+		mnNew.add(mntmAddSqlSource);
 		mntmAddFolder1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				stopCheckFileThread();
@@ -418,7 +429,7 @@ public class main implements IFiltersSelect{
 				}
 				SelectFileDirectory dv = new SelectFileDirectory(mntmCsvFormat);
 				String folderPath = dv.FromFolder(false);
-				main.selections.setM_folderPath(folderPath);
+				Main.selections.setM_folderPath(folderPath);
 				if(folderPath !=null){
 					try {
 						DataBaseIO io = new DataBaseIO();
@@ -533,7 +544,7 @@ public class main implements IFiltersSelect{
 		mntmByTime.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mntmByTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FilterTimePanel filterTimePanel =new FilterTimePanel(main.this);
+				FilterTimePanel filterTimePanel =new FilterTimePanel(Main.this);
 				filterTimePanel.setVisible(true);
 			}
 		});
@@ -543,7 +554,7 @@ public class main implements IFiltersSelect{
 		JMenuItem mntmByLocation = new JMenuItem("By Location");
 		mntmByLocation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FilterLocPanel filterByLocation =new FilterLocPanel(main.this);
+				FilterLocPanel filterByLocation =new FilterLocPanel(Main.this);
 				filterByLocation.setVisible(true);
 			}
 		});
@@ -554,7 +565,7 @@ public class main implements IFiltersSelect{
 		JMenuItem mntmById = new JMenuItem("By ID");
 		mntmById.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FilterIDPanel filterIDPanel = new FilterIDPanel(main.this);
+				FilterIDPanel filterIDPanel = new FilterIDPanel(Main.this);
 				filterIDPanel.setVisible(true);				
 			}
 		});
@@ -644,7 +655,7 @@ public class main implements IFiltersSelect{
 					}
 					ois.close();
 					fis.close();
-					
+
 				} catch (Exception e4) {
 					String message = "Error can't upload filters";			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -799,7 +810,7 @@ public class main implements IFiltersSelect{
 		FilterData dataFilter = new FilterData();
 		IOperationFilter oppFilter1 = null;
 		if(labelFilter1.isEnabled()){			
-			switch (main.selections.getM_type1()){
+			switch (Main.selections.getM_type1()){
 			case ById:
 				filter1 = new FilterById(selections.getM_id().getId());		
 				isNot1 = selections.getM_id().isNot();
@@ -825,7 +836,7 @@ public class main implements IFiltersSelect{
 			}
 		}
 		if(labelFilter2.isEnabled()){
-			switch (main.selections.getM_type2()){
+			switch (Main.selections.getM_type2()){
 			case ById:
 				filter2 = new FilterById(selections.getM_id().getId());
 				isNot2 = selections.getM_id().isNot();
@@ -885,5 +896,5 @@ public class main implements IFiltersSelect{
 		}
 		return filterRecords;
 	}
-	
 }
+

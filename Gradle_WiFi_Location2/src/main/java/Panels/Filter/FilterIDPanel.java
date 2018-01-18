@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import guiFilter.FilterSelectionID;
 import guiFilter.FilterType;
 import guiFilter.IFiltersSelect;
-import Panels.main;
+import Panels.Main;
 
 /**
  * @Description The is the GUI panel of filter by ID.
@@ -72,7 +72,7 @@ public class FilterIDPanel extends JFrame {
 		JCheckBox checkBoxNot = new JCheckBox("Not");
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.selections.getM_id().setNot(checkBoxNot.isSelected());
+				Main.selections.getM_id().setNot(checkBoxNot.isSelected());
 			}
 		});
 		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -87,17 +87,17 @@ public class FilterIDPanel extends JFrame {
 		buttonOk = new JButton("OK");
 		buttonOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FilterSelectionID id= main.selections.getM_id();
+				FilterSelectionID id= Main.selections.getM_id();
 				id.setType(FilterType.ById);
 				id.setNot(checkBoxNot.isSelected());		
 				id.setId(textPaneID.getText());
 				
 				if(iSelect.getType1() == null){
-					main.selections.setM_type1(FilterType.ById);
+					Main.selections.setM_type1(FilterType.ById);
 					iSelect.setType1(FilterType.ById);
 					iSelect.setFilter1(id.toString());
 				}else{
-					main.selections.setM_type2(FilterType.ById);
+					Main.selections.setM_type2(FilterType.ById);
 					iSelect.setType2(FilterType.ById);
 					iSelect.setFilter2(id.toString());
 				}
