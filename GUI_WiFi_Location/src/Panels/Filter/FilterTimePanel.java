@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import Filter.FilterSelectionTime;
 import Filter.FilterType;
 import Filter.IFiltersSelect;
-import Panels.main;
+import Panels.Main;
 
 /**
  * @Description The is the GUI panel of filter by Time.
@@ -79,7 +79,7 @@ public class FilterTimePanel extends JFrame {
 		JCheckBox checkBoxNot = new JCheckBox("Not");
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.selections.getM_time().setNot(checkBoxNot.isSelected());
+				Main.selections.getM_time().setNot(checkBoxNot.isSelected());
 			}
 		});
 		checkBoxNot.setBounds(477, 43, 90, 29);
@@ -98,19 +98,19 @@ public class FilterTimePanel extends JFrame {
 		okButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				main.selections.getM_time().setNot(checkBoxNot.isSelected());		
-				FilterSelectionTime time= main.selections.getM_time();
+				Main.selections.getM_time().setNot(checkBoxNot.isSelected());		
+				FilterSelectionTime time= Main.selections.getM_time();
 				time.setType(FilterType.ByTime);
 				time.setFrom(textPaneFrom.getText());
 				time.setTo(textPaneTo.getText());
 				time.setNot(checkBoxNot.isSelected());	
 
 				if(iSelect.getType1() == null){
-					main.selections.setM_type1(FilterType.ByTime);
+					Main.selections.setM_type1(FilterType.ByTime);
 					iSelect.setType1(FilterType.ByTime);
 					iSelect.setFilter1(time.toString());
 				}else{
-					main.selections.setM_type2(FilterType.ByTime);
+					Main.selections.setM_type2(FilterType.ByTime);
 					iSelect.setType2(FilterType.ByTime);
 					iSelect.setFilter2(time.toString());
 				}

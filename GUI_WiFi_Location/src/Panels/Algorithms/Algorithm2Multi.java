@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-import Panels.main;
+import Panels.Main;
 import genral.FindLocByMac;
 
 /**
@@ -119,7 +119,7 @@ public class Algorithm2Multi extends JFrame {
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FindLocByMac alg2 = new FindLocByMac(main.selections.getRecords(), 4);
+				FindLocByMac alg2 = new FindLocByMac(Main.selections.getRecords(), 4);
 				try {
 					alg2.estimatedLoc_FromMacs(txtMac_1.getText(), txtSignal_1.getText(), txtMac_2.getText(), txtSignal_2.getText(), txtMac_3.getText(), txtSignal_3.getText());
 				} catch (Exception e1) {
