@@ -147,9 +147,9 @@ public class SqlPanel extends JFrame {
 				String password = textPassword.getText();
 				String folder = textFolder.getText();
 				String table =textTable.getText();
-				main.sqlSelections = new Sql(ip, port, folder, user, password, table);
+				Main.sqlSelections = new Sql(ip, port, folder, user, password, table);
 				try {
-					main.sqlSelections.getSqlTable();
+					Main.sqlSelections.getSqlTable();
 				} catch (SQLException e1) {
 					String message = "There was a problem reching to the SQL server ";			
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
@@ -158,13 +158,10 @@ public class SqlPanel extends JFrame {
 					JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 				}
 				
-				
-				
 				main.stopCheckFileThread();
-				List<CSVRecord> records = main.selections.getRecords();
+				List<CSVRecord> records = Main.selections.getRecords();
 				records.clear();
-				main.SqlLogList = new ArrayList<Sql>();
-				main.SqlLogList.add(main.sqlSelections);
+				main.SqlLogList.add(Main.sqlSelections);
 				String filePath = System.getProperty("user.dir");
 				filePath += "\\sqlData.csv";
 				DataBaseIO db =new DataBaseIO();
@@ -178,9 +175,7 @@ public class SqlPanel extends JFrame {
 				}
 				main.updateDataNumOfMacLabel();
 				main.startCheckFileThread();
-				
-				
-				
+			
 				dispose();
 			}
 		});

@@ -12,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +78,7 @@ public class Main implements IFiltersSelect{
 
 	private List<String> fileNames;
 	private List<String> folderNames;
-	List<Sql> SqlLogList;
+	List<Sql> SqlLogList = new ArrayList<Sql>();
 
 	private Thread t = null;
 	private CheckModifyFiles runnable = null;
@@ -288,7 +287,7 @@ public class Main implements IFiltersSelect{
 			}
 		});
 
-		///new program- data from folder- menu button
+		///new program- data from SQL- menu button
 		Image folder = new ImageIcon(this.getClass().getResource("/folder.png")).getImage();
 		JMenuItem mntmAddFolder1 = new JMenuItem("Add Folder");
 		mntmAddFolder1.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -378,10 +377,6 @@ public class Main implements IFiltersSelect{
 		mntmAddFolder2.setFont(new Font("Segoe UI", Font.PLAIN, 22));
 		mntmAddFolder2.setIcon(new ImageIcon(folder));
 		mnAddData.add(mntmAddFolder2);
-
-		JMenuItem mntmAddSql2 = new JMenuItem("From SQL");
-		mntmAddSql2.setFont(new Font("Segoe UI", Font.PLAIN, 22));
-		mnAddData.add(mntmAddSql2);
 		mntmAddFolder2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				stopCheckFileThread();

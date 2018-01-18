@@ -38,10 +38,6 @@ public class Sql {
 	//	private static String _password = "???";
 	//	private static Connection _con = null;
 
-
-//	public static void main(String[] args) throws Exception {
-//		test_101();
-//	}
 	@SuppressWarnings("resource")
 	public int getSqlTable() throws Exception {
 		Statement st = null;
