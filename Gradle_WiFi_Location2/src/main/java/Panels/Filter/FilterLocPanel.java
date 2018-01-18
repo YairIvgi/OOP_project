@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import guiFilter.FilterSelectionLocation;
 import guiFilter.FilterType;
 import guiFilter.IFiltersSelect;
-import Panels.main;
+import Panels.Main;
 
 /**
  * @Description The is the GUI panel of filter by Location.
@@ -64,7 +64,7 @@ public class FilterLocPanel extends JFrame {
 		checkBoxNot = new JCheckBox("Not");
 		checkBoxNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.selections.getM_location().setNot(checkBoxNot.isSelected());
+				Main.selections.getM_location().setNot(checkBoxNot.isSelected());
 			}
 		});
 		checkBoxNot.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -109,7 +109,7 @@ public class FilterLocPanel extends JFrame {
 		JButton button = new JButton("OK");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FilterSelectionLocation location= main.selections.getM_location();
+				FilterSelectionLocation location= Main.selections.getM_location();
 				location.setType(FilterType.ByLocation);
 				location.setRadius(textPaneRadius.getText());
 				location.setLon(textPaneLongtiude.getText());
@@ -117,11 +117,11 @@ public class FilterLocPanel extends JFrame {
 				location.setNot(checkBoxNot.isSelected());
 				
 				if(iSelect.getType1() == null){
-					main.selections.setM_type1(FilterType.ByLocation);
+					Main.selections.setM_type1(FilterType.ByLocation);
 					iSelect.setType1(FilterType.ByLocation);
 					iSelect.setFilter1(location.toString());
 				}else{
-					main.selections.setM_type2(FilterType.ByLocation);
+					Main.selections.setM_type2(FilterType.ByLocation);
 					iSelect.setType2(FilterType.ByLocation);
 					iSelect.setFilter2(location.toString());
 				}				
