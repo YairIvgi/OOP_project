@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="4c1c3561-2990-4b6f-a239-9ba14c98ef3c">
+<Placemark id="766cb64b-e256-4737-898d-f836dc1571a7">
+<name>Department of Informatics</name>
+<description>Web: http://www.ifi.uio.no<br/>Phone: +47 22852410</description>
+<Point id="df1282d9-c600-47ae-926b-fc728d3cf2a6">
+<coordinates>10.717344,59.943355</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

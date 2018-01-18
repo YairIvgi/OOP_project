@@ -13,6 +13,9 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
+import filter.FilterById;
+import readAndWrite.RawCsvReader;
+
 /**
  * Test the getFiltered method.
  * @author Yair Ivgi and Idan Holander 
