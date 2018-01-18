@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="genral.CsvRecordPoint" project="WiFi_Location" 
-    file="/WiFi_Location/src/genral/CsvRecordPoint.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="genral.CsvRecordPoint" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/CsvRecordPoint.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="247" x="5978" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="filter.AndFilters" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/AndFilters.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="filter.AndFilters" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/AndFilters.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="106" width="477" x="1924" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="readAndWrite.DataBaseIO" project="WiFi_Location" 
-    file="/WiFi_Location/src/readAndWrite/DataBaseIO.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="readAndWrite.DataBaseIO" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/readAndWrite/DataBaseIO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="178" width="257" x="335" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,13 +28,13 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="4" language="java" name="filter" project="WiFi_Location" file="/WiFi_Location/src/filter" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <package id="4" language="java" name="filter" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter" binary="false" corner="BOTTOM_RIGHT">    
     <position height="55" width="122" x="632" y="63"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="5" language="java" name="filter.FilterById" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/FilterById.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="filter.FilterById" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/FilterById.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="178" width="438" x="4662" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -42,8 +42,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="filter.FilterByLocation" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/FilterByLocation.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="filter.FilterByLocation" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/FilterByLocation.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="232" width="379" x="5140" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -51,8 +51,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="filter.FilterByTime" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/FilterByTime.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="filter.FilterByTime" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/FilterByTime.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="196" width="379" x="5559" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -60,8 +60,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="genral.Main" project="WiFi_Location" file="/WiFi_Location/src/genral/Main.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="genral.Main" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="106" width="130" x="794" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -69,8 +69,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="9" language="java" name="filter.IOperationFilter" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/IOperationFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="9" language="java" name="filter.IOperationFilter" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/IOperationFilter.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="88" width="477" x="2183" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -78,8 +78,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="10" language="java" name="filter.OrFilters" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/OrFilters.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="filter.OrFilters" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/OrFilters.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="106" width="477" x="2441" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -87,8 +87,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="11" language="java" name="filter.IFilter" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/IFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="11" language="java" name="filter.IFilter" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/IFilter.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="88" width="379" x="5140" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -96,8 +96,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="12" language="java" name="readAndWrite.RawCsvReader" project="WiFi_Location" 
-    file="/WiFi_Location/src/readAndWrite/RawCsvReader.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="readAndWrite.RawCsvReader" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/readAndWrite/RawCsvReader.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="160" width="287" x="964" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -105,13 +105,13 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="13" language="java" name="genral" project="WiFi_Location" file="/WiFi_Location/src/genral" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <package id="13" language="java" name="genral" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral" binary="false" corner="BOTTOM_RIGHT">    
     <position height="55" width="122" x="1291" y="63"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="14" language="java" name="genral.FindLocByMac" project="WiFi_Location" 
-    file="/WiFi_Location/src/genral/FindLocByMac.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="genral.FindLocByMac" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/FindLocByMac.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="376" width="431" x="1453" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -119,8 +119,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="genral.FindMacLoc" project="WiFi_Location" 
-    file="/WiFi_Location/src/genral/FindMacLoc.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="genral.FindMacLoc" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/FindMacLoc.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="160" width="263" x="2958" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -128,13 +128,13 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="16" language="java" name="readAndWrite" project="WiFi_Location" file="/WiFi_Location/src/readAndWrite" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <package id="16" language="java" name="readAndWrite" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/readAndWrite" binary="false" corner="BOTTOM_RIGHT">    
     <position height="55" width="122" x="3261" y="63"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="17" language="java" name="readAndWrite.UnionRecords" project="WiFi_Location" 
-    file="/WiFi_Location/src/readAndWrite/UnionRecords.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="17" language="java" name="readAndWrite.UnionRecords" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/readAndWrite/UnionRecords.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="178" width="262" x="3423" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -142,8 +142,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="genral.RawData" project="WiFi_Location" 
-    file="/WiFi_Location/src/genral/RawData.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="18" language="java" name="genral.RawData" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/RawData.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="160" width="292" x="6265" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -151,8 +151,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="readAndWrite.WriteCsv" project="WiFi_Location" 
-    file="/WiFi_Location/src/readAndWrite/WriteCsv.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="19" language="java" name="readAndWrite.WriteCsv" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/readAndWrite/WriteCsv.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="250" width="336" x="6597" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -160,8 +160,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="genral.AveragingElaborateCoordinate" project="WiFi_Location" 
-    file="/WiFi_Location/src/genral/AveragingElaborateCoordinate.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="20" language="java" name="genral.AveragingElaborateCoordinate" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/AveragingElaborateCoordinate.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="142" width="474" x="3725" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -169,8 +170,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="genral.WifiSpot" project="WiFi_Location" 
-    file="/WiFi_Location/src/genral/WifiSpot.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="21" language="java" name="genral.WifiSpot" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/genral/WifiSpot.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="466" width="421" x="6265" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -178,8 +179,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="filter.FilterData" project="WiFi_Location" 
-    file="/WiFi_Location/src/filter/FilterData.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="22" language="java" name="filter.FilterData" project="Gradle_WiFi_Location" 
+    file="/Gradle_WiFi_Location/src/main/java/filter/FilterData.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="106" width="383" x="4239" y="63"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -187,50 +188,62 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="23">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="24" name="m_point"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="26">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="27">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="28" name="m_Points"/>      
-      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="30">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <realization id="31">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <realization id="32">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="33">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="34" name="samples"/>      
-      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="36">    
+  <realization id="23">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
+  <realization id="24">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="25">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="26">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="27" name="m_point">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="29">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="30">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="31">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="32" name="samples">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="35" name="m_Points">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

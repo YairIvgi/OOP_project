@@ -5,7 +5,7 @@ import org.junit.Test;
  * @author Yair Ivgi and Idan Holander
  */
 
-public class ReadAndWriteWithFilterTest {
+public class DataBaseIOTest {
 	
 	@Test
 	public void testHighestSignalIndex() {
