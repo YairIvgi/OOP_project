@@ -35,7 +35,7 @@ dependencies {
 }
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'GradleSupport',
+        attributes 'Implementation-Title': 'Gradle_WiFi_Location2',
                 'Implementation-Version': '1.0',
                 'Main-Class': 'Panels.main'
     }
@@ -43,3 +43,15 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
+task srcZip(type: Zip) {
+    classifier = 'src'
+    from sourceSets*.allSource
+}
+task success {  
+  doLast {println "All tests passed!"} 
+}
+
+test.finalizedBy(success)
+
+build.dependsOn(fatJar)
+build.dependsOn(srcZip)
